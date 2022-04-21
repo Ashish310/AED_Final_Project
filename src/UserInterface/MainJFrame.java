@@ -21,12 +21,13 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     
     private JPanel workArea;
-    public MainJFrame(JPanel workArea) {
+    public MainJFrame() {
         initComponents();
-        this.workArea = workArea;
-//        MainFrameUtils mfu = new MainFrameUtils();
-//        mfu.setWorkArea(mainWorkArea);
-//        this.setSize(1680, 1050);
+        //this.workArea = workArea;
+        MainJFrameUtilities mfu = new MainJFrameUtilities();
+        mfu.setWorkArea(mainPanelArea);
+        this.setSize(800, 800);
+        initSOSScreen();
     }
 
     /**
@@ -39,47 +40,19 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        sosPanel = new javax.swing.JPanel();
-        btnSOS = new javax.swing.JButton();
         heading = new javax.swing.JLabel();
+        mainPanelArea = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(76, 105, 118));
 
-        sosPanel.setBackground(new java.awt.Color(186, 223, 222));
-
-        btnSOS.setIcon(new javax.swing.ImageIcon("/Users/shriyadikshith/Downloads/MicrosoftTeams-image (1).png")); // NOI18N
-        btnSOS.setBounds(new java.awt.Rectangle(-32377, -32394, 50, 10));
-        btnSOS.setMaximumSize(new java.awt.Dimension(50, 50));
-        btnSOS.setMinimumSize(new java.awt.Dimension(20, 20));
-        btnSOS.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSOSActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout sosPanelLayout = new javax.swing.GroupLayout(sosPanel);
-        sosPanel.setLayout(sosPanelLayout);
-        sosPanelLayout.setHorizontalGroup(
-            sosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sosPanelLayout.createSequentialGroup()
-                .addGap(297, 297, 297)
-                .addComponent(btnSOS, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(335, Short.MAX_VALUE))
-        );
-        sosPanelLayout.setVerticalGroup(
-            sosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sosPanelLayout.createSequentialGroup()
-                .addContainerGap(173, Short.MAX_VALUE)
-                .addComponent(btnSOS, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
-        );
-
         heading.setFont(new java.awt.Font("Malayalam MN", 3, 18)); // NOI18N
         heading.setForeground(new java.awt.Color(241, 205, 183));
         heading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         heading.setText("Natural Disaster Management");
+
+        mainPanelArea.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -88,20 +61,16 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(215, 215, 215)
                 .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
-                .addComponent(sosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addContainerGap(290, Short.MAX_VALUE))
+            .addComponent(mainPanelArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
-                .addComponent(sosPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(101, 101, 101))
+                .addGap(18, 18, 18)
+                .addComponent(mainPanelArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -118,13 +87,10 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSOSActionPerformed
-        // TODO add your handling code here:
-        
-        MainJFrameUtilities.redirect(new sosReporterPanel(workArea), "MainJFrame");
-        
-    }//GEN-LAST:event_btnSOSActionPerformed
-
+    private void initSOSScreen()
+    {
+        MainJFrameUtilities.redirect(new SOSPanel(mainPanelArea), "MainJFrame");
+    }
     /**
      * @param args the command line arguments
      */
@@ -153,18 +119,23 @@ public class MainJFrame extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MainJFrame(workArea).accessibleContext(setVisible(true));
+//            }
+//        });
+
+java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainJFrame(workArea).accessibleContext(setVisible(true));
+                new MainJFrame().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnSOS;
     private javax.swing.JLabel heading;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel sosPanel;
+    private javax.swing.JPanel mainPanelArea;
     // End of variables declaration//GEN-END:variables
 
 
