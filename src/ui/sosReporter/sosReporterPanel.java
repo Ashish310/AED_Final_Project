@@ -18,13 +18,13 @@ public class sosReporterPanel extends javax.swing.JPanel {
     /**
      * Creates new form sosReporterPanel
      */
-    private JPanel workArea;
+    private JPanel mainPanelArea;
     DisasterMgmtSystem disasterMgmtSystem;
-    public sosReporterPanel(JPanel workArea) {
+    public sosReporterPanel(JPanel mainPanelArea) {
         initComponents();
         populateEmergencyType();
         
-        this.workArea = workArea;
+        this.mainPanelArea = mainPanelArea;
         
     }
     
