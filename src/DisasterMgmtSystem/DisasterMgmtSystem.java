@@ -6,12 +6,13 @@ package DisasterMgmtSystem;
 
 import DisasterMgmtSystem.Emergencies.EmergencyDirectory;
 import DisasterMgmtSystem.EmergencyLocation.EmergencyLocationDirectory;
+import DisasterMgmtSystem.Organization.Organization;
 
 /**
  *
  * @author hs_sa
  */
-public class DisasterMgmtSystem {
+public class DisasterMgmtSystem extends Organization{
     private EmergencyDirectory emergencyDirectory;
     private EmergencyLocationDirectory emergencyLocationDirectory;
 
