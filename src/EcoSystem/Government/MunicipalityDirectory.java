@@ -10,23 +10,23 @@ import java.util.ArrayList;
  *
  * @author hs_sa
  */
-public class GovernmentDirectory {
-    private ArrayList<Government> governmentList;
+public class MunicipalityDirectory {
+    private ArrayList<Municipality> governmentList;
     
-    public GovernmentDirectory(){
-        governmentList = new ArrayList<Government>();
+    public MunicipalityDirectory(){
+        governmentList = new ArrayList<Municipality>();
     }
-    public ArrayList<Government> getGovernmentList() {
+    public ArrayList<Municipality> getGovernmentList() {
         return governmentList;
         
     }
     
-    public ArrayList<Government> addGovernment(Government c){
+    public ArrayList<Municipality> addGovernment(Municipality c){
        
         governmentList.add(c);
         return governmentList;
     }
-     public ArrayList<Government> deleteGovernment(Government c){
+     public ArrayList<Municipality> deleteGovernment(Municipality c){
        
         governmentList.remove(c);
         return governmentList;

@@ -4,7 +4,8 @@
  */
 package EcoSystem.Pharmacy;
 
-import EcoSystem.DeliveryMan.DeliveryMan;
+import EcoSystem.Porter.Porter;
+import EcoSystem.Role.SysAdminRole;
 import EcoSystem.UserAccount.UserAccount;
 
 /**
@@ -13,8 +14,8 @@ import EcoSystem.UserAccount.UserAccount;
  */
 public class Pharmacy extends UserAccount {
     private String orderId;
-    private SystemAdminRole systemAdmin;
-    private DeliveryMan deliveryMan;
+    private SysAdminRole systemAdmin;
+    private Porter deliveryMan;
     private String pharmacyName;
     private PharmacyInventory menu;
     private String address;
@@ -60,19 +61,19 @@ public class Pharmacy extends UserAccount {
         this.orderId = orderId;
     }
 
-    public SystemAdminRole getSystemAdmin() {
+    public SysAdminRole getSystemAdmin() {
         return systemAdmin;
     }
 
-    public void setSystemAdmin(SystemAdminRole systemAdmin) {
+    public void setSystemAdmin(SysAdminRole systemAdmin) {
         this.systemAdmin = systemAdmin;
     }
 
-    public DeliveryMan getDeliveryMan() {
+    public Porter getDeliveryMan() {
         return deliveryMan;
     }
 
-    public void setDeliveryMan(DeliveryMan deliveryMan) {
+    public void setDeliveryMan(Porter deliveryMan) {
         this.deliveryMan = deliveryMan;
     }
     @Override

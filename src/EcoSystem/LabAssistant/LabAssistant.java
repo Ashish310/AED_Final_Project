@@ -4,11 +4,13 @@
  */
 package EcoSystem.LabAssistant;
 
+import EcoSystem.UserAccount.UserAccount;
+
 /**
  *
  * @author hs_sa
  */
-public class LabAssistant {
+public class LabAssistant extends UserAccount{
     
     private String labAssistantName;
     private String type;

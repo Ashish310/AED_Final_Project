@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package EcoSystem.DeliveryMan;
+package EcoSystem.Porter;
 
 import EcoSystem.UserAccount.UserAccount;
 
@@ -10,7 +10,7 @@ import EcoSystem.UserAccount.UserAccount;
  *
  * @author hs_sa
  */
-public class DeliveryMan extends UserAccount{
+public class Porter extends UserAccount{
     private String deliveryManName;
 
     public String getDeliveryManName() {

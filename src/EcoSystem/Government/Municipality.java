@@ -10,7 +10,7 @@ import EcoSystem.UserAccount.UserAccount;
  *
  * @author hs_sa
  */
-public class Government extends UserAccount {
+public class Municipality extends UserAccount {
     private String governmentName;
     private String orderId;
 

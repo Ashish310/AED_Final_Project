@@ -4,11 +4,13 @@
  */
 package EcoSystem.Doctor;
 
+import EcoSystem.UserAccount.UserAccount;
+
 /**
  *
  * @author hs_sa
  */
-public class Doctor {
+public class Doctor extends UserAccount{
     
     private String docName;
     private String time;
