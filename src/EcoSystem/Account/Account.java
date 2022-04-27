@@ -4,7 +4,6 @@
  */
 package EcoSystem.Account;
 
-import EcoSystem.DeliveryMan.*;
 import EcoSystem.UserAccount.UserAccount;
 
 /**

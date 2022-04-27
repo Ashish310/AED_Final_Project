@@ -4,7 +4,6 @@
  */
 package EcoSystem.AmbulanceDriver;
 
-import EcoSystem.DeliveryMan.*;
 import EcoSystem.UserAccount.UserAccount;
 
 /**

@@ -4,7 +4,7 @@
  */
 package EcoSystem;
 import EcoSystem.Employee.Employee;
-import EcoSystem.Role.SystemAdminRole;
+import EcoSystem.Role.SysAdminRole;
 import EcoSystem.UserAccount.UserAccount;
 
 /**
@@ -23,9 +23,9 @@ public class SystemConfig {
         //create user account
         
         
-        Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
+       Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
         
-        UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
+        UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SysAdminRole());
         
         return system;
     }
