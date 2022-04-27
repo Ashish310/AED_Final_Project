@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package EcoSystem.DeliveryMan;
+package EcoSystem.Porter;
 
 import java.util.ArrayList;
 
@@ -10,24 +10,24 @@ import java.util.ArrayList;
  *
  * @author hs_sa
  */
-public class DeliveryManDirectory {
+public class PorterDirectory {
     
-    ArrayList<DeliveryMan> deliveryManList;
+    ArrayList<Porter> deliveryManList;
     
-    public DeliveryManDirectory(){
+    public PorterDirectory(){
         deliveryManList = new ArrayList<>();
     }
 
-    public ArrayList<DeliveryMan> getDeliveryManList() {
+    public ArrayList<Porter> getDeliveryManList() {
         return deliveryManList;
     }
     
-    public ArrayList<DeliveryMan> addDeliveryMan(DeliveryMan deliveryMan){
+    public ArrayList<Porter> addDeliveryMan(Porter deliveryMan){
         
         deliveryManList.add(deliveryMan);
         return deliveryManList;
     }
-    public void deleteDeliveryMan(DeliveryMan deliveryMan){
+    public void deleteDeliveryMan(Porter deliveryMan){
         deliveryManList.remove(deliveryMan);
     }
     
