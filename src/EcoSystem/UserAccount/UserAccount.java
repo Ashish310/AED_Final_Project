@@ -6,7 +6,7 @@ package EcoSystem.UserAccount;
 
 import EcoSystem.Employee.Employee;
 import EcoSystem.Role.Role;
-import EcoSystem.WorkQueue.WorkQueue;
+import EcoSystem.WorkList.WorkList;
 
 /**
  *
@@ -18,11 +18,11 @@ public class UserAccount {
     private String password;
     private Employee employee;
     private Role role;
-    private WorkQueue workQueue;
+    private WorkList workQueue;
     
 
     public UserAccount() {
-        workQueue = new WorkQueue();
+        workQueue = new WorkList();
     }
     
     
@@ -59,7 +59,7 @@ public class UserAccount {
         return employee;
     }
 
-    public WorkQueue getWorkQueue() {
+    public WorkList getWorkQueue() {
         return workQueue;
     }
 
