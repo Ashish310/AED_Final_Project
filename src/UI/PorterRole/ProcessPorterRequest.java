@@ -4,6 +4,11 @@
  */
 package UI.PorterRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ashishkumar
@@ -16,6 +21,51 @@ public class ProcessPorterRequest extends javax.swing.JPanel {
     public ProcessPorterRequest() {
         initComponents();
     }
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    LabWorkRequest workRequest;
+    LabWorkRequest labTestWorkRequest;
+    /**
+     * Creates new form ProcessWorkRequestJPanel
+     * @param userProcessContainer
+     * @param ecosystem
+     * @param account
+     * @param workRequest
+     */
+    public ProcessPorterRequest(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account, LabWorkRequest workRequest) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = account;
+        this.workRequest = workRequest;
+        changeButtonText();
+        display();
+    }
+
+    private void display() {
+
+        restaurantNameValue.setText(workRequest.getPharmacy().getPharmacyName());
+        customerNameValue.setText(workRequest.getPatient().getName());
+        patientaddress.setText(workRequest.getPatient().getAddress());
+        patientcontact.setText(workRequest.getPatient().getPhone());
+        status.setText(workRequest.getStatus());
+
+    }
+
+    private void changeButtonText() {
+        switch (workRequest.getStatus()) {
+            case "Prepared":
+                btnStatus.setText("Pick Order");
+                break;
+            case "Out for delivery":
+                btnStatus.setText("Complete Delivery");
+                break;
+            default:
+                btnStatus.setVisible(false);
+        }
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

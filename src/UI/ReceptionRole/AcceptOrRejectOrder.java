@@ -4,6 +4,18 @@
  */
 package UI.ReceptionRole;
 
+import EcoSystem.Doctor.Doctor;
+import EcoSystem.Doctor.DoctorDirectory;
+import EcoSystem.EcoSystem;
+import EcoSystem.Porter.PorterDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import UI.GovtAdminRole.ViewOrderDetails;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +25,26 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
     /**
      * Creates new form AcceptOrRejectOrder
      */
-    public AcceptOrRejectOrder() {
+    JPanel userProcessContainer;
+    UserAccount userAccount;
+    EcoSystem ecosystem;
+    LabWorkRequest labTestWorkRequest;
+    double total = 0.0;
+    private PorterDirectory deliveryManDirectory;
+    private DoctorDirectory doctorDirectory;
+    private int index = -1;
+
+    public AcceptOrRejectOrder(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount, LabWorkRequest labTestWorkRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        this.labTestWorkRequest = labTestWorkRequest;
+        deliveryManDirectory = ecosystem.getDeliveryManDirectory();
+        doctorDirectory = ecosystem.getDoctorDirectory();
+        fillDelList(doctorDirectory.getDoctorList());
+        change();
+        display();
     }
 
     /**
@@ -200,43 +230,104 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         add(declineOrder, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void display() {
+        
+        fillDelUI();
+        
+        status.setText(labTestWorkRequest.getStatus());
+        message.setText(labTestWorkRequest.getMessage());
+
+
+    }
+    private void declineOrder(){
+        labTestWorkRequest.setStatus("Declined");
+        JOptionPane.showMessageDialog(null, "Appointment has been declined");
+        change();
+        status.setText(labTestWorkRequest.getStatus());
+    }
+     private void change() {
+        switch(labTestWorkRequest.getStatus()){
+            case "Request to Hospital" -> {
+                acceptOrder.setText("Accept appointment");
+                declineOrder.setVisible(true);
+            }
+            case "Waiting for doctor to be assigned" -> {
+                acceptOrder.setText("Ping the Doctor");
+                declineOrder.setVisible(false);
+            }
+            default -> {
+                declineOrder.setVisible(false);
+                acceptOrder.setVisible(false);
+            }
+        }
+        fillDelUI();
+    }
+    
+
+    private void fillDelUI() {
+        if(labTestWorkRequest.getDoctor()== null && !("ordered".equalsIgnoreCase(labTestWorkRequest.getStatus()) || "declined".equalsIgnoreCase(labTestWorkRequest.getStatus()))){
+            assignDeliveryPersonLabel.setVisible(true);
+            assignDeliveryPerson.setVisible(true);
+            
+            jButtonAddDeliveryMan.setVisible(true);
+            
+        }
+        else{
+            jButtonAddDeliveryMan.setVisible(false);
+            assignDeliveryPersonLabel.setVisible(false);
+            assignDeliveryPerson.setVisible(false);
+            
+        }
+    }
+    
+    public void fillDelList(ArrayList<Doctor> doctorList) {
+        if(labTestWorkRequest.getDeliverMan() == null) {
+            assignDeliveryPerson.setVisible(true);
+            for (Doctor doctor : doctorList) {
+                assignDeliveryPerson.addItem(doctor.getName());
+            }
+        }
+        else {
+            assignDeliveryPerson.setVisible(false);
+        } 
+    }
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-//        ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem, userAccount);
-//        userProcessContainer.add("ViewOrderDetails", viewOrderDetails);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        ManageAppointments viewOrderDetails = new ManageAppointments(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("ViewOrderDetails", viewOrderDetails);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
     private void acceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptOrderActionPerformed
 
-//        if (labTestWorkRequest.getStatus().equals("Request to Hospital")) {
-//            labTestWorkRequest.setStatus("Waiting for doctor to be assigned");
-//            JOptionPane.showMessageDialog(null, " Appointment Scheduled. Waiting for doctor to be assigned");
-//        }
-//        else if(labTestWorkRequest.getStatus().equals("Waiting for doctor to be assigned")) {
-//            labTestWorkRequest.setStatus("Doctor Assigned");
-//            if(labTestWorkRequest.getDeliverMan() == null){
-//                JOptionPane.showMessageDialog(null, " Doctor Assigned");
-//            }
-//            else {
-//                JOptionPane.showMessageDialog(null, "Doctor will be assigned");
-//            }
-//        }
-//
-//        else {
-//            acceptOrder.setVisible(false);
-//        }
-//        change();
-//        status.setText(labTestWorkRequest.getStatus());
+        if (labTestWorkRequest.getStatus().equals("Request to Hospital")) {
+            labTestWorkRequest.setStatus("Waiting for doctor to be assigned");
+            JOptionPane.showMessageDialog(null, " Appointment Scheduled. Waiting for doctor to be assigned");
+        }
+        else if(labTestWorkRequest.getStatus().equals("Waiting for doctor to be assigned")) {
+            labTestWorkRequest.setStatus("Doctor Assigned");
+            if(labTestWorkRequest.getDeliverMan() == null){
+                JOptionPane.showMessageDialog(null, " Doctor Assigned");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Doctor will be assigned");
+            }
+        }
+
+        else {
+            acceptOrder.setVisible(false);
+        }
+        change();
+        status.setText(labTestWorkRequest.getStatus());
 
     }//GEN-LAST:event_acceptOrderActionPerformed
 
     private void assignDeliveryPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDeliveryPersonActionPerformed
-       // index = assignDeliveryPerson.getSelectedIndex();
+       index = assignDeliveryPerson.getSelectedIndex();
     }//GEN-LAST:event_assignDeliveryPersonActionPerformed
 
     private void declineOrderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_declineOrderMousePressed
-       // declineOrder();
+       declineOrder();
     }//GEN-LAST:event_declineOrderMousePressed
 
     private void declineOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declineOrderActionPerformed
@@ -244,12 +335,12 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
     }//GEN-LAST:event_declineOrderActionPerformed
 
     private void jButtonAddDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDeliveryManActionPerformed
-//        if(index >= 0) {
-//            Doctor doctor = doctorDirectory.getDoctorList().get(assignDeliveryPerson.getSelectedIndex());
-//            labTestWorkRequest.setDoctor(doctor);
-//            JOptionPane.showMessageDialog(null,doctor+ " Doctor assigned");
-//            fillDelUI();
-//        }
+        if(index >= 0) {
+            Doctor doctor = doctorDirectory.getDoctorList().get(assignDeliveryPerson.getSelectedIndex());
+            labTestWorkRequest.setDoctor(doctor);
+            JOptionPane.showMessageDialog(null,doctor+ " Doctor assigned");
+            fillDelUI();
+        }
     }//GEN-LAST:event_jButtonAddDeliveryManActionPerformed
 
 
