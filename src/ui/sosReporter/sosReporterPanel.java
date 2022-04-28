@@ -12,6 +12,10 @@ import DisasterMgmtSystem.Emergencies.EmergencyDirectory;
 import DisasterMgmtSystem.EmergencyLocation.EmergencyLocation;
 import DisasterMgmtSystem.Enterprise.Enterprise;
 import DisasterMgmtSystem.Enterprise.PoliceAdministrator;
+import DisasterMgmtSystem.SOSWaitList.PoliceWaitList;
+import UserInterface.SOSPanel;
+import Utilities.AlertMessage;
+import Utilities.MainJFrameUtilities;
 import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.JOptionPane;
@@ -30,6 +34,7 @@ public class sosReporterPanel extends javax.swing.JPanel {
     DisasterMgmtSystem disasterMgmtSystem;
     DisasterMgmtSystem system;
     private EmergencyDirectory emergencyDirectory;
+    AppUserAccount userAccount;
     
     
     public sosReporterPanel(JPanel workArea, DisasterMgmtSystem disasterSystem) {
@@ -38,6 +43,7 @@ public class sosReporterPanel extends javax.swing.JPanel {
         this.workArea = workArea;
         this.emergencyDirectory = system.getEmergencyDirectory();
         this.disasterMgmtSystem = disasterSystem;
+        this.userAccount = system.getUserAccountDirectory().authenticateUser("reporter", "reporter");
         populateEmergencyType();
         populateLocation();
         this.workArea = workArea;
@@ -173,22 +179,27 @@ public class sosReporterPanel extends javax.swing.JPanel {
                     if (ent instanceof PoliceAdministrator) {
                         for (AppUserAccount userAcc : ent.getUserAccountDirectory().getUserAccountList()) {
 
-//                            PoliceWorkRequest request = new PoliceWorkRequest();
-//                            request.setEmployee(ent.getEmployeeDirectory().getEmployeeList().get(0));
-//                            request.setEmergency(emergency);
-//                            emergency.setEmergencyStatus("Assigned to PSAP");
-//                            request.setReceiver(userAcc);
-//                            request.setSender(userAccount);
-//                            userAcc.getWorkQueue().getWorkRequestList().add(request);
-//                            request.setEmployee(userAccount.getEmployee());
-//                            request.setEmergency(emergency);
-//                            request.setReceiver(userAccount);
-//                            request.setSender(userAccount);
-//                            userAccount.getWorkQueue().getWorkRequestList().add(request);
+                            PoliceWaitList request = new PoliceWaitList();
+                            request.setEmployee(ent.getEmployeeDirectory().getEmployeeList().get(0));
+                            request.setEmergency(emergency);
+                            emergency.setEmergencyStatus("Assigned to PSAP");
+                            request.setReceiver(userAcc);
+                            request.setSender(userAccount);
+                            userAcc.getWorkQueue().getWorkRequestList().add(request);
+                            request.setEmployee(userAccount.getEmployee());
+                            request.setEmergency(emergency);
+                            request.setReceiver(userAccount);
+                            request.setSender(userAccount);
+                            userAccount.getWorkQueue().getWorkRequestList().add(request);
                         }
                     }
                 }
             }
+            
+            //AlertMessage.sendTextMessage(jComboBox1.getSelectedItem() + callersPhoneNumberTF.getText(), "The emergency has been reported, Police are alerted and an ambulance will reach out soon!");
+            JOptionPane.showMessageDialog(this, "The emergency has been reported, Police are alerted and an ambulance will reach out soon!");
+
+            MainJFrameUtilities.redirect(new SOSPanel(this.workArea, this.system), "SOSPanel");
             
             }
         
@@ -234,7 +245,7 @@ public class sosReporterPanel extends javax.swing.JPanel {
     private void populateLocation() {
          // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
          comboLocation.removeAllItems();
-         for (EmergencyLocation area : disasterMgmtSystem.getEmergencyLocationDirectory().getEmergencyLocationList()) 
+         for (EmergencyLocation area : disasterMgmtSystem.getDirectory().getEmergencyLocationList()) 
          {
             comboLocation.addItem(area.getAddress());
         }

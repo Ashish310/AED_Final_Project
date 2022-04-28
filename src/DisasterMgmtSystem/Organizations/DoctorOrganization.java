@@ -10,30 +10,29 @@ import java.util.ArrayList;
  *
  * @author hs_sa
  */
-public class DoctorOrganization 
-        //extends Organization 
+public class DoctorOrganization extends Organization 
 {
-//    private  String name;
-//    private String address;
-//    public DoctorOrganization() {
-//        super(Organization.Type.DOCTOR.getValue());
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-//
-//    public String getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(String address) {
-//        this.address = address;
-//    }
+    private  String name;
+    private String address;
+    public DoctorOrganization() {
+        super(Organization.Type.DOCTOR.getValue());
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
     
     
     

@@ -13,22 +13,22 @@ import java.util.ArrayList;
  * @author hs_sa
  */
 public class AmbulanceMgmtOrganization 
-        //extends Organization 
+        extends Organization 
 {
-//    private AmbulanceDirectory ambulanceDirectoryObject;
-//
-//      public AmbulanceMgmtOrganization() {
-//        super(Organization.Type.AMBULANCE.getValue());
-//         ambulanceDirectoryObject=new AmbulanceDirectory();
-//    }
-//
-//        
-//     public AmbulanceDirectory getAmbulanceDirectoryObject() {
-//        return ambulanceDirectoryObject;
-//    }
-//
-//    public void setAmbulanceDirectoryObject(AmbulanceDirectory ambulanceDirectoryObject) {
-//        this.ambulanceDirectoryObject = ambulanceDirectoryObject;
-//    }
+    private AmbulanceDirectory ambulanceDirectoryObject;
+
+      public AmbulanceMgmtOrganization() {
+        super(Organization.Type.AMBULANCE.getValue());
+         ambulanceDirectoryObject=new AmbulanceDirectory();
+    }
+
+        
+     public AmbulanceDirectory getAmbulanceDirectoryObject() {
+        return ambulanceDirectoryObject;
+    }
+
+    public void setAmbulanceDirectoryObject(AmbulanceDirectory ambulanceDirectoryObject) {
+        this.ambulanceDirectoryObject = ambulanceDirectoryObject;
+    }
     
 }

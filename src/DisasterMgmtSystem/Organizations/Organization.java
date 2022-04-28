@@ -55,6 +55,13 @@ public class Organization {
     public AppUserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     }
+    
+    public EmployeeDirectory getEmployeeDirectory() {
+        return employeeDirectory;
+    }
+    
+    
+    
 
     
     

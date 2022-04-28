@@ -11,13 +11,13 @@ import java.util.ArrayList;
  * @author hs_sa
  */
 public class SOSWaitList {
-    private ArrayList<SOSWaitList> workRequestList;
+    private ArrayList<SOSWorkRequest> workRequestList;
 
     public SOSWaitList() {
         workRequestList = new ArrayList<>();
     }
 
-    public ArrayList<SOSWaitList> getWorkRequestList() {
+    public ArrayList<SOSWorkRequest> getWorkRequestList() {
         return workRequestList;
     }
     
