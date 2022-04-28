@@ -9,6 +9,8 @@ import EcoSystem.Pharmaceutical.Inventory;
 import EcoSystem.Pharmaceutical.Medicines;
 import EcoSystem.Pharmaceutical.Pharmaceutical;
 import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -180,64 +182,64 @@ public class CrerateMenuItem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
-//        if (itemName.getText().isEmpty() || itemPrice.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "Enter all fields");
-//            return;
-//        }
-//        if(pharmaceutical.getInventory()!= null){
-//            for (Medicines item : pharmaceutical.getInventory().getItemList()) {
-//                if (itemName.getText().equals(item.getName())) {
-//                    JOptionPane.showMessageDialog(null, "Duplicate Items");
-//                    return;
-//                }
-//            }
-//        }
-//        double price = 0.0;
-//        try {
-//            price = Double.valueOf(itemPrice.getText());
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Enter a valid number");
-//            return;
-        //}
+        if (itemName.getText().isEmpty() || itemPrice.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+            return;
+        }
+        if(pharmaceutical.getInventory()!= null){
+            for (Medicines item : pharmaceutical.getInventory().getItemList()) {
+                if (itemName.getText().equals(item.getName())) {
+                    JOptionPane.showMessageDialog(null, "Duplicate Items");
+                    return;
+                }
+            }
+        }
+        double price = 0.0;
+        try {
+            price = Double.valueOf(itemPrice.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter a valid number");
+            return;
+        }
 
-//        Medicines item = new Medicines(itemName.getText(), Double.valueOf(itemPrice.getText()));
-//
-//        if(pharmaceutical.getInventory()!= null){
-//            pharmaceutical.getInventory().addItem(item);
-//            populateTable();
-//            itemName.setText("");
-//            itemPrice.setText("");
-//        } else{
-//            Inventory menu = new Inventory();
-//            menu.addItem(item);
-//            pharmaceutical.setInventory(menu);
-//            populateTable();
-//            itemName.setText("");
-//            itemPrice.setText("");
-//        }
+        Medicines item = new Medicines(itemName.getText(), Double.valueOf(itemPrice.getText()));
+
+        if(pharmaceutical.getInventory()!= null){
+            pharmaceutical.getInventory().addItem(item);
+            populateTable();
+            itemName.setText("");
+            itemPrice.setText("");
+        } else{
+            Inventory menu = new Inventory();
+            menu.addItem(item);
+            pharmaceutical.setInventory(menu);
+            populateTable();
+            itemName.setText("");
+            itemPrice.setText("");
+        }
     }//GEN-LAST:event_btnAddItemActionPerformed
 
     private void btnUpdateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateItemActionPerformed
-//        int selectedRow = tblMenu.getSelectedRow();
-//        if (selectedRow >= 0) {
-//
-//            Medicines item = (Medicines) tblMenu.getValueAt(selectedRow, 0);
-//            item.setName(itemName.getText());
-//            item.setPrice(Double.valueOf(itemPrice.getText()));
-//            populateTable();
-//            itemName.setText("");
-//            itemPrice.setText("");
-//
-//        } else {
-//            JOptionPane.showMessageDialog(null,"Pick a row");
-       // }
+        int selectedRow = tblMenu.getSelectedRow();
+        if (selectedRow >= 0) {
+
+            Medicines item = (Medicines) tblMenu.getValueAt(selectedRow, 0);
+            item.setName(itemName.getText());
+            item.setPrice(Double.valueOf(itemPrice.getText()));
+            populateTable();
+            itemName.setText("");
+            itemPrice.setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(null,"Pick a row");
+        }
     }//GEN-LAST:event_btnUpdateItemActionPerformed
 
     private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-//        PharmaceuticalAdminWorkAreaJPanel adminWorkAreaJPanel = new PharmaceuticalAdminWorkAreaJPanel(userProcessContainer,userAccount, ecosystem);
-//        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        PharmaceuticalAdminWorkArea adminWorkAreaJPanel = new PharmaceuticalAdminWorkArea(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack2ActionPerformed
 
 
