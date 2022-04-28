@@ -4,6 +4,8 @@
  */
 package UserInterface;
 
+import DisasterMgmtSystem.Db4oUtil.Db4oUtil;
+import DisasterMgmtSystem.DisasterMgmtSystem;
 import Utilities.MainJFrameUtilities;
 import java.awt.Image;
 import javax.swing.JPanel;
@@ -21,8 +23,12 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     
     private JPanel workArea;
+    private Db4oUtil db4oUtil = Db4oUtil.getInstance();
+    private DisasterMgmtSystem system;
+    
     public MainJFrame() {
         initComponents();
+        this.system = db4oUtil.retrieveSystem();
         //this.workArea = workArea;
         MainJFrameUtilities mfu = new MainJFrameUtilities();
         mfu.setWorkArea(mainPanelArea);
@@ -70,7 +76,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addComponent(heading, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(mainPanelArea, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE))
+                .addComponent(mainPanelArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -81,9 +87,7 @@ public class MainJFrame extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -91,7 +95,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void initSOSScreen()
     {
-        MainJFrameUtilities.redirect(new SOSPanel(mainPanelArea), "MainJFrame");
+        MainJFrameUtilities.redirect(new SOSPanel(mainPanelArea, this.system), "MainJFrame");
     }
     /**
      * @param args the command line arguments

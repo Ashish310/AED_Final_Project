@@ -4,6 +4,8 @@
  */
 package DisasterMgmtSystem.Emergencies;
 
+import java.util.Date;
+
 /**
  *
  * @author shriyadikshith
@@ -12,10 +14,15 @@ package DisasterMgmtSystem.Emergencies;
 
 public class Emergency {
     private static int emergencyId;
+    private String emergencyStatus;
     private String location;
     private String phone;
     private int priority;
     private String name;
+    private String locationOfEmergency;
+    private Date reportedTime;
+    private Date reolvedTime;
+    
     int count;
     public enum EmergencyType{
         DISASTEREMERGENCY("Landslides");
@@ -70,5 +77,21 @@ public class Emergency {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+    
+    public String getEmergencyStatus() {
+        return emergencyStatus;
+    }
+
+    public void setEmergencyStatus(String emergencyStatus) {
+        this.emergencyStatus = emergencyStatus;
+    }
+    
+    public Date getReportedTime() {
+        return reportedTime;
+    }
+
+    public void setReportedTime(Date reportedTime) {
+        this.reportedTime = reportedTime;
     }
 }

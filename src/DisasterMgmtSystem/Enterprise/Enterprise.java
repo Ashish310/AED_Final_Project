@@ -4,21 +4,21 @@
  */
 package DisasterMgmtSystem.Enterprise;
 
-import DisasterMgmtSystem.Organization.Organization;
+import DisasterMgmtSystem.Organizations.Organization;
+import DisasterMgmtSystem.Organizations.OrganizationDirectory;
 
 /**
  *
- * @author shriyadikshith
+ * @author hs_sa
  */
 public class Enterprise extends Organization {
-    
     private EnterpriseType enterpriseType;
-    private OrganizationDir organizationDir;
+    private OrganizationDirectory organizationDirectory;
     
     public Enterprise(String name, EnterpriseType type) {
         super(name);
         this.enterpriseType = type;
-        organizationDir = new OrganizationDir();
+        organizationDirectory = new OrganizationDirectory();
     }
     
     public enum EnterpriseType{
@@ -47,5 +47,6 @@ public class Enterprise extends Organization {
     public OrganizationDirectory getOrganizationDirectory() {
         return organizationDirectory;
     }
+    
     
 }

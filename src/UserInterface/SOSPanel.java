@@ -4,6 +4,7 @@
  */
 package UserInterface;
 
+import DisasterMgmtSystem.DisasterMgmtSystem;
 import Utilities.MainJFrameUtilities;
 import javax.swing.JPanel;
 import ui.sosReporter.sosReporterPanel;
@@ -19,9 +20,11 @@ public class SOSPanel extends javax.swing.JPanel {
      */
     
     private JPanel workArea;
-    public SOSPanel(JPanel mainPanelArea) {
+    private DisasterMgmtSystem system;
+    public SOSPanel(JPanel mainPanelArea, DisasterMgmtSystem disasterSystem) {
         
         initComponents();
+        this.system = disasterSystem; 
         this.workArea = mainPanelArea;
     }
 
@@ -63,7 +66,7 @@ public class SOSPanel extends javax.swing.JPanel {
 
     private void btnSOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSOSActionPerformed
         // TODO add your handling code here:
-        MainJFrameUtilities.redirect(new sosReporterPanel(workArea), "SOSPanel");
+        MainJFrameUtilities.redirect(new sosReporterPanel(workArea, this.system), "SOSPanel");
     }//GEN-LAST:event_btnSOSActionPerformed
 
 

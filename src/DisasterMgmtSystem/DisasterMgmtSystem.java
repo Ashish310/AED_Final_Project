@@ -4,18 +4,29 @@
  */
 package DisasterMgmtSystem;
 
+import DisasterManagementSystem.Network.Network;
 import DisasterMgmtSystem.Emergencies.EmergencyDirectory;
 import DisasterMgmtSystem.EmergencyLocation.EmergencyLocationDirectory;
-import DisasterMgmtSystem.Organization.Organization;
+import DisasterMgmtSystem.Organizations.Organization;
+import java.util.ArrayList;
 
 /**
  *
  * @author hs_sa
  */
-public class DisasterMgmtSystem extends Organization{
+public class DisasterMgmtSystem extends Organization {
     private EmergencyDirectory emergencyDirectory;
     private EmergencyLocationDirectory emergencyLocationDirectory;
+    private ArrayList<Network> networkList;
 
+    private DisasterMgmtSystem()
+    {
+        super(null);
+        
+        networkList=new ArrayList<>();
+        emergencyLocationDirectory = new EmergencyLocationDirectory();
+        
+    }
     public EmergencyDirectory getEmergencyDirectory() {
         return emergencyDirectory;
     }
@@ -32,4 +43,21 @@ public class DisasterMgmtSystem extends Organization{
         this.emergencyLocationDirectory = emergencyLocationDirectory;
     }
     
+    public ArrayList<Network> getNetworkList() {
+        return networkList;
+    }
+
+    public void setNetworkList(ArrayList<Network> networkList) {
+        this.networkList = networkList;
+    }
+    
+    private static DisasterMgmtSystem emergencySys;
+    public static DisasterMgmtSystem getInstance()
+    {
+        if (emergencySys == null)
+        {
+            emergencySys = new DisasterMgmtSystem();
+        }
+        return emergencySys;
+    }
 }
