@@ -4,17 +4,73 @@
  */
 package UI.ReceptionRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.UserAccount.UserAccountDirectory;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hs_sa
  */
-public class ViewOrderInformation extends javax.swing.JPanel {
+public class ManageAppointments extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewOrderInformation
      */
-    public ViewOrderInformation() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccountDirectory userAccountList;
+    private List<WorkRequest> workRequestList;
+    UserAccount account;
+    public ManageAppointments(JPanel userProcessContainer,EcoSystem ecosystem, UserAccount account) {
         initComponents();
+        creatingListenerToManageOrder();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.account = account;
+        fillRstReqTable();
+    }
+     private void fillRstReqTable(){
+        DefaultTableModel model = (DefaultTableModel) tblRestaurantWorkRequest.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListHospital(account);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblRestaurantWorkRequest.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getPatient();
+            row[2] = request.getStatus();
+            row[3] = request.getBill();
+            model.addRow(row);
+        }
+        }
+     
+        private void creatingListenerToManageOrder() {
+        tblRestaurantWorkRequest.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblRestaurantWorkRequest.getSelectedRow();
+                if (selectedRow >= 0) {
+                    WorkRequest request = (WorkRequest) tblRestaurantWorkRequest.getValueAt(selectedRow, 0);
+                    if (request instanceof LabWorkRequest) {
+                        LabWorkRequest orderWorkRequest = (LabWorkRequest) tblRestaurantWorkRequest.getValueAt(selectedRow, 0);
+                        if (orderWorkRequest != null) {
+                           AcceptOrRejectOrder acceptOrderOrNotJPanel = new AcceptOrRejectOrder(userProcessContainer,ecosystem,account,orderWorkRequest);
+                           userProcessContainer.add("AcceptOrderOrNotJPanel", acceptOrderOrNotJPanel);
+                           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+                           layout.next(userProcessContainer);
+                        }
+                    }
+
+                }
+            }
+        });
     }
 
     /**
@@ -26,140 +82,121 @@ public class ViewOrderInformation extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblHeaderName = new javax.swing.JLabel();
-        lblReceptionistName = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
-        txtReceptionistField = new javax.swing.JTextField();
-        btnSave = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblRestaurantWorkRequest = new javax.swing.JTable();
+        btnBack1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(166, 203, 230));
 
-        lblHeaderName.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
-        lblHeaderName.setForeground(new java.awt.Color(255, 255, 255));
-        lblHeaderName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblHeaderName.setText("MANAGE RECEPTION INFORMATION");
-
-        lblReceptionistName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        lblReceptionistName.setForeground(new java.awt.Color(255, 255, 255));
-        lblReceptionistName.setText("Receptionist Name");
-
-        btnUpdate.setBackground(new java.awt.Color(166, 206, 55));
-        btnUpdate.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        btnUpdate.setText("Update");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        txtReceptionistField.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        txtReceptionistField.setForeground(new java.awt.Color(255, 153, 51));
-        txtReceptionistField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtReceptionistFieldActionPerformed(evt);
-            }
-        });
-
-        btnSave.setBackground(new java.awt.Color(166, 206, 55));
-        btnSave.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        btnSave.setText("Save");
-        btnSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSaveActionPerformed(evt);
-            }
-        });
-
-        btnBack.setBackground(new java.awt.Color(166, 206, 55));
-        btnBack.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        tblRestaurantWorkRequest.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
+        tblRestaurantWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "MESSAGE", "SENDER", "STATUS", "BILL"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tblRestaurantWorkRequest);
+
+        btnBack1.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        btnBack1.setText("Back");
+        btnBack1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack1ActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("MANAGE APPOINTMENTS");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 871, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(btnBack1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblHeaderName, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(237, 237, 237)
-                            .addComponent(lblReceptionistName, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(42, 42, 42)
-                            .addComponent(txtReceptionistField, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(283, 283, 283)
-                            .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(32, 32, 32)
-                            .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 871, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(48, 48, 48)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGap(49, 49, 49)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 583, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addContainerGap(489, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(29, 29, 29)
-                    .addComponent(lblHeaderName)
-                    .addGap(41, 41, 41)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(3, 3, 3)
-                            .addComponent(lblReceptionistName))
-                        .addComponent(txtReceptionistField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(37, 37, 37)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnUpdate, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(41, 41, 41)
+                    .addGap(0, 326, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(139, 139, 139)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(18, 18, 18)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 262, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        //confirmButton.setVisible(true);
-        //setVisibleEditable(true);
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void txtReceptionistFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReceptionistFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtReceptionistFieldActionPerformed
-
-    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        //restaurant.setPharmacyName(txtReceptionistField.getText());
-        //setVisibleEditable(false);
-    }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-       // ReceptionAreaJPanel adminWorkAreaJPanel = new ReceptionAreaJPanel(userProcessContainer,userAccount, ecosystem);
-       // userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
-       // CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-       // layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
+    private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
+        ReceptionWorkArea adminWorkAreaJPanel = new ReceptionWorkArea(userProcessContainer,account, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBack1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnUpdate;
+    private javax.swing.JButton btnBack1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lblHeaderName;
-    private javax.swing.JLabel lblReceptionistName;
-    private javax.swing.JTextField txtReceptionistField;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblRestaurantWorkRequest;
     // End of variables declaration//GEN-END:variables
 }
