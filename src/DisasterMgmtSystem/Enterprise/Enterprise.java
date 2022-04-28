@@ -12,4 +12,40 @@ import DisasterMgmtSystem.Organization.Organization;
  */
 public class Enterprise extends Organization {
     
+    private EnterpriseType enterpriseType;
+    private OrganizationDir organizationDir;
+    
+    public Enterprise(String name, EnterpriseType type) {
+        super(name);
+        this.enterpriseType = type;
+        organizationDir = new OrganizationDir();
+    }
+    
+    public enum EnterpriseType{
+       HOSPITALENTERPRISE("Hospital Enterprise"),POLICEENTERPRISE("Police Enterprise"),EMEREGENCY911ENTERPRISE("Emergency 911 Enterprise"), AmbulanceAdminEnterprise("AmbulanceEnterprise");
+        
+        private String value;
+
+        private EnterpriseType(String value) {
+            this.value = value;
+        }
+
+        public String getValue() {
+            return value;
+        }
+
+        @Override
+        public String toString() {
+            return value;
+        }
+    }
+
+    public EnterpriseType getEnterpriseType() {
+        return enterpriseType;
+    }
+
+    public OrganizationDirectory getOrganizationDirectory() {
+        return organizationDirectory;
+    }
+    
 }

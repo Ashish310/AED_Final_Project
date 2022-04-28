@@ -4,6 +4,8 @@
  */
 package DisasterMgmtSystem.Users;
 
+import DisasterMgmtSystem.WorkTypes.WorkTypes;
+
 /**
  *
  * @author shriyadikshith
@@ -13,9 +15,9 @@ public class Users {
     private String password;
     private Employees employees;
     private Roles roles;
-    private WorkQueue workQueue;
+    private WorkTypes workType;
 
     public Users() {
-        workQueue = new WorkQueue();
+        workType = new WorkTypes();
     }
 }
