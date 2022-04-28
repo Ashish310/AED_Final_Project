@@ -4,6 +4,19 @@
  */
 package UI.SystemAdmin;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Hospital.HospitalAdmin;
+import EcoSystem.Hospital.HospitalAdminDirectory;
+import EcoSystem.Role.HospitalAdminRole;
+import EcoSystem.UserAccount.UserAccountDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +26,55 @@ public class ManageHosptial extends javax.swing.JPanel {
     /**
      * Creates new form ManageHosptial
      */
-    public ManageHosptial() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccountDirectory userAccountList;
+    public ManageHosptial(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        creatingListenerForModification();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        fillTable();
+    }
+    
+    private void fillTable() {
+        HospitalAdminDirectory hospitalAdminDirectory = ecosystem.getHospitalDirectory();
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryMan.getModel();
+        
+        model.setRowCount(0);
+        
+        for (HospitalAdmin hospitalAdmin : hospitalAdminDirectory.getHospitalList()) {
+                    Object[] row = new Object[5];
+                    row[0] = hospitalAdmin;
+                    row[1] = hospitalAdmin.getUsername();
+                    row[2] = hospitalAdmin.getPassword();
+                    row[3] = hospitalAdmin.getAddress();
+                    row[4] = hospitalAdmin.getContact();
+                    model.addRow(row);
+                
+        }
+    }
+    
+      private void creatingListenerForModification() {
+       tblDeliveryMan.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+        public void valueChanged(ListSelectionEvent event) {
+           int selectedRow = tblDeliveryMan.getSelectedRow();
+             if (selectedRow >= 0) {
+                  HospitalAdmin  hospitalAdmin  = (HospitalAdmin) tblDeliveryMan.getValueAt(selectedRow, 0);
+                 if(hospitalAdmin!=null){
+                     display(hospitalAdmin);
+                 }
+             }
+        }
+    });
+    }
+
+    private void display(HospitalAdmin hospitalAdmin) {
+        userNameTextfield.setText(hospitalAdmin.getUsername());
+        passwordTextfield.setText(hospitalAdmin.getPassword());
+        deliveryManNameTextfield.setText(hospitalAdmin.getName());
+        locationTxtField.setText(hospitalAdmin.getAddress());
+        contacttxt.setText(hospitalAdmin.getContact());
     }
 
     /**
@@ -289,7 +349,7 @@ public class ManageHosptial extends javax.swing.JPanel {
         if (selectedRow >= 0) {
             HospitalAdmin admin = (HospitalAdmin) tblDeliveryMan.getValueAt(selectedRow, 0);
             HospitalAdminDirectory hospitalAdminDirectory = ecosystem.getHospitalDirectory();
-            hospitalAdminDirectory.removeHospital(admin);
+            hospitalAdminDirectory.deleteHospital(admin);
             JOptionPane.showMessageDialog(null, "Hospital Admin"  + userNameTextfield.getText() + " deleted");
             fillTable();
             userNameTextfield.setText("");
@@ -311,7 +371,7 @@ public class ManageHosptial extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        SystemAdminWorkArea sysAdminwjp = (SystemAdminWorkArea) component;
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -330,7 +390,7 @@ public class ManageHosptial extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter a valid phone number");
             return;
         }
-        if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(userNameTextfield.getText())){
+        if(ecosystem.getUserAccountDirectory().checkUsernameUnique(userNameTextfield.getText())){
             HospitalAdmin hospitalAdmin = new HospitalAdmin();
             hospitalAdmin.setName(deliveryManNameTextfield.getText());
             hospitalAdmin.setAddress(locationTxtField.getText());

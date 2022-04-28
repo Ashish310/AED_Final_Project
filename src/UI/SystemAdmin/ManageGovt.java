@@ -4,6 +4,19 @@
  */
 package UI.SystemAdmin;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Government.Municipality;
+import EcoSystem.Government.MunicipalityDirectory;
+import EcoSystem.Role.MunicipalityAdminRole;
+import EcoSystem.UserAccount.UserAccountDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,10 +26,52 @@ public class ManageGovt extends javax.swing.JPanel {
     /**
      * Creates new form ManageGovt
      */
-    public ManageGovt() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccountDirectory userAccountList;
+    public ManageGovt(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        creatingListenerForModification();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        fillTable();
     }
 
+    private void creatingListenerForModification() {
+       tblDeliveryMan.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+        public void valueChanged(ListSelectionEvent event) {
+           int selectedRow = tblDeliveryMan.getSelectedRow();
+             if (selectedRow >= 0) {
+                  Municipality  government  = (Municipality) tblDeliveryMan.getValueAt(selectedRow, 0);
+                 if(government!=null){
+                     display(government);
+                 }
+             }
+        }
+    });
+    }
+    
+    private void fillTable() {
+        MunicipalityDirectory governmentDirectory = ecosystem.getGovernmentDirectory();
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryMan.getModel();
+       
+        model.setRowCount(0);
+        
+        for (Municipality government : governmentDirectory.getGovernmentList()) {
+                    Object[] row = new Object[4];
+                    row[0] = government;
+                    row[1] = government.getUsername();
+                    row[2] = government.getPassword();
+                    model.addRow(row);
+                
+        }
+    }
+    
+    private void display(Municipality government) {
+        userNameTextfield.setText(government.getUsername());
+        passwordTextfield.setText(government.getPassword());
+        deliveryManNameTextfield.setText(government.getName());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,12 +281,12 @@ public class ManageGovt extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter all fields");
             return;
         }
-        if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(userNameTextfield.getText())){
-            Government government = new Government();
+        if(ecosystem.getUserAccountDirectory().checkUsernameUnique(userNameTextfield.getText())){
+            Municipality government = new Municipality();
             government.setName(deliveryManNameTextfield.getText());
             government.setUsername(userNameTextfield.getText());
             government.setPassword(passwordTextfield.getText());
-            government.setRole(new GovernmentAdminRole());
+            government.setRole(new MunicipalityAdminRole());
             ecosystem.getUserAccountDirectory().addUserAccount(government);
             ecosystem.getGovernmentDirectory().addGovernment(government);
 
@@ -250,12 +305,12 @@ public class ManageGovt extends javax.swing.JPanel {
         int selectedRow = tblDeliveryMan.getSelectedRow();
         if (selectedRow >= 0) {
 
-            Government government = (Government) tblDeliveryMan.getValueAt(selectedRow, 0);
+            Municipality government = (Municipality) tblDeliveryMan.getValueAt(selectedRow, 0);
 
             government.setUsername(userNameTextfield.getText());
             government.setPassword(passwordTextfield.getText());
             government.setName(deliveryManNameTextfield.getText());
-            government.setRole(new GovernmentAdminRole());
+            government.setRole(new MunicipalityAdminRole());
 
             fillTable();
             userNameTextfield.setText("");
@@ -272,9 +327,9 @@ public class ManageGovt extends javax.swing.JPanel {
         int selectedRow = tblDeliveryMan.getSelectedRow();
 
         if (selectedRow >= 0) {
-            Government government = (Government) tblDeliveryMan.getValueAt(selectedRow, 0);
-            GovernmentDirectory governmentDirectory = ecosystem.getGovernmentDirectory();
-            governmentDirectory.removeGovernment(government);
+            Municipality government = (Municipality) tblDeliveryMan.getValueAt(selectedRow, 0);
+            MunicipalityDirectory governmentDirectory = ecosystem.getGovernmentDirectory();
+            governmentDirectory.deleteGovernment(government);
             JOptionPane.showMessageDialog(null, "Government Admin "  + userNameTextfield.getText() + " deleted");
             fillTable();
             userNameTextfield.setText("");
@@ -294,7 +349,7 @@ public class ManageGovt extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        SystemAdminWorkArea sysAdminwjp = (SystemAdminWorkArea) component;
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

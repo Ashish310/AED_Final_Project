@@ -4,6 +4,11 @@
  */
 package UI.ReceptionRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +18,36 @@ public class ReceptionWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form ReceptionWorkArea
      */
-    public ReceptionWorkArea() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    /** Creates new form AdminWorkAreaJPanel */
+    public ReceptionWorkArea(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.userAccount = userAccount;        
+    }
+    
+    private void manageOrders() {
+        ManageAppointments viewOrderDetails = new ManageAppointments(userProcessContainer,ecosystem,userAccount);
+        userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void manageInfo() {
+        ManageReceptionInformation updateRestaurantInfoJPanel = new ManageReceptionInformation(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("UpdateRestaurantInfoJPanel",updateRestaurantInfoJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void managePatients() {
+        ManagePatients managePatientsJPanel = new ManagePatients(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("UpdateRestaurantInfoJPanel",managePatientsJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }
 
     /**

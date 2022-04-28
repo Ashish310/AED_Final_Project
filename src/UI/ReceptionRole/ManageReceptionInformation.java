@@ -4,6 +4,12 @@
  */
 package UI.ReceptionRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Pharmacy.Pharmacy;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +19,19 @@ public class ManageReceptionInformation extends javax.swing.JPanel {
     /**
      * Creates new form ManageReceptionInformation
      */
-    public ManageReceptionInformation() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    Pharmacy restaurant;
+
+    public ManageReceptionInformation(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount) {
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        restaurant = (Pharmacy)userAccount;
         initComponents();
+        display(restaurant);
+        btnSave.setVisible(false);
     }
 
     /**
@@ -135,9 +152,18 @@ public class ManageReceptionInformation extends javax.swing.JPanel {
         add(jLabel3, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setVisibleEditable(boolean value) {
+        txtReceptionistName.setEditable(value);        
+        txtReceptionistName.setEnabled(value);       
+    }
+
+    private void display(Pharmacy restaurant) {
+        setVisibleEditable(false);
+        txtReceptionistName.setText(restaurant.getPharmacyName());        
+    }
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        btnSave.setVisible(true);
-        //setVisibleEditable(true);
+       btnSave.setVisible(true);
+       setVisibleEditable(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void txtReceptionistNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtReceptionistNameActionPerformed
@@ -145,17 +171,18 @@ public class ManageReceptionInformation extends javax.swing.JPanel {
     }//GEN-LAST:event_txtReceptionistNameActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        //restaurant.setPharmacyName(txtReceptionistName.getText());
-        //setVisibleEditable(false);
+        restaurant.setPharmacyName(txtReceptionistName.getText());
+        setVisibleEditable(false);
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-//        ReceptionAreaJPanel adminWorkAreaJPanel = new ReceptionAreaJPanel(userProcessContainer,userAccount, ecosystem);
-//        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        ReceptionWorkArea adminWorkAreaJPanel = new ReceptionWorkArea(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
