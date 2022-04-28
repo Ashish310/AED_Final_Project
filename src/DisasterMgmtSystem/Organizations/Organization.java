@@ -25,6 +25,7 @@ public class Organization {
         AMBULANCEADMIN("Ambulance organization"),
         AMBULANCE("Ambulance"),
         POLICE("Police organization"),
+        FIRE("Fire organization"),
         EMERGENCY911DEPARTMENT("Emergency 911 department organization"), 
         EMERGENCYSYSTEMADMIN("Emergency system admin organization");
         private String value;

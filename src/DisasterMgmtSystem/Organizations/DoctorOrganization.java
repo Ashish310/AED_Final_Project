@@ -4,6 +4,8 @@
  */
 package DisasterMgmtSystem.Organizations;
 
+import DisasterMgmtSystem.Roles.DoctorRole;
+import DisasterMgmtSystem.Roles.Roles;
 import java.util.ArrayList;
 
 /**
@@ -36,11 +38,11 @@ public class DoctorOrganization extends Organization
     
     
     
-//     public ArrayList<Role> getSupportedRole() {
-//       
-//        ArrayList<Role> roles = new ArrayList<>();
-//        roles.add(new DoctorRole());
-//        return roles;
-//    
-//    }
+     public ArrayList<Roles> getSupportedRole() {
+       
+        ArrayList<Roles> roles = new ArrayList<>();
+        roles.add(new DoctorRole());
+        return roles;
+    
+    }
 }
