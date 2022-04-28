@@ -7,6 +7,7 @@ package UI.PatientRole;
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -128,6 +129,11 @@ public class AppointmentFeedback extends javax.swing.JPanel {
 
         jButton1.setBackground(new java.awt.Color(97, 147, 160));
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -232,6 +238,14 @@ public class AppointmentFeedback extends javax.swing.JPanel {
         sendMail();
         JOptionPane.showMessageDialog(null, "Payment done");
     }//GEN-LAST:event_payBillBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PatientAreaPanel customerAreaJPanel = new PatientAreaPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("PatientAreaPanel", customerAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

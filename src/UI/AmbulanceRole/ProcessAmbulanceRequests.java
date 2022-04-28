@@ -7,6 +7,9 @@ package UI.AmbulanceRole;
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
+import UI.HospitalAdmin.ViewEmergencyRequestPanel;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -230,12 +233,28 @@ public class ProcessAmbulanceRequests extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
-            
+            if (workRequest.getStatus().equals("Request to AmbulanceDriver")) {
+            workRequest.setStatus("Out for request");
+            workRequest.setTestResult("In Process");
+            JOptionPane.showMessageDialog(null, "Patient picked up");
+        } else if (workRequest.getStatus().equals("Out for request")) {
+            workRequest.setStatus("Patient dropped at the hospital");
+            workRequest.setTestResult("Completed");
+            JOptionPane.showMessageDialog(null, "Patient dropped at the hospital");
+        } else {
+            btnStatus.setVisible(false);
+        }
+        changeButtonText();
+        status.setText(workRequest.getStatus());
 
     }//GEN-LAST:event_btnStatusActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
+        ViewEmergencyRequestPanel viewEmergencyRequestJPanel = new ViewEmergencyRequestPanel(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("ViewEmergencyRequestJPanel", viewEmergencyRequestJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
 

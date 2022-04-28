@@ -202,7 +202,7 @@ public class EmergencyRequest extends javax.swing.JPanel {
         if (creatingOrder()) {
             JOptionPane.showMessageDialog(null, "Emergency Request Sent !");
             EmergencyInfo emergencyInfoJPanel = new EmergencyInfo(userProcessContainer, ecosystem, patient);
-            userProcessContainer.add("EmergencyInfoJPanel", emergencyInfoJPanel);
+            userProcessContainer.add("EmergencyInfo", emergencyInfoJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
         }

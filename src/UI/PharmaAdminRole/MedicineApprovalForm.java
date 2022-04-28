@@ -11,6 +11,7 @@ import EcoSystem.MedicalInformation.MedicalInformation;
 import EcoSystem.Pharmaceutical.Pharmaceutical;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -45,6 +46,8 @@ public class MedicineApprovalForm extends javax.swing.JPanel {
         
         
     }
+    
+     
     
     public void fillRstList(ArrayList<Municipality> doctorList) {
         for (Municipality government : doctorList) {
@@ -114,6 +117,7 @@ public class MedicineApprovalForm extends javax.swing.JPanel {
         rstCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         sendToCDCbtn = new javax.swing.JButton();
+        btnBack2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new java.awt.GridBagLayout());
@@ -350,10 +354,20 @@ public class MedicineApprovalForm extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(33, 171, 56, 0);
         add(sendToCDCbtn, gridBagConstraints);
+
+        btnBack2.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        btnBack2.setText("Back");
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack2ActionPerformed(evt);
+            }
+        });
+        add(btnBack2, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
 
     private void rstComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rstComboActionPerformed
-        // = rstCombo.getSelectedIndex();
+        index = rstCombo.getSelectedIndex();
     }//GEN-LAST:event_rstComboActionPerformed
 
     private void sendToCDCbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToCDCbtnActionPerformed
@@ -381,9 +395,17 @@ public class MedicineApprovalForm extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Sent to CDC");
     }//GEN-LAST:event_sendToCDCbtnActionPerformed
 
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
+        PharmaceuticalAdminWorkArea adminWorkAreaJPanel = new PharmaceuticalAdminWorkArea(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBack2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField adverseReactionField;
+    private javax.swing.JButton btnBack2;
     private javax.swing.JTextField clinicalField;
     private javax.swing.JTextField contraField;
     private javax.swing.JTextField dosageField;

@@ -11,8 +11,11 @@ import EcoSystem.LabAssistant.LabAssistantDirectory;
 import EcoSystem.Patient.Patient;
 import EcoSystem.Patient.PatientDirectory;
 import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -62,6 +65,29 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
             comboPatient.addItem(p.getName());
         }
     }
+    
+    private boolean creatingOrder() {
+            LabWorkRequest orderWorkRequest = new LabWorkRequest();
+            orderWorkRequest.setMessage(jTextField1.getText());
+            if (hospitalAdmin != null) {
+                orderWorkRequest.setHospitalAdmin(hospitalAdmin);
+            } else {
+                return false;
+            }
+            LabAssistant labAssistant = labAssistantDirectory.getLabAssistantNameList().get(comboLab.getSelectedIndex());
+            Patient patient = patientDirectory.getPatientList().get(comboPatient.getSelectedIndex());
+            if (labAssistant != null) {
+                orderWorkRequest.setLabAssistant(labAssistant);
+                orderWorkRequest.setPatient(patient);
+                
+            } else {
+                return false;
+            }
+            orderWorkRequest.setRequestDate(new Date());
+            orderWorkRequest.setStatus("Request to LabAssistant");
+            ecosystem.getWorkQueue().addWorkRequest(orderWorkRequest);
+            return true;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -106,6 +132,12 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel2.setText("Enter Patient email");
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         comboPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboPatientActionPerformed(evt);
@@ -114,6 +146,11 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
 
         jButton2.setBackground(new java.awt.Color(97, 147, 160));
         jButton2.setText("BOOK AN APPOINTMENT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/HospitalAdmin/labimg.png"))); // NOI18N
 
@@ -190,6 +227,17 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (creatingOrder()) {
+            JOptionPane.showMessageDialog(null, "Lab Booked");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

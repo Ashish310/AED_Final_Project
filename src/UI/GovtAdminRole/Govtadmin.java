@@ -32,8 +32,8 @@ public class Govtadmin extends javax.swing.JPanel {
     }
     
     private void manageOrders() {
-        //ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem,userAccount);
-        //userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
+        ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem,userAccount);
+        userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }

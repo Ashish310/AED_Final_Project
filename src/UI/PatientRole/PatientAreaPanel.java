@@ -39,25 +39,25 @@ public class PatientAreaPanel extends javax.swing.JPanel {
     
     private void OrderInfoAndFeedback() {
         AppointmentInfo orderStatusJPanel = new AppointmentInfo(userProcessContainer, ecosystem, userAccount);
-        userProcessContainer.add("OrderStatusJPanel", orderStatusJPanel);
+        userProcessContainer.add("MedicineOrderInfo", orderStatusJPanel);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }
     private void MedicineOrderIssue(){
         MedicineOrder medicineOrderJPanel = new MedicineOrder(userProcessContainer, userAccount, ecosystem);
-        userProcessContainer.add("MedicineOrderJPanel", medicineOrderJPanel);
+        userProcessContainer.add("MedicineOrder", medicineOrderJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }
     private void emergencyRequest() {
         EmergencyRequest emergencyRequestJPanel = new EmergencyRequest(userProcessContainer, userAccount, ecosystem);
-        userProcessContainer.add("EmergencyRequestJPanel", emergencyRequestJPanel);
+        userProcessContainer.add("EmergencyRequest", emergencyRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }
     private void doctorInfo() {
         DoctorInfo doctorInfo = new DoctorInfo(userProcessContainer, userAccount, ecosystem);
-        userProcessContainer.add("DoctorInfoJPanel", doctorInfo);
+        userProcessContainer.add("DoctorInfo", doctorInfo);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }

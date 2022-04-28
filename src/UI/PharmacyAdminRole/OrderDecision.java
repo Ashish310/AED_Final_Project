@@ -431,16 +431,39 @@ public class OrderDecision extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignDeliveryPersonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignDeliveryPersonActionPerformed
-//        index = assignDeliveryPerson.getSelectedIndex();
+        index = assignDeliveryPerson.getSelectedIndex();
     }//GEN-LAST:event_assignDeliveryPersonActionPerformed
 
     private void jButtonAddDeliveryManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddDeliveryManActionPerformed
 
+        if(index >= 0) {
+            Porter deliveryMan = deliveryManDirectory.getDeliveryManList().get(assignDeliveryPerson.getSelectedIndex());
+            labTestWorkRequest.setDeliverMan(deliveryMan);
+            JOptionPane.showMessageDialog(null,deliveryMan+ " Delivery Man assigned");
+            fillDelUI();
+        }
         
     }//GEN-LAST:event_jButtonAddDeliveryManActionPerformed
 
     private void acceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptOrderActionPerformed
-
+    if (labTestWorkRequest.getStatus().equals("Request to Pharmacy")) {
+            labTestWorkRequest.setStatus("Preparing"); 
+            JOptionPane.showMessageDialog(null, " Order Accepted");
+        }
+        else if(labTestWorkRequest.getStatus().equals("Preparing")) {
+            labTestWorkRequest.setStatus("Prepared");
+            if(labTestWorkRequest.getDeliverMan() == null){
+                JOptionPane.showMessageDialog(null, " Order Prepared");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Order will be picked up");
+            }
+        }
+        else {  
+            acceptOrder.setVisible(false);
+        }
+        change();
+        status.setText(labTestWorkRequest.getStatus());
 
     }//GEN-LAST:event_acceptOrderActionPerformed
 

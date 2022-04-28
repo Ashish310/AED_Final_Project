@@ -9,6 +9,7 @@ import EcoSystem.AmbulanceDriver.AmbulanceDriverDirectory;
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
+import UI.AmbulanceRole.AmbulanceWorkArea;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -243,6 +244,11 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
 
         btnassign.setBackground(new java.awt.Color(97, 147, 160));
         btnassign.setText("ASSIGN");
+        btnassign.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnassignActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 2;
@@ -260,9 +266,9 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ViewEmergencyRequestPanel viewEmergencyRequestJPanel = new ViewEmergencyRequestPanel(userProcessContainer,ecosystem, userAccount);
-        userProcessContainer.add("ViewEmergencyRequestJPanel", viewEmergencyRequestJPanel);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        AmbulanceWorkArea deliveryManWorkAreaJPanel = new AmbulanceWorkArea(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("PorterWorkArea", deliveryManWorkAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -287,6 +293,16 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         change();
         status.setText(labTestWorkRequest.getStatus());
     }//GEN-LAST:event_btnacceptActionPerformed
+
+    private void btnassignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnassignActionPerformed
+        // TODO add your handling code here:
+        if(index >= 0) {
+            AmbulanceDriver ambulanceDriver = ambulanceDriverDirectory.getAmbulanceDriverList().get(assignDeliveryPerson.getSelectedIndex());
+            labTestWorkRequest.setAmbulanceDriver(ambulanceDriver);
+            JOptionPane.showMessageDialog(null,ambulanceDriver+ " Ambulance Driver assigned");
+            fillDelUI();
+        }
+    }//GEN-LAST:event_btnassignActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

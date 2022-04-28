@@ -7,6 +7,7 @@ package UI.LabAssisstant;
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
 import java.util.Properties;
 import java.util.Random;
 import javax.mail.Message;
@@ -16,6 +17,7 @@ import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -201,6 +203,11 @@ public class ProcessWorkRequestPanel extends javax.swing.JPanel {
 
         btnStatus.setBackground(new java.awt.Color(97, 147, 160));
         btnStatus.setText("START LAB");
+        btnStatus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusActionPerformed(evt);
+            }
+        });
         add(btnStatus);
         btnStatus.setBounds(230, 290, 111, 29);
 
@@ -211,7 +218,32 @@ public class ProcessWorkRequestPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        
+        LabAssistantWorkArea labAssistantWorkAreaJPanel = new LabAssistantWorkArea(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("LabAssistantWorkAreaJPanel", labAssistantWorkAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
+        // TODO add your handling code here:
+        if (workRequest.getStatus().equals("Request to LabAssistant")) {
+            String testType = comboRstTest.getSelectedItem().toString();
+            workRequest.setTestType(testType);
+            workRequest.setStatus("Lab in Process");
+            workRequest.setTestResult("In Process");
+            JOptionPane.showMessageDialog(null, "Lab in Process");
+        } else if (workRequest.getStatus().equals("Lab in Process")) {
+            workRequest.setStatus("Lab Completed");
+            sendMail();
+            workRequest.setTestResult("Completed");
+            JOptionPane.showMessageDialog(null, "Lab Results are available");
+        } else {
+            btnStatus.setVisible(false);
+        }
+        changeButtonText();
+        status.setText(workRequest.getStatus());
+    }//GEN-LAST:event_btnStatusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

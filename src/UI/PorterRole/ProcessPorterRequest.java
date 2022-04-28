@@ -7,6 +7,8 @@ package UI.PorterRole;
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -259,11 +261,28 @@ public class ProcessPorterRequest extends javax.swing.JPanel {
 
     private void btnStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusActionPerformed
 
+        if (workRequest.getStatus().equals("Prepared")) {
+            workRequest.setStatus("Out for delivery");
+            workRequest.setTestResult("In Process");
+            JOptionPane.showMessageDialog(null, "order picked up");
+        } else if (workRequest.getStatus().equals("Out for delivery")) {
+            workRequest.setStatus("Delivered");
+            workRequest.setTestResult("Completed");
+            JOptionPane.showMessageDialog(null, "Order delivered");
+        } else {
+            btnStatus.setVisible(false);
+        }
+        changeButtonText();
+        status.setText(workRequest.getStatus());
 
     }//GEN-LAST:event_btnStatusActionPerformed
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
+        PorterWorkArea deliveryManWorkAreaJPanel = new PorterWorkArea(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("DeliveryManWorkAreaJPanel", deliveryManWorkAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
 

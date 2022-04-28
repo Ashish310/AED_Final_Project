@@ -172,7 +172,7 @@ public class AppointmentInfo extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         PatientAreaPanel customerAreaJPanel = new PatientAreaPanel(userProcessContainer, userAccount, ecosystem);
-        userProcessContainer.add("DeliveryManWorkAreaJPanel", customerAreaJPanel);
+        userProcessContainer.add("PatientAreaPanel", customerAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed

@@ -294,6 +294,11 @@ public class MedicineOrder extends javax.swing.JPanel {
         jLabel2.setText("Total Amount");
 
         txtMessage1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        txtMessage1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMessage1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -389,6 +394,10 @@ public class MedicineOrder extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
+
+    private void txtMessage1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMessage1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMessage1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
