@@ -4,6 +4,10 @@
  */
 package UI.SystemAdmin;
 
+import EcoSystem.EcoSystem;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +17,13 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form SystemAdminWorkArea
      */
-    public SystemAdminWorkArea() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    public SystemAdminWorkArea(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        
     }
 
     /**
@@ -128,14 +137,14 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalActionPerformed
-        ManageHospitalJPanel manageHospitalJPanel =new ManageHospitalJPanel(userProcessContainer, ecosystem);
+        ManageHosptial manageHospitalJPanel =new ManageHosptial(userProcessContainer, ecosystem);
         userProcessContainer.add("manageHospitalJPanel",manageHospitalJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManageHospitalActionPerformed
 
     private void btnManagePharmaceuticalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePharmaceuticalActionPerformed
-        ManageParmaceuticalJPanel manageParmaceuticalJPanel =new ManageParmaceuticalJPanel(userProcessContainer, ecosystem);
+        ManagePharmaceutical manageParmaceuticalJPanel =new ManagePharmaceutical(userProcessContainer, ecosystem);
         userProcessContainer.add("manageParmaceuticalJPanel",manageParmaceuticalJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -143,14 +152,14 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
     }//GEN-LAST:event_btnManagePharmaceuticalActionPerformed
 
     private void btnManagePharmacyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManagePharmacyActionPerformed
-        ManagePharmacyJPanel managePharmacyJPanel =new ManagePharmacyJPanel(userProcessContainer, ecosystem);
+        ManagePharmacy managePharmacyJPanel =new ManagePharmacy(userProcessContainer, ecosystem);
         userProcessContainer.add("managePharmacyJPanel",managePharmacyJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnManagePharmacyActionPerformed
 
     private void btnManageGovernmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageGovernmentActionPerformed
-        ManageGovernmentJPanel manageGovernmentJPanel =new ManageGovernmentJPanel(userProcessContainer, ecosystem);
+        ManageGovt manageGovernmentJPanel =new ManageGovt(userProcessContainer, ecosystem);
         userProcessContainer.add("manageGovernmentJPanel",manageGovernmentJPanel);
         CardLayout layout=(CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

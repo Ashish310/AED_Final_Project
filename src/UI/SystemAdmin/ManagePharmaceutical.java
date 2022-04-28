@@ -4,6 +4,21 @@
  */
 package UI.SystemAdmin;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Pharmaceutical.Pharmaceutical;
+import EcoSystem.Pharmaceutical.PharmaceuticalDirectory;
+import EcoSystem.Pharmacy.Pharmacy;
+import EcoSystem.Pharmacy.PharmacyDirectory;
+import EcoSystem.Role.PharmaAdminRole;
+import EcoSystem.UserAccount.UserAccountDirectory;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +28,54 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharma
      */
-    public ManagePharmaceutical() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccountDirectory userAccountList;
+   
+    public ManagePharmaceutical(JPanel userProcessContainer,EcoSystem ecosystem) {
         initComponents();
+        creatingListenerForModification();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        fillTable();
+     
+    }
+    
+    private void fillTable() {
+        PharmaceuticalDirectory pharmaceuticalDirectory = ecosystem.getPharmaceuticalDirectory();
+        DefaultTableModel model = (DefaultTableModel) tblCustomers.getModel();
+        model.setRowCount(0);
+        for (Pharmaceutical pharmaceutical : pharmaceuticalDirectory.getPharmaceuticalDirectory()) {
+            Object[] row = new Object[5];
+            row[0] = pharmaceutical;
+            row[1] = pharmaceutical.getUsername();
+            row[2] = pharmaceutical.getPassword();
+            row[3] = pharmaceutical.getAddress();
+            row[4] = pharmaceutical.getContact();
+            model.addRow(row);
+        }        
+    }
+    private void creatingListenerForModification() {
+       tblCustomers.getSelectionModel().addListSelectionListener(new ListSelectionListener(){
+        public void valueChanged(ListSelectionEvent event) {
+           int selectedRow = tblCustomers.getSelectedRow();
+             if (selectedRow >= 0) {
+                  Pharmaceutical  pharmaceutical  = (Pharmaceutical) tblCustomers.getValueAt(selectedRow, 0);
+                 if(pharmaceutical!=null){
+                     display(pharmaceutical);
+                 }
+             }
+        }
+    });
+    }
+     
+
+    private void display(Pharmaceutical pharmaceutical) {
+        userNameTextfield.setText(pharmaceutical.getUsername());
+        passwordTextfield.setText(pharmaceutical.getPassword());
+        txtPharName.setText(pharmaceutical.getPharmaceuticalName()); 
+        address.setText(pharmaceutical.getAddress()); 
+        contact.setText(pharmaceutical.getContact()); 
     }
 
     /**
@@ -27,12 +88,12 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblRestaurantAdmin = new javax.swing.JTable();
+        tblCustomers = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        restaurantNameTextfield = new javax.swing.JTextField();
+        txtPharName = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
         btnModify = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
@@ -46,8 +107,8 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
-        tblRestaurantAdmin.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
-        tblRestaurantAdmin.setModel(new javax.swing.table.DefaultTableModel(
+        tblCustomers.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
+        tblCustomers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -72,8 +133,8 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tblRestaurantAdmin.setSelectionBackground(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setViewportView(tblRestaurantAdmin);
+        tblCustomers.setSelectionBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setViewportView(tblCustomers);
 
         jLabel1.setBackground(new java.awt.Color(0, 149, 218));
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
@@ -96,11 +157,11 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 0, 51));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Pharmacy Name");
+        jLabel5.setText("Pharmaceutical Name");
 
-        restaurantNameTextfield.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantNameTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        restaurantNameTextfield.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        txtPharName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        txtPharName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtPharName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         btnCreate.setBackground(new java.awt.Color(166, 206, 55));
         btnCreate.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -164,7 +225,7 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 0, 51));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Pharmacy Address");
+        jLabel6.setText("Pharmaceutical Address");
 
         contact.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         contact.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -173,7 +234,7 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
         jLabel7.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 0, 51));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Pharmacy Contact");
+        jLabel7.setText("Pharmaceutical Contact");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -195,26 +256,28 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(275, 275, 275)
-                .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(restaurantNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(259, 259, 259)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(216, 216, 216)
                 .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnModify, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(203, 203, 203)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtPharName, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel6))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(contact, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,7 +302,7 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
                     .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(restaurantNameTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPharName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -262,7 +325,7 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        if (userNameTextfield.getText().isEmpty() || passwordTextfield.getText().isEmpty() || restaurantNameTextfield.getText().isEmpty() || contact.getText().isEmpty() || address.getText().isEmpty()) {
+        if (userNameTextfield.getText().isEmpty() || passwordTextfield.getText().isEmpty() || txtPharName.getText().isEmpty() || contact.getText().isEmpty() || address.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
             return;
         }
@@ -270,20 +333,20 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Enter a valid phone number");
             return;
         }
-        if (ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(userNameTextfield.getText())) {
+        if (ecosystem.getUserAccountDirectory().checkUsernameUnique(userNameTextfield.getText())) {
             Pharmacy pharmacy = new Pharmacy();
-            pharmacy.setPharmacyName(restaurantNameTextfield.getText());
+            pharmacy.setPharmacyName(txtPharName.getText());
             pharmacy.setUsername(userNameTextfield.getText());
             pharmacy.setPassword(passwordTextfield.getText());
             pharmacy.setAddress(address.getText());
             pharmacy.setContact(contact.getText());
-            pharmacy.setRole(new PharmacyAdminRole());
+            pharmacy.setRole(new PharmaAdminRole());
             ecosystem.getUserAccountDirectory().addUserAccount(pharmacy);
             ecosystem.getPharmacyDirectory().addPharmacy(pharmacy);
             fillTable();
             userNameTextfield.setText("");
             passwordTextfield.setText("");
-            restaurantNameTextfield.setText("");
+            txtPharName.setText("");
             address.setText("");
             contact.setText("");
         } else {
@@ -292,18 +355,18 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
-        int selectedRow = tblRestaurantAdmin.getSelectedRow();
+        int selectedRow = tblCustomers.getSelectedRow();
         if (selectedRow >= 0) {
-            Pharmacy pharmacy = (Pharmacy) tblRestaurantAdmin.getValueAt(selectedRow, 0);
+            Pharmacy pharmacy = (Pharmacy) tblCustomers.getValueAt(selectedRow, 0);
             pharmacy.setUsername(userNameTextfield.getText());
             pharmacy.setPassword(passwordTextfield.getText());
             pharmacy.setAddress(address.getText());
             pharmacy.setContact(contact.getText());
-            pharmacy.setPharmacyName(restaurantNameTextfield.getText());
+            pharmacy.setPharmacyName(txtPharName.getText());
             fillTable();
             userNameTextfield.setText("");
             passwordTextfield.setText("");
-            restaurantNameTextfield.setText("");
+            txtPharName.setText("");
             address.setText("");
             contact.setText("");
         } else {
@@ -312,17 +375,17 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
     }//GEN-LAST:event_btnModifyActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int selectedRow = tblRestaurantAdmin.getSelectedRow();
+        int selectedRow = tblCustomers.getSelectedRow();
 
         if (selectedRow >= 0) {
-            Pharmacy pharmacy = (Pharmacy) tblRestaurantAdmin.getValueAt(selectedRow, 0);
+            Pharmacy pharmacy = (Pharmacy) tblCustomers.getValueAt(selectedRow, 0);
             PharmacyDirectory pharmacyDirectory = ecosystem.getPharmacyDirectory();
-            pharmacyDirectory.removePharmacy(pharmacy);
+            pharmacyDirectory.deletePharmacy(pharmacy);
             JOptionPane.showMessageDialog(null, "Pharmacy admin "  + userNameTextfield.getText() + " deleted");
             fillTable();
             userNameTextfield.setText("");
             passwordTextfield.setText("");
-            restaurantNameTextfield.setText("");
+            txtPharName.setText("");
             address.setText("");
             contact.setText("");
         } else {
@@ -344,7 +407,7 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        SystemAdminWorkAreaJPanel sysAdminwjp = (SystemAdminWorkAreaJPanel) component;
+        SystemAdminWorkArea sysAdminwjp = (SystemAdminWorkArea) component;
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
@@ -366,8 +429,8 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField passwordTextfield;
-    private javax.swing.JTextField restaurantNameTextfield;
-    private javax.swing.JTable tblRestaurantAdmin;
+    private javax.swing.JTable tblCustomers;
+    private javax.swing.JTextField txtPharName;
     private javax.swing.JTextField userNameTextfield;
     // End of variables declaration//GEN-END:variables
 }
