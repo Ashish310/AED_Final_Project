@@ -75,6 +75,21 @@ public class MainJFrame extends javax.swing.JFrame {
                 userNameJTextFieldActionPerformed(evt);
             }
         });
+        container.add(btnlogin, "card6");
+
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserNameActionPerformed(evt);
+            }
+        });
+        container.add(txtUserName, "card4");
+        container.add(txtPassword, "card8");
+
+        jLabel2.setText("USERNAME");
+        container.add(jLabel2, "card2");
+
+        jLabel3.setText("PASSWORD");
+        container.add(jLabel3, "card3");
 
         passwordField.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
 
@@ -96,6 +111,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 logoutJButtonActionPerformed(evt);
             }
         });
+        container.add(btnlogout, "card7");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);

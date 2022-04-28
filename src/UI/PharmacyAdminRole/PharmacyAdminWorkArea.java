@@ -72,6 +72,7 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         userJButton = new javax.swing.JButton();
@@ -82,11 +83,20 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(166, 203, 230));
+        setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("WELCOME PHARMACY ADMIN !");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.ipadx = 300;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(29, 62, 0, 62);
+        add(jLabel1, gridBagConstraints);
 
         userJButton.setBackground(new java.awt.Color(166, 206, 55));
         userJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -96,6 +106,15 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
+        add(userJButton, gridBagConstraints);
 
         manageEmployeeJButton.setBackground(new java.awt.Color(166, 206, 55));
         manageEmployeeJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -105,6 +124,15 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 124;
+        gridBagConstraints.ipady = 19;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
+        add(manageEmployeeJButton, gridBagConstraints);
 
         manageOrganizationJButton.setBackground(new java.awt.Color(166, 206, 55));
         manageOrganizationJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -114,6 +142,14 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.ipadx = 146;
+        gridBagConstraints.ipady = 21;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
+        add(manageOrganizationJButton, gridBagConstraints);
 
         manageOrganizationJButton1.setBackground(new java.awt.Color(166, 206, 55));
         manageOrganizationJButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -123,6 +159,15 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
                 manageOrganizationJButton1ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 98;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
+        add(manageOrganizationJButton1, gridBagConstraints);
 
         manageOrganizationJButton2.setBackground(new java.awt.Color(166, 206, 55));
         manageOrganizationJButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -132,51 +177,26 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
                 manageOrganizationJButton2ActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 26;
+        gridBagConstraints.ipady = 22;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(18, 346, 30, 0);
+        add(manageOrganizationJButton2, gridBagConstraints);
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1000, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 876, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 865, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(284, 284, 284)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 335, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(manageOrganizationJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(manageOrganizationJButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 700, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGap(6, 6, 6)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(manageOrganizationJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(manageEmployeeJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(userJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(manageOrganizationJButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(18, 18, 18)
-                    .addComponent(manageOrganizationJButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 865;
+        gridBagConstraints.ipady = 250;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(6, 62, 0, 0);
+        add(jLabel3, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed

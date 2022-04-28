@@ -108,14 +108,17 @@ public class ManageHospitalStaff extends javax.swing.JPanel {
         btnaddstaff = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(166, 203, 230));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnback.setText("BACK");
+        add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 21, 111, 48));
 
         jLabel1.setBackground(new java.awt.Color(166, 206, 55));
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 102));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MANAGE HOSPITAL STAFF");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(167, 26, 578, -1));
 
         tblMenu.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
@@ -143,39 +146,52 @@ public class ManageHospitalStaff extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblMenu);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 87, 789, 146));
+
         jLabel2.setBackground(new java.awt.Color(166, 206, 55));
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 51, 102));
         jLabel2.setText("Staff Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(216, 259, -1, -1));
 
         enterpriseLabel1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         enterpriseLabel1.setForeground(new java.awt.Color(0, 51, 102));
         enterpriseLabel1.setText("Staff Type");
+        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 304, -1, -1));
 
         jLabel4.setBackground(new java.awt.Color(166, 206, 55));
         jLabel4.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 102));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Password");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 347, -1, -1));
 
         enterpriseLabel2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         enterpriseLabel2.setForeground(new java.awt.Color(0, 51, 102));
         enterpriseLabel2.setText("Doctor Type");
+        add(enterpriseLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(205, 438, -1, -1));
 
         jLabel5.setBackground(new java.awt.Color(166, 206, 55));
         jLabel5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 102));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Doctor Availability");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 493, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Garamond", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 102));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("***** Fill the below details only for Doctor *****");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(64, 390, 746, -1));
+        add(staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 259, 126, -1));
+        add(txtpswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 347, 126, -1));
 
         comboStaff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(comboStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 305, -1, -1));
 
         comboDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(comboDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 439, -1, -1));
+        add(availdoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 493, 126, -1));
 
         btnaddstaff.setText("ADD STAFF");
         btnaddstaff.addActionListener(new java.awt.event.ActionListener() {
@@ -183,98 +199,7 @@ public class ManageHospitalStaff extends javax.swing.JPanel {
                 btnaddstaffActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 789, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 578, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(125, 125, 125)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(71, 71, 71)
-                                        .addComponent(jLabel2)
-                                        .addGap(60, 60, 60)
-                                        .addComponent(staff, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(60, 60, 60)
-                                                .addComponent(enterpriseLabel2))
-                                            .addComponent(jLabel5))
-                                        .addGap(60, 60, 60)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(comboDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(availdoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnaddstaff, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(79, 79, 79)
-                                                .addComponent(enterpriseLabel1))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(84, 84, 84)
-                                                .addComponent(jLabel4)))
-                                        .addGap(59, 59, 59)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtpswrd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(comboStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 746, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {availdoc, staff, txtpswrd});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(staff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel1)
-                    .addComponent(comboStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtpswrd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel2)
-                    .addComponent(comboDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(availdoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnaddstaff, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
+        add(btnaddstaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 483, 198, 48));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnaddstaffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddstaffActionPerformed

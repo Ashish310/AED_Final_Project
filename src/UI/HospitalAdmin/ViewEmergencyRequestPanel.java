@@ -87,7 +87,6 @@ public class ViewEmergencyRequestPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(166, 203, 230));
-        setLayout(null);
 
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,8 +94,6 @@ public class ViewEmergencyRequestPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1);
-        jButton1.setBounds(30, 20, 145, 49);
 
         tblRestaurantWorkRequest.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
         tblRestaurantWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -124,20 +121,47 @@ public class ViewEmergencyRequestPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRestaurantWorkRequest);
 
-        add(jScrollPane1);
-        jScrollPane1.setBounds(140, 90, 890, 218);
-
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(17, 27, 63));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MANAGE EMERGENCY REQUEST");
-        add(jLabel1);
-        jLabel1.setBounds(260, 20, 590, 43);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/HospitalAdmin/emergencyimg.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        add(jLabel2);
-        jLabel2.setBounds(160, 270, 791, 506);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(140, 140, 140)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 890, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(106, 106, 106)))
+                .addGap(6, 6, 6))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -191,6 +191,7 @@ public class OrderMeds extends javax.swing.JPanel {
         txtMessage1 = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(166, 203, 230));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         requestTestJButton.setBackground(new java.awt.Color(166, 206, 55));
         requestTestJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -200,12 +201,15 @@ public class OrderMeds extends javax.swing.JPanel {
                 requestTestJButtonActionPerformed(evt);
             }
         });
+        add(requestTestJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(393, 543, 122, 60));
 
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Message");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(342, 481, -1, -1));
 
         txtMessage.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        add(txtMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 478, 184, -1));
 
         rstCombo.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         rstCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -213,15 +217,18 @@ public class OrderMeds extends javax.swing.JPanel {
                 rstComboActionPerformed(evt);
             }
         });
+        add(rstCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(472, 145, 190, -1));
 
         enterpriseLabel1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         enterpriseLabel1.setForeground(new java.awt.Color(255, 255, 255));
         enterpriseLabel1.setText("Choose Pharmaceutical");
+        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(238, 149, -1, 20));
 
         jLabel5.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Order Medicines");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 79, 868, 48));
 
         backJButton.setBackground(new java.awt.Color(166, 206, 55));
         backJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -231,6 +238,7 @@ public class OrderMeds extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 16, 111, 45));
 
         tblCart.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
         tblCart.setModel(new javax.swing.table.DefaultTableModel(
@@ -258,6 +266,8 @@ public class OrderMeds extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblCart);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 305, 868, 110));
+
         tblPharmaInventory.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
         tblPharmaInventory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -284,78 +294,15 @@ public class OrderMeds extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblPharmaInventory);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 189, 868, 110));
+
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Total Amount");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(304, 436, -1, -1));
 
         txtMessage1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(enterpriseLabel1)
-                        .addGap(17, 17, 17)
-                        .addComponent(rstCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 868, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(278, 278, 278)
-                        .addComponent(jLabel2)
-                        .addGap(41, 41, 41)
-                        .addComponent(txtMessage1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addComponent(jLabel1)
-                        .addGap(47, 47, 47)
-                        .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(367, 367, 367)
-                        .addComponent(requestTestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(backJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rstCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(6, 6, 6)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2))
-                    .addComponent(txtMessage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel1))
-                    .addComponent(txtMessage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(requestTestJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(97, Short.MAX_VALUE))
-        );
+        add(txtMessage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 433, 184, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
