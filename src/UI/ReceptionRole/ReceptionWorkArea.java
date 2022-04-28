@@ -137,11 +137,11 @@ public class ReceptionWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-        //manageOrders();
+        manageOrders();
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
     private void userJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButton1ActionPerformed
-        //managePatients();
+        managePatients();
     }//GEN-LAST:event_userJButton1ActionPerformed
 
 

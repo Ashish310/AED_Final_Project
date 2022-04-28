@@ -11,6 +11,7 @@ import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -165,6 +166,11 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         message.setBounds(590, 200, 79, 22);
 
         btnaccept.setText("ACCEPT");
+        btnaccept.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnacceptActionPerformed(evt);
+            }
+        });
         add(btnaccept);
         btnaccept.setBounds(760, 200, 97, 29);
 
@@ -188,6 +194,28 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnacceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnacceptActionPerformed
+        // TODO add your handling code here:
+         if (labTestWorkRequest.getStatus().equals("Request to HospitalAdmin")) {
+            labTestWorkRequest.setStatus("Ambulance on the way"); 
+            JOptionPane.showMessageDialog(null, " Request Accepted");
+        }
+        else if(labTestWorkRequest.getStatus().equals("Ambulance on the way")) {
+            labTestWorkRequest.setStatus("Request to AmbulanceDriver");
+            if(labTestWorkRequest.getDeliverMan() == null){
+                JOptionPane.showMessageDialog(null, " Requested Ambulance");
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Ambulance will be arriving");
+            }
+        }
+        else {  
+            btnaccept.setVisible(false);
+        }
+        change();
+        status.setText(labTestWorkRequest.getStatus());
+    }//GEN-LAST:event_btnacceptActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
