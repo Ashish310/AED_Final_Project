@@ -34,36 +34,40 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="228" max="-2" attributes="0"/>
-                      <Component id="restaurantName6" min="-2" pref="229" max="-2" attributes="0"/>
+                      <Component id="medicine7" min="-2" pref="229" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="221" max="-2" attributes="0"/>
-                      <Component id="restaurantName5" min="-2" pref="229" max="-2" attributes="0"/>
+                      <Component id="medicine6" min="-2" pref="229" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="166" max="-2" attributes="0"/>
-                      <Component id="restaurantName4" min="-2" pref="229" max="-2" attributes="0"/>
+                      <Component id="medicine5" min="-2" pref="229" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="229" max="-2" attributes="0"/>
-                      <Component id="restaurantName3" min="-2" pref="229" max="-2" attributes="0"/>
+                      <Component id="medicine4" min="-2" pref="229" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                           <Component id="btnaccept" min="-2" pref="174" max="-2" attributes="0"/>
+                          <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
-                              <Component id="restaurantName7" min="-2" pref="229" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                               <Component id="btndecline" min="-2" pref="174" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="187" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="status" min="-2" pref="234" max="-2" attributes="0"/>
+                                  <Component id="medicine8" min="-2" pref="229" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
@@ -82,14 +86,14 @@
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="restaurantName1" min="-2" pref="229" max="-2" attributes="0"/>
-                          <Component id="restaurantName2" min="-2" pref="229" max="-2" attributes="0"/>
+                          <Component id="medicine2" min="-2" pref="229" max="-2" attributes="0"/>
+                          <Component id="medicine3" min="-2" pref="229" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="193" pref="193" max="-2" attributes="0"/>
-                      <Component id="restaurantName" min="-2" pref="234" max="-2" attributes="0"/>
+                      <Component id="medicine" min="-2" pref="234" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -109,15 +113,15 @@
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <EmptySpace min="1" pref="1" max="-2" attributes="0"/>
-                      <Component id="restaurantName" min="-2" max="-2" attributes="0"/>
+                      <Component id="medicine" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="restaurantName1" min="-2" max="-2" attributes="0"/>
+                      <Component id="medicine2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="restaurantName2" min="-2" max="-2" attributes="0"/>
+                      <Component id="medicine3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -129,29 +133,34 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                  <Component id="restaurantName3" min="-2" max="-2" attributes="0"/>
+                  <Component id="medicine4" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="restaurantName4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="medicine5" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="restaurantName5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="medicine6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="restaurantName6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="medicine7" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="restaurantName7" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="medicine8" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="status" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnaccept" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                   <Component id="btndecline" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
@@ -173,7 +182,7 @@
         <Property name="text" type="java.lang.String" value="Pharmaceutical Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName">
+    <Component class="javax.swing.JLabel" name="medicine">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -192,7 +201,7 @@
         <Property name="text" type="java.lang.String" value="Dosage &amp; Administration"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName1">
+    <Component class="javax.swing.JLabel" name="medicine2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -211,7 +220,7 @@
         <Property name="text" type="java.lang.String" value="   Medicine Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName2">
+    <Component class="javax.swing.JLabel" name="medicine3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -230,7 +239,7 @@
         <Property name="text" type="java.lang.String" value="Contraindications"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName3">
+    <Component class="javax.swing.JLabel" name="medicine4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -249,7 +258,7 @@
         <Property name="text" type="java.lang.String" value=" Warnings &amp; Precautions"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName4">
+    <Component class="javax.swing.JLabel" name="medicine5">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -268,7 +277,7 @@
         <Property name="text" type="java.lang.String" value="Adverse Reactions"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName5">
+    <Component class="javax.swing.JLabel" name="medicine6">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -287,7 +296,7 @@
         <Property name="text" type="java.lang.String" value=" Drug Description"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName6">
+    <Component class="javax.swing.JLabel" name="medicine7">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -306,7 +315,7 @@
         <Property name="text" type="java.lang.String" value="Clinical Pharmacology"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="restaurantName7">
+    <Component class="javax.swing.JLabel" name="medicine8">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -330,6 +339,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="BACK"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbackActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btndecline">
       <Properties>
@@ -349,6 +361,25 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnacceptActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel12">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Garamond" size="18" style="1"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Status"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="status">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Garamond" size="18" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="&lt;value&gt;"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

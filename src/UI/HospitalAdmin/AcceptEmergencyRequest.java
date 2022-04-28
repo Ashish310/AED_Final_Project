@@ -4,6 +4,15 @@
  */
 package UI.HospitalAdmin;
 
+import EcoSystem.AmbulanceDriver.AmbulanceDriver;
+import EcoSystem.AmbulanceDriver.AmbulanceDriverDirectory;
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,10 +22,66 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
     /**
      * Creates new form Accept
      */
+    JPanel userProcessContainer;
+    UserAccount userAccount;
+    EcoSystem ecosystem;
+    LabWorkRequest labTestWorkRequest;
+    double total = 0.0;
     
-    public AcceptEmergencyRequest() {
+    private AmbulanceDriverDirectory ambulanceDriverDirectory;
+    private int index = -1;
+    
+    public AcceptEmergencyRequest(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount, LabWorkRequest labTestWorkRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        this.labTestWorkRequest = labTestWorkRequest;
+        
+        ambulanceDriverDirectory = ecosystem.getAmbulanceDirectory();   
+        fillDelList(ambulanceDriverDirectory.getAmbulanceDriverList());
+        change();
+        
+        display();
     }
+    
+    private void fillDelUI() {
+        if(labTestWorkRequest.getAmbulanceDriver()== null && !("Request to HospitalAdmin".equalsIgnoreCase(labTestWorkRequest.getStatus()) || "declined".equalsIgnoreCase(labTestWorkRequest.getStatus()))){
+            assignDeliveryPersonLabel.setVisible(true);
+            assignDeliveryPerson.setVisible(true);
+            
+            btnassign.setVisible(true);
+            
+        }
+        else{
+            btnassign.setVisible(false);
+            assignDeliveryPersonLabel.setVisible(false);
+            assignDeliveryPerson.setVisible(false);
+        }
+    }
+    
+    private void display() {
+        
+        fillDelUI();
+        
+        
+        status.setText(labTestWorkRequest.getStatus());
+        message.setText(labTestWorkRequest.getMessage());
+
+    }
+    
+    public void fillDelList(ArrayList<AmbulanceDriver> ambulanceDriverList) {
+        if(labTestWorkRequest.getAmbulanceDriver()== null) {
+            assignDeliveryPerson.setVisible(true);
+            for (AmbulanceDriver ambulanceDriver : ambulanceDriverList) {
+                assignDeliveryPerson.addItem(ambulanceDriver.getAmbulanceDriverName());
+            }
+        }
+        else {
+            assignDeliveryPerson.setVisible(false);
+        } 
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -44,6 +109,11 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         setLayout(null);
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1);
         jButton1.setBounds(49, 61, 147, 53);
 
@@ -111,6 +181,14 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         index = assignDeliveryPerson.getSelectedIndex();
     }//GEN-LAST:event_assignDeliveryPersonActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ViewEmergencyRequestPanel viewEmergencyRequestJPanel = new ViewEmergencyRequestPanel(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("ViewEmergencyRequestJPanel", viewEmergencyRequestJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> assignDeliveryPerson;
@@ -126,4 +204,22 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
     private javax.swing.JLabel message;
     private javax.swing.JLabel status;
     // End of variables declaration//GEN-END:variables
+
+private void change() {
+        switch(labTestWorkRequest.getStatus()){
+            case "Request to HospitalAdmin" -> {
+                btnaccept.setText("Accept request");
+                btndecline.setVisible(true);
+            }
+            case "Ambulance on the way" -> {
+                btnaccept.setText("Ready for pickup");
+                btndecline.setVisible(false);
+            }
+            default -> {
+                btnaccept.setVisible(false);
+                btndecline.setVisible(false);
+            }
+        }
+        fillDelUI();
+    }
 }

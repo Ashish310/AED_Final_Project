@@ -4,17 +4,54 @@
  */
 package UI.AmbulanceRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ashishkumar
  */
 public class ProcessAmbulanceRequests extends javax.swing.JPanel {
-
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    LabWorkRequest workRequest;
+    LabWorkRequest labTestWorkRequest;
     /**
      * Creates new form ProcessAmbulanceRequests
      */
-    public ProcessAmbulanceRequests() {
+    public ProcessAmbulanceRequests(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount account, LabWorkRequest workRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = account;
+        this.workRequest = workRequest;
+        changeButtonText();
+        display();
+    }
+    private void display() {
+
+        
+        customerNameValue.setText(workRequest.getPatient().getName());
+        status.setText(workRequest.getStatus());
+        customerAddressValue1.setText(workRequest.getPatient().getAddress());
+        patientcontact.setText(workRequest.getPatient().getPhone());
+
+    }
+
+    private void changeButtonText() {
+        switch (workRequest.getStatus()) {
+            case "Request to AmbulanceDriver":
+                btnStatus.setText("Pick Patient");
+                break;
+            case "Out for request":
+                btnStatus.setText("Complete Delivery");
+                break;
+            default:
+                btnStatus.setVisible(false);
+        }
     }
 
     /**
