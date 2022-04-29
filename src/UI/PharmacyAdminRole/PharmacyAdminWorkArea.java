@@ -4,6 +4,12 @@
  */
 package UI.PharmacyAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ashishkumar
@@ -13,8 +19,49 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form PharmacyAdminWorkArea
      */
-    public PharmacyAdminWorkArea() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    public PharmacyAdminWorkArea(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.userAccount = userAccount; 
+    }
+    
+    private void manageOrders() {
+        ManageOrders viewOrderDetails = new ManageOrders(userProcessContainer,ecosystem,userAccount);
+        userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void manageMenu() {
+        CreateItem createMenuItemJPanel = new CreateItem(userProcessContainer,userAccount,ecosystem);
+        userProcessContainer.add("CreateMenuItemJPanel",createMenuItemJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void manageInfo() {
+        ManagePharmacies updateRestaurantInfoJPanel = new ManagePharmacies(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("UpdateRestaurantInfoJPanel",updateRestaurantInfoJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    private void manageDeliveryMan() {
+        ManagePorter manageDeliveryManJPanel = new ManagePorter(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("ManageDeliveryManJPanel",manageDeliveryManJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+
+    private void managePharmaceutical() {
+        OrderMeds medicineOrderJPanel = new OrderMeds(userProcessContainer,userAccount,ecosystem);
+        userProcessContainer.add("MedicineOrderJPanel",medicineOrderJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }
 
     /**
@@ -133,23 +180,23 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
-//        manageInfo();
+        manageInfo();
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void manageEmployeeJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageEmployeeJButtonActionPerformed
-//        manageMenu();
+        manageMenu();
     }//GEN-LAST:event_manageEmployeeJButtonActionPerformed
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-//        manageOrders();
+        manageOrders();
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
     private void manageOrganizationJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButton1ActionPerformed
-//        manageDeliveryMan();
+        manageDeliveryMan();
     }//GEN-LAST:event_manageOrganizationJButton1ActionPerformed
 
     private void manageOrganizationJButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButton2ActionPerformed
-//        managePharmaceutical();
+        managePharmaceutical();
     }//GEN-LAST:event_manageOrganizationJButton2ActionPerformed
 
 
