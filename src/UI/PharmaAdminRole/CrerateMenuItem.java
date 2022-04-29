@@ -4,6 +4,16 @@
  */
 package UI.PharmaAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Pharmaceutical.Inventory;
+import EcoSystem.Pharmaceutical.Medicines;
+import EcoSystem.Pharmaceutical.Pharmaceutical;
+import EcoSystem.UserAccount.UserAccount;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +23,53 @@ public class CrerateMenuItem extends javax.swing.JPanel {
     /**
      * Creates new form CrerateMenuItem
      */
-    public CrerateMenuItem() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    Pharmaceutical pharmaceutical;
+    public CrerateMenuItem(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        initListners();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        pharmaceutical = (Pharmaceutical) userAccount;
+        populateTable();
+    }
+    
+    private void populateTable() {
+        Inventory menu = pharmaceutical.getInventory();
+        DefaultTableModel model = (DefaultTableModel) tblMenu.getModel();
+        model.setRowCount(0);
+        if(menu != null){
+        for (Medicines item : menu.getItemList()) {
+
+            Object[] row = new Object[2];
+            row[0] = item;
+            row[1] = item.getPrice();
+            model.addRow(row);
+        }
+        }
+    }
+    private void initListners() {
+        tblMenu.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblMenu.getSelectedRow();
+                if (selectedRow >= 0) {
+                    Medicines item = (Medicines) tblMenu.getValueAt(selectedRow, 0);
+                    if (item != null) {
+                        display(item);
+                    }
+                }
+            }
+        });
+    }
+    
+    private void display(Medicines item) {
+        itemName.setText(item.getName());
+        itemPrice.setText(String.valueOf(item.getPrice()));
+
     }
 
     /**

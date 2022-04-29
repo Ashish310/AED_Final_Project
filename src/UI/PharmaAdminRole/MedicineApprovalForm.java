@@ -4,6 +4,19 @@
  */
 package UI.PharmaAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Government.Municipality;
+import EcoSystem.Government.MunicipalityDirectory;
+import EcoSystem.MedicalInformation.MedicalInformation;
+import EcoSystem.Pharmaceutical.Pharmaceutical;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +26,62 @@ public class MedicineApprovalForm extends javax.swing.JPanel {
     /**
      * Creates new form MedicineApprovalForm
      */
-    public MedicineApprovalForm() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    Pharmaceutical pharmaceutical;
+    MunicipalityDirectory governmentDirectory;
+    private List<MedicalInformation> itemQuantityList = new ArrayList<>();
+    private int index = -1;
+    public MedicineApprovalForm(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        governmentDirectory = ecosystem.getGovernmentDirectory();
+        pharmaceutical = (Pharmaceutical) userAccount;
+        fillRstList(governmentDirectory.getGovernmentList());
+        
+        
+    }
+    
+    public void fillRstList(ArrayList<Municipality> doctorList) {
+        for (Municipality government : doctorList) {
+            rstCombo.addItem(government.getName());
+        }
+    }
+    
+    private boolean creatingOrder() {
+        LabWorkRequest orderWorkRequest = new LabWorkRequest();
+            MedicalInformation medInfo = new MedicalInformation();
+            medInfo.setDosage(dosageField.getText());
+            medInfo.setName(nameField.getText());
+            medInfo.setContraIndications(contraField.getText());
+            medInfo.setPrecautions(precField.getText());
+            medInfo.setReactions(adverseReactionField.getText());
+            medInfo.setDescription(drugField.getText());
+            medInfo.setPharmacology(clinicalField.getText());
+            medInfo.setToxicology(toxicologyField.getText());
+            itemQuantityList.add(medInfo);
+            orderWorkRequest.setMessage("Medicine Approval");
+            orderWorkRequest.setMedInfoList(itemQuantityList);
+            if (pharmaceutical != null) {
+                orderWorkRequest.setPharmaceutical(pharmaceutical);
+            } else {
+                return false;
+            }
+            Municipality government = governmentDirectory.getGovernmentList().get(index);
+            
+            if (government != null) {
+                orderWorkRequest.setGovernment(government);                
+            } else {
+                return false;
+            }
+            orderWorkRequest.setRequestDate(new Date());
+            orderWorkRequest.setStatus("Request to CDC");
+            ecosystem.getWorkQueue().addWorkRequest(orderWorkRequest);
+            return true;
     }
 
     /**
@@ -290,28 +357,28 @@ public class MedicineApprovalForm extends javax.swing.JPanel {
     }//GEN-LAST:event_rstComboActionPerformed
 
     private void sendToCDCbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendToCDCbtnActionPerformed
-//        if (dosageField.getText().isEmpty() || nameField.getText().isEmpty() || clinicalField.getText().isEmpty() || contraField.getText().isEmpty() || drugField.getText().isEmpty() || precField.getText().isEmpty() || adverseReactionField.getText().isEmpty() || toxicologyField.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "Enter all fields");
-//        }
-//        LabTestWorkRequest orderWorkRequest = new LabTestWorkRequest();
-//        //        MedInfoDirectory medInfoDirectory = new MedInfoDirectory();
-//        //        if(medInfoDirectory.getMedInfoList() != null){
-//            //            medInfoDirectory.addMedInfo(medInfo);
-//            //        }
-//        //        else{
-//            //            medInfoDirectory.addMedInfo(medInfo);
-//            //        }
-//        creatingOrder();
-//        dosageField.setText("");
-//        nameField.setText("");
-//        contraField.setText("");
-//        precField.setText("");
-//        precField.setText("");
-//        adverseReactionField.setText("");
-//        drugField.setText("");
-//        clinicalField.setText("");
-//        toxicologyField.setText("");
-//        JOptionPane.showMessageDialog(null, "Sent to CDC");
+        if (dosageField.getText().isEmpty() || nameField.getText().isEmpty() || clinicalField.getText().isEmpty() || contraField.getText().isEmpty() || drugField.getText().isEmpty() || precField.getText().isEmpty() || adverseReactionField.getText().isEmpty() || toxicologyField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+        }
+        LabWorkRequest orderWorkRequest = new LabWorkRequest();
+        //        MedInfoDirectory medInfoDirectory = new MedInfoDirectory();
+        //        if(medInfoDirectory.getMedInfoList() != null){
+            //            medInfoDirectory.addMedInfo(medInfo);
+            //        }
+        //        else{
+            //            medInfoDirectory.addMedInfo(medInfo);
+            //        }
+        creatingOrder();
+        dosageField.setText("");
+        nameField.setText("");
+        contraField.setText("");
+        precField.setText("");
+        precField.setText("");
+        adverseReactionField.setText("");
+        drugField.setText("");
+        clinicalField.setText("");
+        toxicologyField.setText("");
+        JOptionPane.showMessageDialog(null, "Sent to CDC");
     }//GEN-LAST:event_sendToCDCbtnActionPerformed
 
 

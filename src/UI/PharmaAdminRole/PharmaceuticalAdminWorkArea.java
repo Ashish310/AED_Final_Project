@@ -4,6 +4,12 @@
  */
 package UI.PharmaAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import UI.GovtAdminRole.ViewOrderDetails;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +19,48 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form PharmaceuticalAdminWorkArea
      */
-    public PharmaceuticalAdminWorkArea() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    public PharmaceuticalAdminWorkArea(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.userAccount = userAccount; 
+    }
+    private void manageInventory() {
+        CrerateMenuItem createMenuItemJPanel = new CrerateMenuItem(userProcessContainer,userAccount,ecosystem);
+        userProcessContainer.add("UpdateRestaurantInfoJPanel",createMenuItemJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+
+    private void manageCDCApproval() {
+        MedicineApprovalForm medicineApprovalJPanel = new MedicineApprovalForm(userProcessContainer,userAccount,ecosystem);
+        userProcessContainer.add("MedicineApprovalJPanel",medicineApprovalJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    private void manageOrders() {
+        ViewOrderInformation viewOrderDetails = new ViewOrderInformation(userProcessContainer,ecosystem,userAccount);
+        userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void manageMenu() {
+        CrerateMenuItem createMenuItemJPanel = new CrerateMenuItem(userProcessContainer,userAccount,ecosystem);
+        userProcessContainer.add("CreateMenuItemJPanel",createMenuItemJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void manageInfo() {
+        UpdatePharmaceuticalInformation updateRestaurantInfoJPanel = new UpdatePharmaceuticalInformation(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("UpdateRestaurantInfoJPanel",updateRestaurantInfoJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }
 
     /**
