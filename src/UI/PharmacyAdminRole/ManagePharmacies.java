@@ -4,6 +4,12 @@
  */
 package UI.PharmacyAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Pharmacy.Pharmacy;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author ashishkumar
@@ -13,8 +19,36 @@ public class ManagePharmacies extends javax.swing.JPanel {
     /**
      * Creates new form ManagePharmacies
      */
-    public ManagePharmacies() {
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    Pharmacy pharmacy;
+    public ManagePharmacies(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount) {
+        //initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        pharmacy = (Pharmacy)userAccount;
         initComponents();
+        display(pharmacy);
+        confirmButton.setVisible(false);
+    }
+    private void setVisibleEditable(boolean value) {
+        restaurantName.setEditable(value);        
+        restaurantName.setEnabled(value); 
+        address.setEditable(value);        
+        address.setEnabled(value); 
+        contact.setEditable(value);        
+        contact.setEnabled(value); 
+    }
+
+    private void display(Pharmacy restaurant) {
+        setVisibleEditable(false);
+        restaurantName.setText(restaurant.getPharmacyName());
+        setVisibleEditable(false);
+        address.setText(restaurant.getAddress());
+        setVisibleEditable(false);
+        contact.setText(restaurant.getContact());
     }
 
     /**
@@ -204,17 +238,17 @@ public class ManagePharmacies extends javax.swing.JPanel {
     }//GEN-LAST:event_restaurantNameActionPerformed
 
     private void updateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateButtonActionPerformed
-//        confirmButton.setVisible(true);
-//        setVisibleEditable(true);
+        confirmButton.setVisible(true);
+        setVisibleEditable(true);
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-//        pharmacy.setPharmacyName(restaurantName.getText());
-//        setVisibleEditable(false);
-//        pharmacy.setAddress(address.getText());
-//        setVisibleEditable(false);
-//        pharmacy.setAddress(contact.getText());
-//        setVisibleEditable(false);
+        pharmacy.setPharmacyName(restaurantName.getText());
+        setVisibleEditable(false);
+        pharmacy.setAddress(address.getText());
+        setVisibleEditable(false);
+        pharmacy.setAddress(contact.getText());
+        setVisibleEditable(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
 
     private void addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressActionPerformed
@@ -226,10 +260,10 @@ public class ManagePharmacies extends javax.swing.JPanel {
     }//GEN-LAST:event_contactActionPerformed
 
     private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        //        PharmacyAdminWorkAreaJPanel adminWorkAreaJPanel = new PharmacyAdminWorkAreaJPanel(userProcessContainer,userAccount, ecosystem);
-        //        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
-        //        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        //        layout.next(userProcessContainer);
+                PharmacyAdminWorkArea adminWorkAreaJPanel = new PharmacyAdminWorkArea(userProcessContainer,userAccount, ecosystem);
+                userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+                CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack2ActionPerformed
 
 
