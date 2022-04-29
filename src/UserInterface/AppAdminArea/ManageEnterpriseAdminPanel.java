@@ -32,7 +32,7 @@ public class ManageEnterpriseAdminPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManageEnterpriseAdminPanel
      */
-    public ManageEnterpriseAdminPanel() {
+    public ManageEnterpriseAdminPanel(JPanel userProcessContainer, DisasterMgmtSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;

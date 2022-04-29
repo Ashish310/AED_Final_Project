@@ -1,6 +1,6 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UserInterface.AppAdminArea;
 
@@ -8,6 +8,7 @@ import DisasterMgmtSystem.DisasterMgmtSystem;
 import DisasterMgmtSystem.Network.Network;
 import Utilities.ManageTableStyles;
 import static java.time.Clock.system;
+import static java.time.InstantSource.system;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -16,14 +17,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author hs_sa
  */
-public class ManageDisasterNetwork extends javax.swing.JFrame {
-    
-    private JPanel userProcessContainer;
-    private DisasterMgmtSystem system;
+public class ManageDisasterNetwork extends javax.swing.JPanel {
 
     /**
      * Creates new form ManageDisasterNetwork
      */
+    
+    private JPanel userProcessContainer;
+    private DisasterMgmtSystem system;
     public ManageDisasterNetwork(JPanel userProcessContainer, DisasterMgmtSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -31,7 +32,7 @@ public class ManageDisasterNetwork extends javax.swing.JFrame {
         populateNetworkTable(); 
     }
     
-    private void populateNetworkTable() {
+     private void populateNetworkTable() {
         NetworkJTable.getTableHeader().setDefaultRenderer(new ManageTableStyles());
         DefaultTableModel model = (DefaultTableModel) NetworkJTable.getModel();
 
@@ -52,7 +53,6 @@ public class ManageDisasterNetwork extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel = new javax.swing.JPanel();
         lblAddNetwork = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         NetworkJTable = new javax.swing.JTable();
@@ -61,15 +61,12 @@ public class ManageDisasterNetwork extends javax.swing.JFrame {
         txtNetworkName = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jPanel.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblAddNetwork.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblAddNetwork.setForeground(new java.awt.Color(252, 92, 59));
         lblAddNetwork.setText("Add Networks");
-        jPanel.add(lblAddNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
+        add(lblAddNetwork, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 50, -1, -1));
 
         jScrollPane1.setForeground(new java.awt.Color(252, 92, 59));
 
@@ -94,18 +91,18 @@ public class ManageDisasterNetwork extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(NetworkJTable);
 
-        jPanel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 400, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 400, 150));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(252, 92, 59));
         jLabel2.setText("Network List");
-        jPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 100, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 110, 100, -1));
 
         lblEnterName.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblEnterName.setForeground(new java.awt.Color(252, 92, 59));
         lblEnterName.setText("Please enter the Network name:");
-        jPanel.add(lblEnterName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 336, -1, 20));
-        jPanel.add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 170, 30));
+        add(lblEnterName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 336, -1, 20));
+        add(txtNetworkName, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 330, 170, 30));
 
         btnSubmit.setText("Submit");
         btnSubmit.setMaximumSize(new java.awt.Dimension(79, 29));
@@ -115,30 +112,7 @@ public class ManageDisasterNetwork extends javax.swing.JFrame {
                 btnSubmitActionPerformed(evt);
             }
         });
-        jPanel.add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 120, 50));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 753, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 531, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        pack();
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 120, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -160,46 +134,11 @@ public class ManageDisasterNetwork extends javax.swing.JFrame {
         populateNetworkTable();
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(ManageDisasterNetwork.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(ManageDisasterNetwork.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(ManageDisasterNetwork.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(ManageDisasterNetwork.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new ManageDisasterNetwork().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable NetworkJTable;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddNetwork;
     private javax.swing.JLabel lblEnterName;

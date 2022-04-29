@@ -70,7 +70,7 @@ public class sosReporterPanel extends javax.swing.JPanel {
         txtPhone = new javax.swing.JTextField();
         comboEmergency = new javax.swing.JComboBox<>();
         btnReport = new javax.swing.JButton();
-        comboLocation = new javax.swing.JComboBox<>();
+        locationEmergencyTF = new javax.swing.JComboBox<>();
         phoneErr = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -116,12 +116,12 @@ public class sosReporterPanel extends javax.swing.JPanel {
         });
         jPanel1.add(btnReport, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 361, -1, -1));
 
-        comboLocation.addActionListener(new java.awt.event.ActionListener() {
+        locationEmergencyTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboLocationActionPerformed(evt);
+                locationEmergencyTFActionPerformed(evt);
             }
         });
-        jPanel1.add(comboLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 103, -1, -1));
+        jPanel1.add(locationEmergencyTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 103, -1, -1));
         jPanel1.add(phoneErr, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 80, 20));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,7 +161,7 @@ public class sosReporterPanel extends javax.swing.JPanel {
             phoneErr.setText("");
             
             emergency = this.emergencyDirectory.createNaturalEmergency();
-            emergency.setLocation(comboLocation.getSelectedItem() + "");
+            emergency.setLocation(locationEmergencyTF.getSelectedItem() + "");
             emergency.setPhone(txtPhone.getText());
             //emergency.setNatureOfEmergency((String) natureOfEmergencyCombo.getSelectedItem());
             //emergency.setDescription((String) descriptionCombo.getSelectedItem());
@@ -213,21 +213,21 @@ public class sosReporterPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboEmergencyActionPerformed
 
-    private void comboLocationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboLocationActionPerformed
+    private void locationEmergencyTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_locationEmergencyTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_comboLocationActionPerformed
+    }//GEN-LAST:event_locationEmergencyTFActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReport;
     private javax.swing.JComboBox<String> comboEmergency;
-    private javax.swing.JComboBox<String> comboLocation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox<String> locationEmergencyTF;
     private javax.swing.JLabel phoneErr;
     private javax.swing.JSlider prioritySlider;
     private javax.swing.JTextField txtPhone;
@@ -244,10 +244,10 @@ public class sosReporterPanel extends javax.swing.JPanel {
     
     private void populateLocation() {
          // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-         comboLocation.removeAllItems();
+         locationEmergencyTF.removeAllItems();
          for (EmergencyLocation area : disasterMgmtSystem.getDirectory().getEmergencyLocationList()) 
          {
-            comboLocation.addItem(area.getAddress());
+            locationEmergencyTF.addItem(area.getAddress());
         }
     }
     

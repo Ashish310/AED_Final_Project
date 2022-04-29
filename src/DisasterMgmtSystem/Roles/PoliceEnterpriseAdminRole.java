@@ -9,23 +9,22 @@ import DisasterMgmtSystem.DisasterMgmtSystem;
 import DisasterMgmtSystem.Enterprise.Enterprise;
 import DisasterMgmtSystem.Network.Network;
 import DisasterMgmtSystem.Organizations.Organization;
+import UserInterface.Police.PoliceWorkArea;
+import javax.management.relation.Role;
 import javax.swing.JPanel;
 
 /**
  *
- * @author shriyadikshith
+ * @author hs_sa
  */
-public class HospitalAdmin extends Roles{
+public class PoliceEnterpriseAdminRole extends Roles{
     
-  @Override
+    @Override
     public JPanel createWorkArea(JPanel userProcessContainer, 
-            AppUserAccount AppUserAccount, 
-            DisasterMgmtSystem system, Organization org, Enterprise enterprise, Network network) {
-     
-        return null; //new HospitalAdminWorkArea(userProcessContainer,account,system,network);
-        
+            AppUserAccount account, 
+            DisasterMgmtSystem system, Organization org,Enterprise enterprise, Network network) 
+    {
+        return new PoliceWorkArea(userProcessContainer,account, system,network,enterprise);
     }
-
-
     
 }
