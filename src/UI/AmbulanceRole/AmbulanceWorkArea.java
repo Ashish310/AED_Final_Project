@@ -28,7 +28,7 @@ public class AmbulanceWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form AmbulanceWorkArea
      */
-    public AmbulanceWorkArea() {
+    public AmbulanceWorkArea(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
         creatingListenerForDelInfo();
         this.userProcessContainer = userProcessContainer;

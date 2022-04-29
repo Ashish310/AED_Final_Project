@@ -6,6 +6,7 @@ package EcoSystem.Role;
 
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
+import UI.GovtAdminRole.Govtadmin;
 import javax.swing.JPanel;
 
 /**
@@ -15,6 +16,6 @@ import javax.swing.JPanel;
 public class MunicipalityAdminRole extends Role{
      @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new GovernmentAdminWorkAreaJPanel(userProcessContainer,account,business);
+        return new Govtadmin(userProcessContainer,account,business);
     }
 }

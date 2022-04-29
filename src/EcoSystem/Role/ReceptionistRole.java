@@ -6,6 +6,7 @@ package EcoSystem.Role;
 
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
+import UI.ReceptionRole.ReceptionWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -14,6 +15,6 @@ import javax.swing.JPanel;
  */
 public class ReceptionistRole extends Role {
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new ReceptionAreaJPanel(userProcessContainer, account, business);
+        return new ReceptionWorkArea(userProcessContainer, account, business);
     }
 }

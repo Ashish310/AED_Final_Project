@@ -6,6 +6,7 @@ package EcoSystem.Role;
 
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
+import UI.PharmaAdminRole.PharmaceuticalAdminWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -16,6 +17,6 @@ public class PharmaceuticalAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new PharmaceuticalAdminWorkAreaJPanel(userProcessContainer,account,business);
+        return new PharmaceuticalAdminWorkArea(userProcessContainer,account,business);
     }
 }

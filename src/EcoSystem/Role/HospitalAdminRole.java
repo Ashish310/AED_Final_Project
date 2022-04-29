@@ -6,6 +6,7 @@ package EcoSystem.Role;
 
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
+import UI.HospitalAdmin.HospitalAdminArea;
 import javax.swing.JPanel;
 
 /**
@@ -16,6 +17,6 @@ public class HospitalAdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new HospitalAdminWorkAreaJPanel(userProcessContainer,account,business);
+        return new HospitalAdminArea(userProcessContainer,account,business);
     }
 }

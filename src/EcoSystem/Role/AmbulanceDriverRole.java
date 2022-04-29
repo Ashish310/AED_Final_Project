@@ -7,6 +7,7 @@ package EcoSystem.Role;
 
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
+import UI.AmbulanceRole.AmbulanceWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -16,6 +17,6 @@ import javax.swing.JPanel;
 public class AmbulanceDriverRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new AmbulanceDriverWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
+        return new AmbulanceWorkArea(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
     }
 }

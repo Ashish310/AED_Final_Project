@@ -6,6 +6,7 @@ package EcoSystem.Role;
 
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
+import UI.DoctorRole.DoctorAreaPanel;
 import javax.swing.JPanel;
 
 /**
@@ -14,6 +15,6 @@ import javax.swing.JPanel;
  */
 public class DoctorRole  extends Role{
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new DoctorAreaJPanel(userProcessContainer, account, business);
+        return new DoctorAreaPanel(userProcessContainer, account, business);
     }
 }
