@@ -53,6 +53,7 @@ public class Govtadmin extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         btnManageApprovals = new javax.swing.JButton();
@@ -60,14 +61,19 @@ public class Govtadmin extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(130, 163, 165));
-        setLayout(null);
+        setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Malayalam Sangam MN", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("WELCOME SYSTEM ADMIN");
-        add(jLabel1);
-        jLabel1.setBounds(250, 20, 360, 32);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 57;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
+        add(jLabel1, gridBagConstraints);
 
         btnManageApprovals.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnManageApprovals.setText("Manage approvals");
@@ -76,8 +82,14 @@ public class Govtadmin extends javax.swing.JPanel {
                 btnManageApprovalsActionPerformed(evt);
             }
         });
-        add(btnManageApprovals);
-        btnManageApprovals.setBounds(40, 500, 210, 60);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 45;
+        gridBagConstraints.ipady = 31;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(448, 40, 0, 0);
+        add(btnManageApprovals, gridBagConstraints);
 
         btnViewPatientRecords.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnViewPatientRecords.setText("View Patient Records");
@@ -86,13 +98,27 @@ public class Govtadmin extends javax.swing.JPanel {
                 btnViewPatientRecordsActionPerformed(evt);
             }
         });
-        add(btnViewPatientRecords);
-        btnViewPatientRecords.setBounds(630, 510, 200, 60);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 14;
+        gridBagConstraints.ipady = 31;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(458, 20, 0, 0);
+        add(btnViewPatientRecords, gridBagConstraints);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/GovtAdminRole/govtadmin.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        add(jLabel2);
-        jLabel2.setBounds(-10, 0, 860, 820);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.gridheight = 4;
+        gridBagConstraints.ipadx = -59;
+        gridBagConstraints.ipady = -54;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        add(jLabel2, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageApprovalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageApprovalsActionPerformed

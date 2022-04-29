@@ -69,11 +69,13 @@ public class ManagePorter extends javax.swing.JPanel {
         passwordTextfield = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(166, 203, 230));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("MANAGE DELIVERY MAN");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 83, 819, 48));
 
         tblMenu.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
@@ -101,11 +103,15 @@ public class ManagePorter extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblMenu);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 149, 819, 199));
+
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DeliveryMan Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 380, -1, -1));
 
         staffName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 374, 225, -1));
 
         btnAddItem.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnAddItem.setText("Add Staff");
@@ -114,6 +120,7 @@ public class ManagePorter extends javax.swing.JPanel {
                 btnAddItemActionPerformed(evt);
             }
         });
+        add(btnAddItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 462, 163, 60));
 
         btnBack2.setBackground(new java.awt.Color(255, 255, 255));
         btnBack2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -123,67 +130,17 @@ public class ManagePorter extends javax.swing.JPanel {
                 btnBack2ActionPerformed(evt);
             }
         });
+        add(btnBack2, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 21, 111, 51));
 
         jLabel4.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("DeliveryMan Password");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 420, -1, -1));
 
         passwordTextfield.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         passwordTextfield.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 819, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(210, 210, 210)
-                        .addComponent(jLabel2)
-                        .addGap(17, 17, 17)
-                        .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(jLabel4)
-                        .addGap(11, 11, 11)
-                        .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(329, 329, 329)
-                        .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(154, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(btnBack2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel2))
-                    .addComponent(staffName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel4))
-                    .addComponent(passwordTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(17, 17, 17)
-                .addComponent(btnAddItem, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(178, Short.MAX_VALUE))
-        );
+        add(passwordTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 419, 225, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed

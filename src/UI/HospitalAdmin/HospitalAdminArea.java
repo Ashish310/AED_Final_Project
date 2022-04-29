@@ -57,6 +57,7 @@ public class HospitalAdminArea extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -65,18 +66,32 @@ public class HospitalAdminArea extends javax.swing.JPanel {
         userJButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(166, 203, 230));
-        setLayout(null);
+        setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setFont(new java.awt.Font("Malayalam Sangam MN", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("WELCOME TO ADMIN");
-        add(jLabel1);
-        jLabel1.setBounds(300, 10, 638, 95);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.ipadx = 398;
+        gridBagConstraints.ipady = 63;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 300, 0, 0);
+        add(jLabel1, gridBagConstraints);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/HospitalAdmin/welcomeadmin.png"))); // NOI18N
         jLabel2.setText("jLabel2");
-        add(jLabel2);
-        jLabel2.setBounds(120, 250, 980, 580);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = -59;
+        gridBagConstraints.ipady = -80;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(60, 120, 50, 0);
+        add(jLabel2, gridBagConstraints);
 
         manageOrganizationJButton.setBackground(new java.awt.Color(166, 206, 55));
         manageOrganizationJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -86,8 +101,14 @@ public class HospitalAdminArea extends javax.swing.JPanel {
                 manageOrganizationJButtonActionPerformed(evt);
             }
         });
-        add(manageOrganizationJButton);
-        manageOrganizationJButton.setBounds(120, 130, 270, 60);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 22;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 120, 0, 0);
+        add(manageOrganizationJButton, gridBagConstraints);
 
         manageEmployeeJButton.setBackground(new java.awt.Color(166, 206, 55));
         manageEmployeeJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -97,8 +118,14 @@ public class HospitalAdminArea extends javax.swing.JPanel {
                 manageEmployeeJButtonActionPerformed(evt);
             }
         });
-        add(manageEmployeeJButton);
-        manageEmployeeJButton.setBounds(460, 130, 310, 60);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 4;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 70, 0, 0);
+        add(manageEmployeeJButton, gridBagConstraints);
 
         userJButton.setBackground(new java.awt.Color(166, 206, 55));
         userJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -108,8 +135,15 @@ public class HospitalAdminArea extends javax.swing.JPanel {
                 userJButtonActionPerformed(evt);
             }
         });
-        add(userJButton);
-        userJButton.setBounds(850, 130, 260, 60);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 30;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 80, 0, 147);
+        add(userJButton, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed

@@ -116,7 +116,6 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         btnBack1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(166, 203, 230));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cartScrollPane1.setForeground(new java.awt.Color(255, 153, 51));
 
@@ -146,43 +145,33 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         });
         cartScrollPane1.setViewportView(tblOrderDetails);
 
-        add(cartScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 830, 114));
-
         lblPharmaName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         lblPharmaName.setForeground(new java.awt.Color(255, 255, 255));
         lblPharmaName.setText("Pharmacy Name");
-        add(lblPharmaName, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
 
         pharmaName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         pharmaName.setText("<value>");
-        add(pharmaName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 340, 206, -1));
 
         status.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         status.setText("<value>");
-        add(status, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 390, 206, -1));
 
         lblStatus.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         lblStatus.setForeground(new java.awt.Color(255, 255, 255));
         lblStatus.setText("Status");
-        add(lblStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 390, -1, -1));
 
         lblOrderTotal.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         lblOrderTotal.setForeground(new java.awt.Color(255, 255, 255));
         lblOrderTotal.setText("Total");
-        add(lblOrderTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 440, -1, -1));
 
         totalPrice.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         totalPrice.setText("<value>");
-        add(totalPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 120, -1));
 
         message.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         message.setText("<value>");
-        add(message, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, 258, -1));
 
         lblMessage.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         lblMessage.setForeground(new java.awt.Color(255, 255, 255));
         lblMessage.setText("Message");
-        add(lblMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 490, -1, -1));
 
         acceptOrder.setBackground(new java.awt.Color(166, 206, 55));
         acceptOrder.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -192,7 +181,6 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
                 acceptOrderActionPerformed(evt);
             }
         });
-        add(acceptOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, -1, 49));
 
         declineOrder.setBackground(new java.awt.Color(166, 206, 55));
         declineOrder.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
@@ -207,13 +195,11 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
                 declineOrderActionPerformed(evt);
             }
         });
-        add(declineOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 480, -1, 49));
 
         lblBackButton.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         lblBackButton.setForeground(new java.awt.Color(255, 255, 255));
         lblBackButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblBackButton.setText("ORDER DETAILS");
-        add(lblBackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 830, -1));
 
         btnBack1.setBackground(new java.awt.Color(166, 206, 55));
         btnBack1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
@@ -223,7 +209,76 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
                 btnBack1ActionPerformed(evt);
             }
         });
-        add(btnBack1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 110, 50));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addComponent(cartScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 830, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(lblPharmaName)
+                .addGap(61, 61, 61)
+                .addComponent(pharmaName, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(74, 74, 74)
+                .addComponent(acceptOrder))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(lblStatus)
+                .addGap(73, 73, 73)
+                .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(lblOrderTotal)
+                .addGap(73, 73, 73)
+                .addComponent(totalPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(110, 110, 110)
+                .addComponent(lblMessage)
+                .addGap(59, 59, 59)
+                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(declineOrder))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblBackButton)
+                    .addComponent(btnBack1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(80, 80, 80)
+                .addComponent(cartScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(acceptOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblPharmaName)
+                            .addComponent(pharmaName))))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblStatus)
+                    .addComponent(status))
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblOrderTotal)
+                    .addComponent(totalPrice))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(declineOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMessage)
+                            .addComponent(message)))))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptOrderActionPerformed
