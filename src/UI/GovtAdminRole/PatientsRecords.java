@@ -4,6 +4,22 @@
  */
 package UI.GovtAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Government.Municipality;
+import EcoSystem.Patient.Patient;
+import EcoSystem.Patient.PatientDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import java.awt.CardLayout;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +29,71 @@ public class PatientsRecords extends javax.swing.JPanel {
     /**
      * Creates new form PatientsRecords
      */
-    public PatientsRecords() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    Municipality government;
+    
+    public PatientsRecords(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        government = (Municipality)userAccount;
+        initComponents();
+        populateTable();
+        
+    }
+    
+    private void populateTable() {
+        PatientDirectory patientDirectory = ecosystem.getPatientDirectory();
+        DefaultTableModel model = (DefaultTableModel) tblMenu.getModel();
+       
+        model.setRowCount(0);
+        
+        for (var patient : patientDirectory.getPatientList()) {
+                    Object[] row = new Object[12];
+                    row[0] = patient.getUsername();
+                    row[1] = patient.getPassword();
+                    row[2] = patient.getPhone();
+                    row[3] = patient.getAddress();
+                    row[4] = patient.getHeartRate();
+                    row[5] = patient.getBloodPressure();
+                    row[6] = patient.getAge();
+                    row[7] = patient.getHeight();
+                    row[8] = patient.getWeight();
+                    row[9] = patient.getOxygenlevel();
+                    row[10] = patient.getSeverity();
+                    row[11] = patient.getEmail();
+                    model.addRow(row);
+                
+        }
+    }
+    
+    private void print() {
+        try {
+            Document doc = new Document();
+            PdfWriter.getInstance(doc, new FileOutputStream("/Users/hs_sa/Report.pdf"));
+            doc.open();
+            PdfPTable pdfTable = new PdfPTable(tblMenu.getColumnCount());
+            //adding table headers
+            for (int i = 0; i < tblMenu.getColumnCount(); i++) {
+                pdfTable.addCell(tblMenu.getColumnName(i));
+            }
+            //extracting data from the JTable and inserting it to PdfPTable
+            for (int rows = 0; rows < tblMenu.getRowCount(); rows++) {
+                for (int cols = 0; cols < tblMenu.getColumnCount(); cols++) {
+                    pdfTable.addCell(tblMenu.getModel().getValueAt(rows, cols).toString());
+
+                }
+            }
+            doc.add(pdfTable);
+            doc.close();
+            System.out.println("done");
+        } catch (DocumentException | FileNotFoundException ex) {
+            
+        }
     }
 
     /**
@@ -33,9 +112,21 @@ public class PatientsRecords extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
+        btnback.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnback.setText("BACK");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
+        btngeneratereports.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btngeneratereports.setText("GENERATE REPORTS");
+        btngeneratereports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btngeneratereportsActionPerformed(evt);
+            }
+        });
 
         tblMenu.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
         tblMenu.setModel(new javax.swing.table.DefaultTableModel(
@@ -93,12 +184,29 @@ public class PatientsRecords extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btngeneratereportsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btngeneratereportsActionPerformed
+        // TODO add your handling code here:
+        
+        print();
+       JOptionPane.showMessageDialog(this, "Report generated at Desktop. Please check !");
+    }//GEN-LAST:event_btngeneratereportsActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        
+        Govtadmin adminWorkAreaJPanel = new Govtadmin(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnbackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnback;
     private javax.swing.JButton btngeneratereports;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblMenu;
     // End of variables declaration//GEN-END:variables
 }
+
+
