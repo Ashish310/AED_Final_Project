@@ -6,6 +6,7 @@ package EcoSystem.Role;
 
 import EcoSystem.EcoSystem;
 import EcoSystem.UserAccount.UserAccount;
+import UI.AccountantRole.AccountantWorkArea;
 import javax.swing.JPanel;
 
 /**
@@ -15,6 +16,6 @@ import javax.swing.JPanel;
 public class AccountantRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, EcoSystem business) {
-        return new AccountWorkAreaJPanel(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
+        return new AccountantWorkArea(userProcessContainer,account,business);//To change body of generated methods, choose Tools | Templates.
     }
 }
