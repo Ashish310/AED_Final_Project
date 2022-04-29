@@ -4,6 +4,15 @@
  */
 package UI.PharmacyAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ashishkumar
@@ -13,8 +22,34 @@ public class MedsOrderInfo extends javax.swing.JPanel {
     /**
      * Creates new form MedsOrderInfo
      */
-    public MedsOrderInfo() {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    private List<WorkRequest> workRequestList;
+    public MedsOrderInfo(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        fillRqTable();
+    }
+    
+    public void fillRqTable() {
+        DefaultTableModel model = (DefaultTableModel) tblCustomerOrderStatus.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListRestaurant(userAccount);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblCustomerOrderStatus.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getPharmaceutical();
+            String status = ((WorkRequest) request).getStatus();
+            row[2] = status == null ? "Waiting" : status;
+            String result = ((LabWorkRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+            model.addRow(row);
+        }
+
     }
 
     /**
@@ -105,11 +140,11 @@ public class MedsOrderInfo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-//
-//        PharmacyAdminWorkAreaJPanel pharmacyAdminWorkAreaJPanel = new PharmacyAdminWorkAreaJPanel(userProcessContainer, userAccount, ecosystem);
-//        userProcessContainer.add("PharmacyAdminWorkAreaJPanel", pharmacyAdminWorkAreaJPanel);
-//        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+
+        PharmacyAdminWorkArea pharmacyAdminWorkAreaJPanel = new PharmacyAdminWorkArea(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("PharmacyAdminWorkAreaJPanel", pharmacyAdminWorkAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_backJButtonActionPerformed
 
 
