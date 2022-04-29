@@ -163,10 +163,10 @@ public class ViewOrderInformation extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-//        PharmaceuticalAdminWorkAreaJPanel adminWorkAreaJPanel = new PharmaceuticalAdminWorkAreaJPanel(userProcessContainer,account, ecosystem);
-//        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        PharmaceuticalAdminWorkArea adminWorkAreaJPanel = new PharmaceuticalAdminWorkArea(userProcessContainer,account, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
 
