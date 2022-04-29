@@ -4,6 +4,17 @@
  */
 package UI.PatientRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +24,58 @@ public class AppointmentInfo extends javax.swing.JPanel {
     /**
      * Creates new form AppointmentInfo
      */
-    public AppointmentInfo() {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    private List<WorkRequest> workRequestList;
+    
+    public AppointmentInfo(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount) {
         initComponents();
+        creatingListenerForInfo();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        fillRqTable();
+    }
+    
+    public void fillRqTable() {
+        DefaultTableModel model = (DefaultTableModel) tblCustomerOrderStatus.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListCustomer(userAccount);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblCustomerOrderStatus.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getReception();
+            String status = ((WorkRequest) request).getStatus();
+            row[2] = status == null ? "Waiting" : status;
+            String result = ((LabWorkRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+            row[4] = request.getZoomLink();
+            model.addRow(row);
+        }
+
+    }
+
+    private void creatingListenerForInfo() {
+        tblCustomerOrderStatus.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblCustomerOrderStatus.getSelectedRow();
+                if (selectedRow >= 0) {
+                    WorkRequest request = (WorkRequest) tblCustomerOrderStatus.getValueAt(selectedRow, 0);
+                    if (request instanceof LabWorkRequest) {
+                        LabWorkRequest orderWorkRequest = (LabWorkRequest) tblCustomerOrderStatus.getValueAt(selectedRow, 0);
+                        if (orderWorkRequest != null) {
+                           AppointmentFeedback orderInfoAndFeedbackJPanel = new AppointmentFeedback(userProcessContainer,ecosystem,userAccount,orderWorkRequest);
+                           userProcessContainer.add("OrderInfoAndFeedbackJPanel", orderInfoAndFeedbackJPanel);
+                           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+                           layout.next(userProcessContainer);
+                        }
+                    }
+
+                }
+            }
+        });
     }
 
     /**

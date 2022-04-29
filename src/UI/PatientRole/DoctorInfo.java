@@ -4,6 +4,16 @@
  */
 package UI.PatientRole;
 
+import EcoSystem.Doctor.Doctor;
+import EcoSystem.Doctor.DoctorDirectory;
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,9 +23,37 @@ public class DoctorInfo extends javax.swing.JPanel {
     /**
      * Creates new form DoctorInfo
      */
-    public DoctorInfo() {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    private List<WorkRequest> workRequestList;
+    
+    
+    public DoctorInfo(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.ecosystem = ecosystem;
+        populateTable();
     }
+    
+    private void populateTable() {
+
+            DoctorDirectory doctorDirectory = ecosystem.getDoctorDirectory();
+            DefaultTableModel model = (DefaultTableModel) tblMenu.getModel();
+            
+            model.setRowCount(0);
+            for (Doctor userAccount : doctorDirectory.getDoctorList()) {
+
+                        Object[] row = new Object[5];
+                        row[0] = userAccount.getUsername();
+                        row[1] = userAccount.getDocType();
+                        row[2] = userAccount.getTime();                     
+                        model.addRow(row);
+                    
+            }
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -109,7 +147,7 @@ public class DoctorInfo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-        PatientAreaJPanel patientAreaJPanel = new PatientAreaJPanel(userProcessContainer,userAccount, ecosystem);
+        PatientAreaPanel patientAreaJPanel = new PatientAreaPanel(userProcessContainer,userAccount, ecosystem);
         userProcessContainer.add("PatientAreaJPanel", patientAreaJPanel);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.next(userProcessContainer);

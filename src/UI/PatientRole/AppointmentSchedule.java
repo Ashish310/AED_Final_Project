@@ -4,6 +4,24 @@
  */
 package UI.PatientRole;
 
+import EcoSystem.Account.Account;
+import EcoSystem.Account.AccountDirectory;
+import EcoSystem.Doctor.Doctor;
+import EcoSystem.Doctor.DoctorDirectory;
+import EcoSystem.EcoSystem;
+import EcoSystem.Patient.Patient;
+import EcoSystem.Reception.Reception;
+import EcoSystem.Reception.ReceptionDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Random;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +31,71 @@ public class AppointmentSchedule extends javax.swing.JPanel {
     /**
      * Creates new form AppointmentSchedule
      */
-    public AppointmentSchedule() {
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Patient patient;
+    private DefaultTableModel defaultTableModel;
+    private DefaultTableModel defaultCartTable;
+    private int index = -1;
+    private int row = 0;
+    private int column = 0;
+    private int quantity = 0;
+    private EcoSystem ecosystem;
+    private ReceptionDirectory receptionDirectory;
+    private DoctorDirectory doctorDirectory;
+    private AccountDirectory accountDirectory;
+    private Random r = new Random();
+    
+    public AppointmentSchedule(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.ecosystem = ecosystem;
+        patient = (Patient) account;
+        receptionDirectory = ecosystem.getReceptionDirectory();
+        doctorDirectory = ecosystem.getDoctorDirectory();
+        accountDirectory = ecosystem.getAccountDirectory();
+        fillRstList(doctorDirectory.getDoctorList());
+        fillTimeCombo(doctorDirectory.getDoctorList());
+    }
+    
+    public void fillTimeCombo(ArrayList<Doctor> doctorList) {
+        for (Doctor doctor : doctorList) {
+            timeCombo1.addItem(doctor.getTime());
+        }
+    }
+    
+
+
+    public void fillRstList(ArrayList<Doctor> doctorList) {
+        for (Doctor doctor : doctorList) {
+            rstCombo.addItem(doctor.getName());
+        }
+    }
+    private boolean creatingOrder() {
+            LabWorkRequest orderWorkRequest = new LabWorkRequest();
+            orderWorkRequest.setMessage(txtMessage.getText());
+            if (patient != null) {
+                orderWorkRequest.setPatient(patient);
+            } else {
+                return false;
+            }
+            Reception reception = receptionDirectory.getReceptionList().get(index);
+            Doctor doctor = doctorDirectory.getDoctorList().get(rstCombo.getSelectedIndex());
+            Account account = accountDirectory.getAccountList().get(0);
+            if (reception != null) {
+                orderWorkRequest.setReception(reception);
+                orderWorkRequest.setDoctor(doctor);
+                orderWorkRequest.setAccount(account);
+            } else {
+                return false;
+            }
+            orderWorkRequest.setRequestDate(new Date());
+            orderWorkRequest.setStatus("Request to Hospital");
+            orderWorkRequest.setBill("1200");
+            ecosystem.getWorkQueue().addWorkRequest(orderWorkRequest);
+            return true;
     }
 
     /**
@@ -165,7 +246,7 @@ public class AppointmentSchedule extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         if (creatingOrder()) {
             JOptionPane.showMessageDialog(null, "Appointment Booked");
-            AppointmentInfoJPanel requestLabTestJPanel = new AppointmentInfoJPanel(userProcessContainer, ecosystem, patient);
+            AppointmentInfo requestLabTestJPanel = new AppointmentInfo(userProcessContainer, ecosystem, patient);
             userProcessContainer.add("RequestLabTestJPanel", requestLabTestJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
