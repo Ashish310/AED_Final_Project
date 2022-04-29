@@ -10,6 +10,7 @@ import EcoSystem.Porter.PorterDirectory;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
 import EcoSystem.WorkList.ProductQuantity;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -452,10 +453,10 @@ public class OrderDecision extends javax.swing.JPanel {
     }//GEN-LAST:event_declineOrderActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-//        ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem, userAccount);
-//        userProcessContainer.add("ViewOrderDetails", viewOrderDetails);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        ManageOrders viewOrderDetails = new ManageOrders(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("ViewOrderDetails", viewOrderDetails);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
 
