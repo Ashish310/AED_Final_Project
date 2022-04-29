@@ -30,7 +30,7 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
         this.userAccount = userAccount; 
     }
     private void manageInventory() {
-        CrerateMenuItem createMenuItemJPanel = new CrerateMenuItem(userProcessContainer,userAccount,ecosystem);
+        CreateMenuItem createMenuItemJPanel = new CreateMenuItem(userProcessContainer,userAccount,ecosystem);
         userProcessContainer.add("UpdateRestaurantInfoJPanel",createMenuItemJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -50,7 +50,7 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
     }
     
     private void manageMenu() {
-        CrerateMenuItem createMenuItemJPanel = new CrerateMenuItem(userProcessContainer,userAccount,ecosystem);
+        CreateMenuItem createMenuItemJPanel = new CreateMenuItem(userProcessContainer,userAccount,ecosystem);
         userProcessContainer.add("CreateMenuItemJPanel",createMenuItemJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

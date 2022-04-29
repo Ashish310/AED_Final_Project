@@ -9,7 +9,6 @@ import EcoSystem.WorkList.PharmacyInventory;
 import EcoSystem.Porter.PorterDirectory;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.WorkList.LabWorkRequest;
-import UI.PharmaAdminRole.ViewOrderInformation;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
