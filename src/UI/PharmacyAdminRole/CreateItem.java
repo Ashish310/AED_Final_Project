@@ -4,6 +4,20 @@
  */
 package UI.PharmacyAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Pharmacy.Pharmacy;
+import EcoSystem.Pharmacy.PharmacyInventory;
+import EcoSystem.Pharmacy.PharmacyMedicine;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ashishkumar
@@ -13,8 +27,57 @@ public class CreateItem extends javax.swing.JPanel {
     /**
      * Creates new form CreateItem
      */
-    public CreateItem() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    Pharmacy pharmacy;
+    private DefaultTableModel defaultTableModel;
+    private List<PharmacyInventory> itemQuantityList = new ArrayList<>();
+    public CreateItem(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        initListners();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        defaultTableModel = (DefaultTableModel) tblMenu.getModel();
+        pharmacy = (Pharmacy) userAccount;
+        populateTable(); 
+    }
+    private void populateTable() {
+        PharmacyInventory menu = pharmacy.getMenu();
+        DefaultTableModel model = (DefaultTableModel) tblMenu.getModel();
+        model.setRowCount(0);
+        if(menu != null){
+        for (PharmacyMedicine item : menu.getItemList()) {
+
+            Object[] row = new Object[3];
+            row[0] = item;
+            row[1] = item.getPrice();
+            row[2] = item.getQty();
+            model.addRow(row);
+        }
+        }
+    }
+
+    private void display(PharmacyMedicine item) {
+        itemName.setText(item.getName());
+        itemPrice.setText(String.valueOf(item.getPrice()));
+        itemQty.setText(String.valueOf(item.getQty()));
+
+    }
+    private void initListners() {
+        tblMenu.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblMenu.getSelectedRow();
+                if (selectedRow >= 0) {
+                    PharmacyMedicine item = (PharmacyMedicine) tblMenu.getValueAt(selectedRow, 0);
+                    if (item != null) {
+                        display(item);
+                    }
+                }
+            }
+        });
     }
 
     /**
@@ -188,70 +251,70 @@ public class CreateItem extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
-//        if (itemName.getText().isEmpty() || itemPrice.getText().isEmpty() || itemQty.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "Enter all fields");
-//            return;
-//        }
-//        if(pharmacy.getMenu() != null){
-//            for (PharmacyMedicine item : pharmacy.getMenu().getItemList()) {
-//                if (itemName.getText().equals(item.getName())) {
-//                    JOptionPane.showMessageDialog(null, "Duplicate Items");
-//                    return;
-//                }
-//            }
-//        }
-//        double price = 0.0;
-//        int qty = 0;
-//        try {
-//            price = Double.valueOf(itemPrice.getText());
-//            qty = Integer.valueOf(itemQty.getText());
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Enter a valid number");
-//            return;
-//        }
-//
-//        PharmacyMedicine item = new PharmacyMedicine(itemName.getText(), Double.valueOf(itemPrice.getText()),Integer.valueOf(itemQty.getText()));
-//
-//        if(pharmacy.getMenu() != null){
-//            pharmacy.getMenu().addItem(item);
-//            populateTable();
-//            itemName.setText("");
-//            itemPrice.setText("");
-//            itemQty.setText("");
-//        } else{
-//            PharmacyInventory menu = new PharmacyInventory();
-//            menu.addItem(item);
-//            pharmacy.setMenu(menu);
-//            populateTable();
-//            itemName.setText("");
-//            itemPrice.setText("");
-//            itemQty.setText("");
-//        }
+        if (itemName.getText().isEmpty() || itemPrice.getText().isEmpty() || itemQty.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+            return;
+        }
+        if(pharmacy.getMenu() != null){
+            for (PharmacyMedicine item : pharmacy.getMenu().getItemList()) {
+                if (itemName.getText().equals(item.getName())) {
+                    JOptionPane.showMessageDialog(null, "Duplicate Items");
+                    return;
+                }
+            }
+        }
+        double price = 0.0;
+        int qty = 0;
+        try {
+            price = Double.valueOf(itemPrice.getText());
+            qty = Integer.valueOf(itemQty.getText());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Enter a valid number");
+            return;
+        }
+
+        PharmacyMedicine item = new PharmacyMedicine(itemName.getText(), Double.valueOf(itemPrice.getText()),Integer.valueOf(itemQty.getText()));
+
+        if(pharmacy.getMenu() != null){
+            pharmacy.getMenu().addItem(item);
+            populateTable();
+            itemName.setText("");
+            itemPrice.setText("");
+            itemQty.setText("");
+        } else{
+            PharmacyInventory menu = new PharmacyInventory();
+            menu.addItem(item);
+            pharmacy.setMenu(menu);
+            populateTable();
+            itemName.setText("");
+            itemPrice.setText("");
+            itemQty.setText("");
+        }
     }//GEN-LAST:event_btnAddItemActionPerformed
 
     private void btnUpdateItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateItemActionPerformed
-//        int selectedRow = tblMenu.getSelectedRow();
-//        if (selectedRow >= 0) {
-//
-//            PharmacyMedicine item = (PharmacyMedicine) tblMenu.getValueAt(selectedRow, 0);
-//            item.setName(itemName.getText());
-//            item.setPrice(Double.valueOf(itemPrice.getText()));
-//            item.setQty(Integer.valueOf(itemQty.getText()));
-//            populateTable();
-//            itemName.setText("");
-//            itemPrice.setText("");
-//            itemQty.setText("");
-//
-//        } else {
-//            JOptionPane.showMessageDialog(null,"Pick a row");
-//        }
+        int selectedRow = tblMenu.getSelectedRow();
+        if (selectedRow >= 0) {
+
+            PharmacyMedicine item = (PharmacyMedicine) tblMenu.getValueAt(selectedRow, 0);
+            item.setName(itemName.getText());
+            item.setPrice(Double.valueOf(itemPrice.getText()));
+            item.setQty(Integer.valueOf(itemQty.getText()));
+            populateTable();
+            itemName.setText("");
+            itemPrice.setText("");
+            itemQty.setText("");
+
+        } else {
+            JOptionPane.showMessageDialog(null,"Pick a row");
+        }
     }//GEN-LAST:event_btnUpdateItemActionPerformed
 
     private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-//        PharmacyAdminWorkAreaJPanel adminWorkAreaJPanel = new PharmacyAdminWorkAreaJPanel(userProcessContainer,userAccount, ecosystem);
-//        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        PharmacyAdminWorkArea adminWorkAreaJPanel = new PharmacyAdminWorkArea(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack2ActionPerformed
 
 
