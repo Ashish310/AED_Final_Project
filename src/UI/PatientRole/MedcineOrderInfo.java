@@ -4,6 +4,26 @@
  */
 package UI.PatientRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Patient.Patient;
+import EcoSystem.Pharmacy.Pharmacy;
+import EcoSystem.Pharmacy.PharmacyDirectory;
+import EcoSystem.Pharmacy.PharmacyInventory;
+import EcoSystem.Pharmacy.PharmacyMedicine;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.ProductQuantity;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,9 +33,40 @@ public class MedcineOrderInfo extends javax.swing.JPanel {
     /**
      * Creates new form MedcineOrderInfo
      */
-    public MedcineOrderInfo() {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    private List<WorkRequest> workRequestList;
+    
+    
+    public MedcineOrderInfo(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        fillRqTable();
     }
+    
+    public void fillRqTable() {
+        DefaultTableModel model = (DefaultTableModel) tblCustomerOrderStatus.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListCustomer(userAccount);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblCustomerOrderStatus.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getPharmacy();
+            String status = ((WorkRequest) request).getStatus();
+            row[2] = status == null ? "Waiting" : status;
+            String result = ((LabWorkRequest) request).getTestResult();
+            row[3] = result == null ? "Waiting" : result;
+            model.addRow(row);
+        }
+
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -110,7 +161,7 @@ public class MedcineOrderInfo extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
-        PatientAreaJPanel customerAreaJPanel = new PatientAreaJPanel(userProcessContainer, userAccount, ecosystem);
+        PatientAreaPanel customerAreaJPanel = new PatientAreaPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("DeliveryManWorkAreaJPanel", customerAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

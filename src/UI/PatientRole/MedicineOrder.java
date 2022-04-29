@@ -4,6 +4,25 @@
  */
 package UI.PatientRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Patient.Patient;
+import EcoSystem.Pharmacy.Pharmacy;
+import EcoSystem.Pharmacy.PharmacyDirectory;
+import EcoSystem.Pharmacy.PharmacyInventory;
+import EcoSystem.Pharmacy.PharmacyMedicine;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.ProductQuantity;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +32,144 @@ public class MedicineOrder extends javax.swing.JPanel {
     /**
      * Creates new form MedicineOrder
      */
-    public MedicineOrder() {
+    
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Patient patient;
+    private DefaultTableModel defaultTableModel;
+    private DefaultTableModel defaultCartTable;
+    private int index = -1;
+    private int row = 0;
+    private int column = 0;
+    private int quantity = 0;
+    private EcoSystem ecosystem;
+    private PharmacyDirectory pharmacyDirectory;
+    private List<ProductQuantity> itemQuantityList = new ArrayList<>();
+    
+    
+    public MedicineOrder(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
+        
+        initListners();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.ecosystem = ecosystem;
+        patient = (Patient) account;
+        pharmacyDirectory = ecosystem.getPharmacyDirectory();
+        fillRstList(pharmacyDirectory.getPharmacyList());
+        defaultTableModel = (DefaultTableModel) tblPharmaInventory.getModel();
+        defaultCartTable  = (DefaultTableModel) tblCart.getModel();
+        if(pharmacyDirectory.getPharmacyList().size() > 0){
+            index = 0;
+            populateMenu();
+        }
+        txtMessage1.setEditable(false);
+    }
+    
+    public boolean isItemSelected(PharmacyMedicine pharmacyMedicine) {
+        int nRow = tblPharmaInventory.getRowCount();
+        int count1 = 0;
+        boolean res = true;
+
+ 
+
+        for (int i = 0; i < nRow; i++) {
+            if (null != tblPharmaInventory.getValueAt(i, 2)) {
+                if ((Boolean) tblPharmaInventory.getValueAt(i, 2) == false) {
+                    count1++;
+                }
+            }
+        }
+        if (count1 == nRow) {
+            res = false;
+            JOptionPane.showMessageDialog(null, "Please select an item");
+        }
+        return res;
+    }
+    
+    private void populateMenu() {
+        defaultTableModel.setRowCount(0);
+        Pharmacy pharmacy = pharmacyDirectory.getPharmacyList().get(index);
+        PharmacyInventory pharmacyInventory = pharmacy.getMenu();
+        List<PharmacyMedicine> items = pharmacyInventory.getItemList();
+        for (PharmacyMedicine item : items) {
+            Object[] row = new Object[defaultTableModel.getColumnCount()];
+            row[0] = item;
+            row[1] = item.getPrice();
+            defaultTableModel.addRow(row);
+        }
+    }
+    
+    private void populateCartTable() {
+        double total = 0.0;
+        defaultCartTable.setRowCount(0);
+        for (ProductQuantity itemWithQuantity : itemQuantityList) {
+            Object[] row = new Object[defaultCartTable.getColumnCount()];
+            row[0] = itemWithQuantity;
+            row[1] = itemWithQuantity.getQuantity();
+            row[2] = itemWithQuantity.getItem().getPrice() * itemWithQuantity.getQuantity();
+            total += itemWithQuantity.getItem().getPrice() * itemWithQuantity.getQuantity();
+            defaultCartTable.addRow(row);
+        }
+        txtMessage1.setText(total + "");
+    }
+    
+    private void initListners() {
+        tblPharmaInventory.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblPharmaInventory.getSelectedRow();
+                if (selectedRow >= 0) {
+                    PharmacyMedicine pharmacyMedicine = (PharmacyMedicine) tblPharmaInventory.getValueAt(selectedRow, 0);
+                    if (pharmacyMedicine != null) {
+                        String response = JOptionPane.showInputDialog("Please provide Quantity");
+                        try {
+                            quantity = Integer.parseInt(response);
+                        } catch (NumberFormatException e) {
+
+ 
+
+                        }
+                        if (quantity != 0) {
+                            ProductQuantity itemWithQuantity = new ProductQuantity(pharmacyMedicine, quantity);
+                            itemQuantityList.add(itemWithQuantity);
+                            populateCartTable();
+                        }
+
+ 
+
+                    }
+                }
+            }
+        });
+    }
+
+    public void fillRstList(ArrayList<Pharmacy> pharmacyList) {
+        for (Pharmacy pharmacy : pharmacyList) {
+            rstCombo.addItem(pharmacy.getPharmacyName());
+        }
+    }
+    
+    
+
+    private boolean creatingOrder() {
+            LabWorkRequest orderWorkRequest = new LabWorkRequest();
+            orderWorkRequest.setItemsWithQuatityList(itemQuantityList);
+            orderWorkRequest.setMessage(txtMessage.getText());
+            if (patient != null) {
+                orderWorkRequest.setPatient(patient);
+            } else {
+                return false;
+            }
+            Pharmacy pharmacy = pharmacyDirectory.getPharmacyList().get(rstCombo.getSelectedIndex());         
+            if (pharmacy != null) {
+                orderWorkRequest.setPharmacy(pharmacy);  
+            } else {
+                return false;
+            }
+            orderWorkRequest.setRequestDate(new Date());
+            orderWorkRequest.setStatus("Request to Pharmacy");
+            ecosystem.getWorkQueue().addWorkRequest(orderWorkRequest);
+            return true;
     }
 
     /**
@@ -215,7 +370,7 @@ public class MedicineOrder extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         if (creatingOrder()) {
             JOptionPane.showMessageDialog(null, "Order Placed");
-            MedicineOrderInfoJPanel medicineOrderInfoJPanel = new MedicineOrderInfoJPanel(userProcessContainer, ecosystem, patient);
+            MedcineOrderInfo medicineOrderInfoJPanel = new MedcineOrderInfo(userProcessContainer, ecosystem, patient);
             userProcessContainer.add("RequestLabTestJPanel", medicineOrderInfoJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -229,7 +384,7 @@ public class MedicineOrder extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
-        PatientAreaJPanel customerAreaJPanel = new PatientAreaJPanel(userProcessContainer, userAccount, ecosystem);
+        PatientAreaPanel customerAreaJPanel = new PatientAreaPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("DeliveryManWorkAreaJPanel", customerAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
