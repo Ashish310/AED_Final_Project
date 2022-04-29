@@ -4,6 +4,12 @@
  */
 package UI.PharmaAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Pharmaceutical.Pharmaceutical;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +19,36 @@ public class UpdatePharmaceuticalInformation extends javax.swing.JPanel {
     /**
      * Creates new form UpdatePharmaceuticalInformation
      */
-    public UpdatePharmaceuticalInformation() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    Pharmaceutical pharmaceutical;
+    public UpdatePharmaceuticalInformation(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        pharmaceutical = (Pharmaceutical)userAccount;
+        initComponents();
+        display(pharmaceutical);
+        confirmButton.setVisible(false);
+    }
+    
+    private void display(Pharmaceutical pharmaceutical) {
+        setVisibleEditable(false);
+        restaurantName.setText(pharmaceutical.getPharmaceuticalName());
+        address.setText(pharmaceutical.getAddress()); 
+        contact.setText(pharmaceutical.getContact());
+    }
+    
+    private void setVisibleEditable(boolean value) {
+        restaurantName.setEditable(value);        
+        restaurantName.setEnabled(value);
+        address.setEditable(value);        
+        address.setEnabled(value);
+        contact.setEditable(value);        
+        contact.setEnabled(value);
     }
 
     /**
@@ -36,6 +70,7 @@ public class UpdatePharmaceuticalInformation extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         updateButton = new javax.swing.JButton();
         confirmButton = new javax.swing.JButton();
+        btnBack2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new java.awt.GridBagLayout());
@@ -168,6 +203,16 @@ public class UpdatePharmaceuticalInformation extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(9, 17, 0, 0);
         add(confirmButton, gridBagConstraints);
+
+        btnBack2.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        btnBack2.setText("Back");
+        btnBack2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBack2ActionPerformed(evt);
+            }
+        });
+        add(btnBack2, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
 
     private void restaurantNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restaurantNameActionPerformed
@@ -188,17 +233,25 @@ public class UpdatePharmaceuticalInformation extends javax.swing.JPanel {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
-//        pharmaceutical.setPharmaceuticalName(restaurantName.getText());
-//        setVisibleEditable(false);
-//        pharmaceutical.setAddress(address.getText());
-//        setVisibleEditable(false);
-//        pharmaceutical.setContact(contact.getText());
-//        setVisibleEditable(false);
+        pharmaceutical.setPharmaceuticalName(restaurantName.getText());
+        setVisibleEditable(false);
+        pharmaceutical.setAddress(address.getText());
+        setVisibleEditable(false);
+        pharmaceutical.setContact(contact.getText());
+        setVisibleEditable(false);
     }//GEN-LAST:event_confirmButtonActionPerformed
+
+    private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
+        PharmaceuticalAdminWorkArea adminWorkAreaJPanel = new PharmaceuticalAdminWorkArea(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnBack2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField address;
+    private javax.swing.JButton btnBack2;
     private javax.swing.JButton confirmButton;
     private javax.swing.JTextField contact;
     private javax.swing.JLabel jLabel1;

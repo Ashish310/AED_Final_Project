@@ -4,6 +4,18 @@
  */
 package UI.PharmaAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.UserAccount.UserAccountDirectory;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hs_sa
@@ -13,8 +25,55 @@ public class ViewOrderInformation extends javax.swing.JPanel {
     /**
      * Creates new form ViewOrderInformation
      */
-    public ViewOrderInformation() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccountDirectory userAccountList;
+    private List<WorkRequest> workRequestList;
+    UserAccount account;
+    
+    public ViewOrderInformation(JPanel userProcessContainer,EcoSystem ecosystem, UserAccount account) {
         initComponents();
+        
+        creatingListenerToManageOrder();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.account = account;
+        fillRstReqTable();
+    }
+    
+    private void fillRstReqTable(){
+        DefaultTableModel model = (DefaultTableModel) tblRestaurantWorkRequest.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListPharmaceutical(account);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblRestaurantWorkRequest.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getPharmacy();
+            row[2] = request.getStatus();
+            model.addRow(row);
+        }
+        }
+    
+    private void creatingListenerToManageOrder() {
+        tblRestaurantWorkRequest.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblRestaurantWorkRequest.getSelectedRow();
+                if (selectedRow >= 0) {
+                    WorkRequest request = (WorkRequest) tblRestaurantWorkRequest.getValueAt(selectedRow, 0);
+                    if (request instanceof LabWorkRequest) {
+                        LabWorkRequest orderWorkRequest = (LabWorkRequest) tblRestaurantWorkRequest.getValueAt(selectedRow, 0);
+                        if (orderWorkRequest != null) {
+                           AcceptOrRejectOrder acceptOrderOrNotJPanel = new AcceptOrRejectOrder(userProcessContainer,ecosystem,account,orderWorkRequest);
+                           userProcessContainer.add("AcceptOrderOrNotJPanel", acceptOrderOrNotJPanel);
+                           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+                           layout.next(userProcessContainer);
+                        }
+                    }
+
+                }
+            }
+        });
     }
 
     /**
