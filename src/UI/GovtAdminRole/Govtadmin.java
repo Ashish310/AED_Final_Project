@@ -32,14 +32,14 @@ public class Govtadmin extends javax.swing.JPanel {
     }
     
     private void manageOrders() {
-        ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem,userAccount);
-        userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
+        //ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem,userAccount);
+        //userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }
     
     private void manageInfo() {
-        PatientRecordsJPanel updateRestaurantInfoJPanel = new PatientRecordsJPanel(userProcessContainer,ecosystem, userAccount);
+        PatientsRecords updateRestaurantInfoJPanel = new PatientsRecords(userProcessContainer,ecosystem, userAccount);
         userProcessContainer.add("UpdateRestaurantInfoJPanel",updateRestaurantInfoJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
