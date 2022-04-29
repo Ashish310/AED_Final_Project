@@ -4,6 +4,17 @@
  */
 package UI.PharmacyAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Porter.Porter;
+import EcoSystem.Porter.PorterDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.ProductQuantity;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ashishkumar
@@ -13,8 +24,109 @@ public class OrderDecision extends javax.swing.JPanel {
     /**
      * Creates new form OrderDecision
      */
-    public OrderDecision() {
+    
+    JPanel userProcessContainer;
+    UserAccount userAccount;
+    EcoSystem ecosystem;
+    LabWorkRequest labTestWorkRequest;
+    double total = 0.0;
+    private DefaultTableModel defaultTableModel;
+    private PorterDirectory deliveryManDirectory;
+    private int index = -1;
+    public OrderDecision(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount, LabWorkRequest labTestWorkRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        this.labTestWorkRequest = labTestWorkRequest;
+        defaultTableModel = (DefaultTableModel) tblOrderDetails.getModel();
+        deliveryManDirectory = ecosystem.getDeliveryManDirectory();   
+        fillDelList(deliveryManDirectory.getDeliveryManList());
+        change();
+        display();
+    }
+    
+    private void declineOrder(){
+        labTestWorkRequest.setStatus("Declined");
+        JOptionPane.showMessageDialog(null, "Order has been declined");
+        change();
+        status.setText(labTestWorkRequest.getStatus());
+    }
+    
+    private void change() {
+        switch(labTestWorkRequest.getStatus()){
+            case "Request to Pharmacy" -> {
+                acceptOrder.setText("Accept order");
+                declineOrder.setVisible(true);
+            }
+            case "Preparing" -> {
+                acceptOrder.setText("Ready for delivery");
+                declineOrder.setVisible(false);
+            }
+            default -> {
+                declineOrder.setVisible(false);
+                acceptOrder.setVisible(false);
+            }
+        }
+        fillDelUI();
+    }
+    
+    private void display() {
+        
+        fillDelUI();
+        
+        restaurantName.setText(labTestWorkRequest.getPharmacy().getPharmacyName());
+        status.setText(labTestWorkRequest.getStatus());
+        message.setText(labTestWorkRequest.getMessage());
+        name.setText(labTestWorkRequest.getPatient().getName());
+        address.setText(labTestWorkRequest.getPatient().getAddress());
+
+        defaultTableModel.setRowCount(0);
+        for (ProductQuantity itemWithQuantity : labTestWorkRequest.getItemsWithQuatityList()) {
+            Object[] row = new Object[defaultTableModel.getColumnCount()];
+            row[0] = itemWithQuantity;
+            row[1] = itemWithQuantity.getQuantity();
+            row[2] = itemWithQuantity.getItem().getPrice() * itemWithQuantity.getQuantity();
+            total += itemWithQuantity.getItem().getPrice() * itemWithQuantity.getQuantity();
+            defaultTableModel.addRow(row);
+        }
+        totalPrice.setText(total + "");
+
+    }
+
+    private void fillDelUI() {
+        if(labTestWorkRequest.getDeliverMan() == null && !("Request to Pharmacy".equalsIgnoreCase(labTestWorkRequest.getStatus()) || "declined".equalsIgnoreCase(labTestWorkRequest.getStatus()))){
+            assignDeliveryPersonLabel.setVisible(true);
+            assignDeliveryPerson.setVisible(true);
+            deliveryManNameValue.setVisible(false);
+            jButtonAddDeliveryMan.setVisible(true);
+            deliveryManLabel.setVisible(false);
+        }
+        else{
+            jButtonAddDeliveryMan.setVisible(false);
+            assignDeliveryPersonLabel.setVisible(false);
+            assignDeliveryPerson.setVisible(false);
+            deliveryManNameValue.setVisible(true);
+            deliveryManLabel.setVisible(true);
+             
+            if(labTestWorkRequest.getDeliverMan() != null){
+                deliveryManNameValue.setText(labTestWorkRequest.getDeliverMan().getDeliveryManName());
+            }else{
+              deliveryManNameValue.setText("Not Assigned");  
+            }
+        }
+    }
+    
+    public void fillDelList(ArrayList<Porter> deliveryManList) {
+        if(labTestWorkRequest.getDeliverMan() == null) {
+            assignDeliveryPerson.setVisible(true);
+            for (Porter deliveryMan : deliveryManList) {
+                assignDeliveryPerson.addItem(deliveryMan.getDeliveryManName());
+            }
+        }
+        else {
+            assignDeliveryPerson.setVisible(false);
+        } 
     }
 
     /**
