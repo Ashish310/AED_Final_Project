@@ -4,6 +4,14 @@
  */
 package UI.PharmacyAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Porter.Porter;
+import EcoSystem.Porter.PorterDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.UserAccount.UserAccountDirectory;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ashishkumar
@@ -13,8 +21,32 @@ public class ManagePorter extends javax.swing.JPanel {
     /**
      * Creates new form ManagePorter
      */
-    public ManagePorter() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccountDirectory userAccountDirectory;
+    UserAccount userAccount;
+    public ManagePorter(JPanel userProcessContainer,EcoSystem ecosystem,UserAccount userAccount) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        populateTable();
+    }
+    
+    private void populateTable() {
+        PorterDirectory deliveryManDirectory = ecosystem.getDeliveryManDirectory();
+        DefaultTableModel model = (DefaultTableModel) tblMenu.getModel();
+       
+        model.setRowCount(0);
+        
+        for (Porter deliveryMan : deliveryManDirectory.getDeliveryManList()) {
+                    Object[] row = new Object[4];
+                    row[0] = deliveryMan.getUsername();
+                    row[1] = deliveryMan.getPassword();
+                    model.addRow(row);
+                
+        }
     }
 
     /**
