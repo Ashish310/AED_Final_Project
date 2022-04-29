@@ -9,19 +9,21 @@ import DisasterMgmtSystem.DisasterMgmtSystem;
 import DisasterMgmtSystem.Enterprise.Enterprise;
 import DisasterMgmtSystem.Network.Network;
 import DisasterMgmtSystem.Organizations.Organization;
+import UserInterface.AppAdminArea.AppAdminWorkArea;
 import javax.swing.JPanel;
 
 /**
  *
- * @author shriyadikshith
+ * @author hs_sa
  */
-public class PoliceAdmin extends Roles {
-    
+public class ApplicationAdministrator extends Roles
+{
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, 
             AppUserAccount account, 
             DisasterMgmtSystem system, Organization org,Enterprise enterprise, Network network) {
-       return new PoliceWorkArea(userProcessContainer,account, system, network, enterprise);
+        return new AppAdminWorkArea(userProcessContainer,account, system, org, enterprise);
     }
     
 }

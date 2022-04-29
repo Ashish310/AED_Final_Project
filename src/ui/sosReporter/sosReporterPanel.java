@@ -4,7 +4,7 @@
  */
 package ui.sosReporter;
 
-import DisasterManagementSystem.Network.Network;
+import DisasterMgmtSystem.Network.Network;
 import DisasterMgmtSystem.AppUserAccount.AppUserAccount;
 import DisasterMgmtSystem.DisasterMgmtSystem;
 import DisasterMgmtSystem.Emergencies.Emergency;

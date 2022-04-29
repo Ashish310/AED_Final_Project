@@ -5,6 +5,7 @@
 package DisasterMgmtSystem.AppUserAccount;
 
 import DisasterMgmtSystem.Employement.Employee;
+import DisasterMgmtSystem.Roles.Roles;
 import DisasterMgmtSystem.SOSWaitList.SOSWaitList;
 import javax.management.relation.Role;
 
@@ -16,7 +17,7 @@ public class AppUserAccount {
     private String username;
     private String password;
     private Employee employee;
-    private Role role;
+    private Roles role;
     private SOSWaitList waitList;
 
     public AppUserAccount() {
@@ -41,7 +42,7 @@ public class AppUserAccount {
         this.password = password;
     }
 
-    public Role getRole() {
+    public Roles getRole() {
         return role;
     }
 
@@ -49,7 +50,7 @@ public class AppUserAccount {
         this.employee = employee;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Roles role) {
         this.role = role;
     }
 

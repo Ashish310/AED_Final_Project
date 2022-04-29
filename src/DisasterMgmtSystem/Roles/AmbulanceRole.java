@@ -13,15 +13,17 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author shriyadikshith
+ * @author hs_sa
  */
-public class PoliceAdmin extends Roles {
+public class AmbulanceRole extends Roles{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, 
             AppUserAccount account, 
-            DisasterMgmtSystem system, Organization org,Enterprise enterprise, Network network) {
-       return new PoliceWorkArea(userProcessContainer,account, system, network, enterprise);
+            DisasterMgmtSystem system, Organization org, Enterprise enterprise, Network network) {
+     
+        return new AmbulanceAdminWorkAreaPanel(userProcessContainer,account,system,org,network,enterprise);
+        
     }
     
 }

@@ -9,19 +9,17 @@ import DisasterMgmtSystem.DisasterMgmtSystem;
 import DisasterMgmtSystem.Enterprise.Enterprise;
 import DisasterMgmtSystem.Network.Network;
 import DisasterMgmtSystem.Organizations.Organization;
+import UserInterface.SOSPanel;
 import javax.swing.JPanel;
 
 /**
  *
- * @author shriyadikshith
+ * @author hs_sa
  */
-public class PoliceAdmin extends Roles {
+public class DisasterReporter extends Roles{
     
-    @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, 
-            AppUserAccount account, 
-            DisasterMgmtSystem system, Organization org,Enterprise enterprise, Network network) {
-       return new PoliceWorkArea(userProcessContainer,account, system, network, enterprise);
+    public JPanel createWorkArea(JPanel userProcessContainer, AppUserAccount account, DisasterMgmtSystem system, Organization org, Enterprise ep, Network nw) {
+        return new SOSPanel(userProcessContainer, system);
     }
     
 }

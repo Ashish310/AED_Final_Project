@@ -16,16 +16,7 @@ import javax.swing.JPanel;
  * @author shriyadikshith
  */
 public abstract class Roles {
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
-            AppUserAccount AppUserAccount, 
-            DisasterMgmtSystem system, Organization org,Enterprise enterprise, Network network);
-
-    @Override
-    public String toString() {
-        return this.getClass().getName();
-    }
-    
-public enum RoleType{
+    public enum RoleType{
         
         DOCTOR("Doctor"),
         AMBULANCE("Ambulance"),
@@ -50,5 +41,18 @@ public enum RoleType{
             return value;
         }
     }
+    
+    
+
+
+public abstract JPanel createWorkArea(JPanel userProcessContainer, 
+            AppUserAccount AppUserAccount, 
+            DisasterMgmtSystem system, Organization org,Enterprise enterprise, Network network);
+
+    @Override
+    public String toString() {
+        return this.getClass().getName();
+    }
+    
     
 }

@@ -4,7 +4,7 @@
  */
 package DisasterMgmtSystem;
 
-import DisasterManagementSystem.Network.Network;
+import DisasterMgmtSystem.Network.Network;
 import DisasterMgmtSystem.Emergencies.EmergencyDirectory;
 import DisasterMgmtSystem.EmergencyLocation.EmergencyLocationDirectory;
 import DisasterMgmtSystem.Enterprise.Enterprise;

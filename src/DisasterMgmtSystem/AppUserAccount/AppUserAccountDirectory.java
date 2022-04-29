@@ -5,6 +5,7 @@
 package DisasterMgmtSystem.AppUserAccount;
 
 import DisasterMgmtSystem.Employement.Employee;
+import DisasterMgmtSystem.Roles.Roles;
 import java.util.ArrayList;
 import javax.management.relation.Role;
 
@@ -31,7 +32,7 @@ public class AppUserAccountDirectory {
         return null;
     }
     
-    public AppUserAccount createUserAccount(String username, String password, Employee employee, Role role){
+    public AppUserAccount createUserAccount(String username, String password, Employee employee, Roles role){
         AppUserAccount userAccount = new AppUserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);

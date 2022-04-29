@@ -4,7 +4,12 @@
  */
 package DisasterMgmtSystem;
 
+import DisasterMgmtSystem.AppUserAccount.AppUserAccount;
 import DisasterMgmtSystem.EmergencyLocation.EmergencyLocation;
+import DisasterMgmtSystem.Employement.Employee;
+import DisasterMgmtSystem.Roles.ApplicationAdministrator;
+import DisasterMgmtSystem.Roles.DisasterReporter;
+import UserInterface.AppAdminArea.AppAdminWorkArea;
 
 /**
  *
@@ -14,6 +19,18 @@ public class SystemConfig {
     
     public static DisasterMgmtSystem config()
     {
+        
+        DisasterMgmtSystem system = DisasterMgmtSystem.getInstance();
+        
+        Employee reporter = new Employee("Reporter");
+        system.getEmployeeDirectory().createEmployee(reporter);
+        AppUserAccount reporterUa = system.getUserAccountDirectory().createUserAccount("reporter", "reporter", reporter, new DisasterReporter());
+        
+        Employee sysadmin=new Employee();
+        sysadmin.setName("System Admin");
+        system.getEmployeeDirectory().createEmployee(sysadmin);
+        AppUserAccount esadmin_ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", sysadmin, new ApplicationAdministrator());
+        
         DisasterMgmtSystem disasterSystem = DisasterMgmtSystem.getInstance();
         EmergencyLocation el1 = disasterSystem.getDirectory().addEmergencyLocation();
         el1.setAddress("25 S Huntington Ave, Boston, MA 020120");

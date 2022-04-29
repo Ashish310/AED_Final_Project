@@ -61,7 +61,26 @@ public class Organization {
         return employeeDirectory;
     }
     
-    
+    public String getName() {
+        return name;
+    }
+
+    public SOSWaitList getWorkQueue() {
+        return SOSWaitList;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setWorkQueue(SOSWaitList workQueue) {
+        this.SOSWaitList = workQueue;
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
     
 
     

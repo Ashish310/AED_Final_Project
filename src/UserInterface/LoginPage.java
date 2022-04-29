@@ -4,7 +4,13 @@
  */
 package UserInterface;
 
+import DisasterMgmtSystem.AppUserAccount.AppUserAccount;
 import DisasterMgmtSystem.DisasterMgmtSystem;
+import DisasterMgmtSystem.Enterprise.Enterprise;
+import DisasterMgmtSystem.Network.Network;
+import DisasterMgmtSystem.Organizations.Organization;
+import Utilities.MainJFrameUtilities;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -18,11 +24,18 @@ public class LoginPage extends javax.swing.JPanel {
      */
     private JPanel workArea;
     private DisasterMgmtSystem system;
+    private JPanel mainWorkArea;   
+    AppUserAccount userAccount;
+    Enterprise userEnterprise = null;
+    Organization userOrganization = null;
+    Network userNetwork=null;
+    
     public LoginPage(JPanel mainPanelArea, DisasterMgmtSystem disasterSystem) {
         
         initComponents();
-        this.system = disasterSystem; 
-        this.workArea = mainPanelArea;
+        setSize(1600, 1000);    
+        this.mainWorkArea = mainPanelArea;
+        this.system = disasterSystem;
     }
 
     /**
@@ -36,10 +49,10 @@ public class LoginPage extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         lblPassword = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JTextField();
-        lblUsername1 = new javax.swing.JLabel();
-        txtUsername1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        lblUsername = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        btnLogin = new javax.swing.JButton();
+        txtPassword = new javax.swing.JPasswordField();
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("LOGIN PAGE");
@@ -47,26 +60,20 @@ public class LoginPage extends javax.swing.JPanel {
         lblPassword.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPassword.setText("Password");
 
-        txtPassword.addActionListener(new java.awt.event.ActionListener() {
+        lblUsername.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblUsername.setText("Username");
+
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtPasswordActionPerformed(evt);
+                txtUsernameActionPerformed(evt);
             }
         });
 
-        lblUsername1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblUsername1.setText("Username");
-
-        txtUsername1.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnLogin.setText("Login");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUsername1ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Login");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -85,16 +92,16 @@ public class LoginPage extends javax.swing.JPanel {
                         .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                            .addComponent(txtUsername1)))
+                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                            .addComponent(txtPassword)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(290, 290, 290)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(195, 195, 195)
-                    .addComponent(lblUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(515, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -103,41 +110,88 @@ public class LoginPage extends javax.swing.JPanel {
                 .addGap(71, 71, 71)
                 .addComponent(jLabel1)
                 .addGap(94, 94, 94)
-                .addComponent(txtUsername1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblPassword)
                     .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(70, 70, 70)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(349, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(199, 199, 199)
-                    .addComponent(lblUsername1)
+                    .addComponent(lblUsername)
                     .addContainerGap(576, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPasswordActionPerformed
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtPasswordActionPerformed
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
-    private void txtUsername1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsername1ActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUsername1ActionPerformed
+        
+        String userName = txtUsername.getText();
+        String password = String.valueOf(txtPassword.getPassword());
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        // check for sysadmin user account
+        userAccount = system.getUserAccountDirectory().authenticateUser(userName, password);
+        userEnterprise = null;
+        userOrganization = null;
+        userNetwork = null;
+        if (userAccount == null) {
+            for (Network network : system.getNetworkList()) {
+                // check against each enterprise
+                for (Enterprise enterprise : network.getEntDirObj().getEnterpriseList()) {
+                    userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                    if (userAccount == null) {
+                        // check against each organization for each enterprise
+                        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                            userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
+                            if (userAccount != null) {
+                                userEnterprise = enterprise;
+                                userOrganization = organization;
+                                userNetwork = network;
+                                break;
+                            }
+                        }
+
+                    } else {
+                        userEnterprise = enterprise;
+                        break;
+                    }
+                    if (userOrganization != null) {
+                        break;
+                    }
+                }
+                if (userEnterprise != null) {
+                    break;
+                }
+            }
+        }
+        
+        if (userAccount == null) {
+            if(system.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){ //checks if a user exists or not returns true if not exists
+                JOptionPane.showMessageDialog(null, "User not Found!");
+                return;
+            }
+            JOptionPane.showMessageDialog(null, "Password is incorrect! Please check your password.");
+            return;
+        }
+        
+        MainJFrameUtilities.redirect(userAccount.getRole().createWorkArea(mainWorkArea, userAccount, system, userOrganization, userEnterprise, userNetwork),
+                userAccount.getRole().toString()+ "WorkArea");
+    }//GEN-LAST:event_btnLoginActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblUsername1;
-    private javax.swing.JTextField txtPassword;
-    private javax.swing.JTextField txtUsername1;
+    private javax.swing.JLabel lblUsername;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }
