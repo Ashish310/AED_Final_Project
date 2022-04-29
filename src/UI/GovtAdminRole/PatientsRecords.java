@@ -74,7 +74,7 @@ public class PatientsRecords extends javax.swing.JPanel {
     private void print() {
         try {
             Document doc = new Document();
-            PdfWriter.getInstance(doc, new FileOutputStream("/Users/hs_sa/Report.pdf"));
+            PdfWriter.getInstance(doc, new FileOutputStream("/Users/ashishkumar/Desktop/Report.pdf"));
             doc.open();
             PdfPTable pdfTable = new PdfPTable(tblMenu.getColumnCount());
             //adding table headers
