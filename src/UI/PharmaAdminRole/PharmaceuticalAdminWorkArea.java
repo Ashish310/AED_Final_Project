@@ -160,19 +160,19 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void manageOrganizationJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButtonActionPerformed
-        //manageOrders();
+        manageOrders();
     }//GEN-LAST:event_manageOrganizationJButtonActionPerformed
 
     private void manageOrganizationJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageOrganizationJButton1ActionPerformed
-        //manageInventory();
+        manageInventory();
     }//GEN-LAST:event_manageOrganizationJButton1ActionPerformed
 
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
-        //manageInfo();
+        manageInfo();
     }//GEN-LAST:event_userJButtonActionPerformed
 
     private void userJButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButton1ActionPerformed
-        //manageCDCApproval();
+        manageCDCApproval();
     }//GEN-LAST:event_userJButton1ActionPerformed
 
 
