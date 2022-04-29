@@ -4,18 +4,63 @@
  */
 package UI.GovtAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.MedicalInformation.MedicalInformation;
+import EcoSystem.MedicalInformation.MedicalInformationDirectory;
+import EcoSystem.Porter.PorterDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shriyadikshith
  */
 public class AcceptOrderPanel extends javax.swing.JPanel {
+    JPanel userProcessContainer;
+    UserAccount userAccount;
+    EcoSystem ecosystem;
+    LabWorkRequest labTestWorkRequest;
+    double total = 0.0;
+    private PorterDirectory deliveryManDirectory;
+    private MedicalInformationDirectory medInfoDirectory;
+    private int index = -1;
 
     /**
      * Creates new form AcceptOrderPanel
      */
-    public AcceptOrderPanel() {
+    public AcceptOrderPanel(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount, LabWorkRequest labTestWorkRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        this.labTestWorkRequest = labTestWorkRequest;
+        deliveryManDirectory = ecosystem.getDeliveryManDirectory();  
+        medInfoDirectory = ecosystem.getMedInfoDirectory();       
+        change();        
+        display();
     }
+
+
+    private void display() {
+
+        MedicalInformation medInfo = labTestWorkRequest.getMedInfoList().get(labTestWorkRequest.getMedInfoList().size()-1);
+        medicine.setText(labTestWorkRequest.getPharmaceutical().getPharmaceuticalName());
+        medicine2.setText(medInfo.getDosage());
+        medicine3.setText(medInfo.getName());
+        medicine4.setText(medInfo.getContraIndications());
+        medicine5.setText(medInfo.getPrecautions());
+        medicine6.setText(medInfo.getReactions());
+        medicine7.setText(medInfo.getDescription());
+        medicine8.setText(medInfo.getPharmacology());
+        status.setText(labTestWorkRequest.getStatus());
+
+
+
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -28,25 +73,27 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
 
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel4 = new javax.swing.JLabel();
-        restaurantName = new javax.swing.JLabel();
+        medicine = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        restaurantName1 = new javax.swing.JLabel();
+        medicine2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        restaurantName2 = new javax.swing.JLabel();
+        medicine3 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        restaurantName3 = new javax.swing.JLabel();
+        medicine4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        restaurantName4 = new javax.swing.JLabel();
+        medicine5 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        restaurantName5 = new javax.swing.JLabel();
+        medicine6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        restaurantName6 = new javax.swing.JLabel();
+        medicine7 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        restaurantName7 = new javax.swing.JLabel();
+        medicine8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnback = new javax.swing.JButton();
         btndecline = new javax.swing.JButton();
         btnaccept = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        status = new javax.swing.JLabel();
 
         jToggleButton1.setText("jToggleButton1");
 
@@ -56,57 +103,57 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Pharmaceutical Name");
 
-        restaurantName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName.setText("<value>");
+        medicine.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine.setText("<value>");
 
         jLabel5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Dosage & Administration");
 
-        restaurantName1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName1.setText("<value>");
+        medicine2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine2.setText("<value>");
 
         jLabel6.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("   Medicine Name");
 
-        restaurantName2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName2.setText("<value>");
+        medicine3.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine3.setText("<value>");
 
         jLabel7.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Contraindications");
 
-        restaurantName3.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName3.setText("<value>");
+        medicine4.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine4.setText("<value>");
 
         jLabel8.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText(" Warnings & Precautions");
 
-        restaurantName4.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName4.setText("<value>");
+        medicine5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine5.setText("<value>");
 
         jLabel9.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Adverse Reactions");
 
-        restaurantName5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName5.setText("<value>");
+        medicine6.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine6.setText("<value>");
 
         jLabel10.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText(" Drug Description");
 
-        restaurantName6.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName6.setText("<value>");
+        medicine7.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine7.setText("<value>");
 
         jLabel11.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Clinical Pharmacology");
 
-        restaurantName7.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
-        restaurantName7.setText("<value>");
+        medicine8.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        medicine8.setText("<value>");
 
         jLabel1.setFont(new java.awt.Font("Malayalam Sangam MN", 3, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -114,6 +161,11 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
 
         btnback.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnback.setText("BACK");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
         btndecline.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btndecline.setText("DECLINE");
@@ -126,6 +178,13 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel12.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Status");
+
+        status.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
+        status.setText("<value>");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,30 +195,33 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(228, 228, 228)
-                        .addComponent(restaurantName6, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(medicine7, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addGap(221, 221, 221)
-                        .addComponent(restaurantName5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(medicine6, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(166, 166, 166)
-                        .addComponent(restaurantName4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(medicine5, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(229, 229, 229)
-                        .addComponent(restaurantName3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(medicine4, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel11)
-                            .addComponent(btnaccept, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnaccept, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(187, 187, 187)
-                                .addComponent(restaurantName7, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(108, 108, 108)
-                                .addComponent(btndecline, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(btndecline, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(187, 187, 187)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(status, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(medicine8, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(btnback, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -172,12 +234,12 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
                         .addComponent(jLabel6)
                         .addGap(234, 234, 234)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(restaurantName1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(restaurantName2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(medicine2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(medicine3, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(193, 193, 193)
-                        .addComponent(restaurantName, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(medicine, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel5)))
         );
         layout.setVerticalGroup(
@@ -192,13 +254,13 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(1, 1, 1)
-                        .addComponent(restaurantName)))
+                        .addComponent(medicine)))
                 .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(restaurantName1)
+                        .addComponent(medicine2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(restaurantName2)
+                        .addComponent(medicine3)
                         .addGap(18, 18, 18))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel5)
@@ -207,24 +269,28 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(restaurantName3))
+                    .addComponent(medicine4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(restaurantName4)
+                    .addComponent(medicine5)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(restaurantName5)
+                    .addComponent(medicine6)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(restaurantName6)
+                    .addComponent(medicine7)
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(restaurantName7)
+                    .addComponent(medicine8)
                     .addComponent(jLabel11))
-                .addGap(61, 61, 61)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel12)
+                    .addComponent(status))
+                .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnaccept, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btndecline, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -232,9 +298,53 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void btnacceptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnacceptActionPerformed
         // TODO add your handling code here:
+        
+        if (labTestWorkRequest.getStatus().equals("Request to CDC")) {
+            labTestWorkRequest.setStatus("Request Accepted"); 
+            JOptionPane.showMessageDialog(null, " Request Accepted");
+        }
+        else if(labTestWorkRequest.getStatus().equals("Request Accepted")) {
+            labTestWorkRequest.setStatus("Request Approved");
+            if(labTestWorkRequest.getDeliverMan() == null){
+                JOptionPane.showMessageDialog(null, "Request Approved");
+            }
+        }
+        else {  
+            btnaccept.setVisible(false);
+        }
+        change();
+        status.setText(labTestWorkRequest.getStatus());
     }//GEN-LAST:event_btnacceptActionPerformed
+
+     private void change() {
+        switch(labTestWorkRequest.getStatus()){
+            case "Request to CDC" -> {
+                btnaccept.setText("Accept request");
+                btndecline.setVisible(true);
+            }
+            case "Request Accepted" -> {
+                btnaccept.setText("Approve request");
+                btndecline.setVisible(false);
+            }
+            default -> {
+                btndecline.setVisible(false);
+                btnaccept.setVisible(false);
+            }
+        }
+        
+    }
+       
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("ViewOrderDetails", viewOrderDetails);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnbackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -244,6 +354,7 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -251,13 +362,14 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel restaurantName;
-    private javax.swing.JLabel restaurantName1;
-    private javax.swing.JLabel restaurantName2;
-    private javax.swing.JLabel restaurantName3;
-    private javax.swing.JLabel restaurantName4;
-    private javax.swing.JLabel restaurantName5;
-    private javax.swing.JLabel restaurantName6;
-    private javax.swing.JLabel restaurantName7;
+    private javax.swing.JLabel medicine;
+    private javax.swing.JLabel medicine2;
+    private javax.swing.JLabel medicine3;
+    private javax.swing.JLabel medicine4;
+    private javax.swing.JLabel medicine5;
+    private javax.swing.JLabel medicine6;
+    private javax.swing.JLabel medicine7;
+    private javax.swing.JLabel medicine8;
+    private javax.swing.JLabel status;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,7 +13,7 @@ import java.util.UUID;
  *
  * @author ashishkumar
  */
-public class LabWorkRequest {
+public class LabWorkRequest extends WorkRequest {
     private String id;
     
     private List<ProductQuantity> itemsWithQuatityList = new ArrayList<ProductQuantity>();

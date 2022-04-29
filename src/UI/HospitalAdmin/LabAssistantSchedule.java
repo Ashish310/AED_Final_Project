@@ -4,17 +4,62 @@
  */
 package UI.HospitalAdmin;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Hospital.HospitalAdmin;
+import EcoSystem.LabAssistant.LabAssistant;
+import EcoSystem.LabAssistant.LabAssistantDirectory;
+import EcoSystem.Patient.Patient;
+import EcoSystem.Patient.PatientDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import java.util.ArrayList;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
+
 /**
  *
  * @author shriyadikshith
  */
 public class LabAssistantSchedule extends javax.swing.JPanel {
 
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private HospitalAdmin hospitalAdmin;
+    private DefaultTableModel defaultTableModel;
+    private DefaultTableModel defaultCartTable;
+    private int index = -1;
+    private int row = 0;
+    private int column = 0;
+    private int quantity = 0;
+    private EcoSystem ecosystem;
+    private LabAssistantDirectory labAssistantDirectory;
+    private PatientDirectory patientDirectory;
     /**
      * Creates new form LaAssistantSchedule
      */
-    public LabAssistantSchedule() {
+    public LabAssistantSchedule(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.ecosystem = ecosystem;
+        hospitalAdmin = (HospitalAdmin) account;
+        labAssistantDirectory = ecosystem.getLabAssistantDirectory();
+        patientDirectory = ecosystem.getPatientDirectory();
+        
+        fillRstList(labAssistantDirectory.getLabAssistantNameList());
+        fillRstPatient(patientDirectory.getPatientList());
+    }
+    
+    public void fillRstList(ArrayList<LabAssistant> labAssistantslist) {
+        for (LabAssistant labAssistant : labAssistantslist) {
+            comboLab.addItem(labAssistant.getLabAssistantName());
+        }
+    }
+    
+    public void fillRstPatient(ArrayList<Patient> patientList){
+        for(Patient p : patientList){
+            comboPatient.addItem(p.getName());
+        }
     }
 
     /**
@@ -32,8 +77,8 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
         enterpriseLabel2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboLab = new javax.swing.JComboBox<>();
+        comboPatient = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
@@ -67,13 +112,13 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
         add(jTextField1);
         jTextField1.setBounds(370, 220, 146, 26);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1);
-        jComboBox1.setBounds(370, 140, 146, 27);
+        comboLab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(comboLab);
+        comboLab.setBounds(370, 140, 146, 27);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox2);
-        jComboBox2.setBounds(370, 180, 146, 27);
+        comboPatient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        add(comboPatient);
+        comboPatient.setBounds(370, 180, 146, 27);
 
         jButton2.setText("BOOK AN APPOINTMENT");
         add(jButton2);
@@ -86,12 +131,12 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboLab;
+    private javax.swing.JComboBox<String> comboPatient;
     private javax.swing.JLabel enterpriseLabel1;
     private javax.swing.JLabel enterpriseLabel2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

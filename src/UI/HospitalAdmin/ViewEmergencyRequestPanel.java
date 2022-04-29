@@ -4,19 +4,73 @@
  */
 package UI.HospitalAdmin;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.UserAccount.UserAccountDirectory;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
  */
 public class ViewEmergencyRequestPanel extends javax.swing.JPanel {
-
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccountDirectory userAccountList;
+    private List<WorkRequest> workRequestList;
+    UserAccount account;
     /**
      * Creates new form ViewEmergencyRequestPanel
      */
-    public ViewEmergencyRequestPanel() {
+    public ViewEmergencyRequestPanel(JPanel userProcessContainer,EcoSystem ecosystem, UserAccount account) {
         initComponents();
+        creatingListenerToManageOrder();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.account = account;
+        fillRstReqTable();
     }
 
+    private void fillRstReqTable(){
+        DefaultTableModel model = (DefaultTableModel) tblRestaurantWorkRequest.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListHosAdmin(account);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblRestaurantWorkRequest.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getPatient();
+            row[2] = request.getStatus();
+            model.addRow(row);
+        }
+        }
+    
+        private void creatingListenerToManageOrder() {
+        tblRestaurantWorkRequest.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblRestaurantWorkRequest.getSelectedRow();
+                if (selectedRow >= 0) {
+                    WorkRequest request = (WorkRequest) tblRestaurantWorkRequest.getValueAt(selectedRow, 0);
+                    if (request instanceof LabWorkRequest) {
+                        LabWorkRequest orderWorkRequest = (LabWorkRequest) tblRestaurantWorkRequest.getValueAt(selectedRow, 0);
+                        if (orderWorkRequest != null) {
+                           AcceptEmergencyRequest acceptEmergencyRequestJPanel = new AcceptEmergencyRequest(userProcessContainer,ecosystem,account,orderWorkRequest);
+                           userProcessContainer.add("AcceptOrderOrNotJPanel", acceptEmergencyRequestJPanel);
+                           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+                           layout.next(userProcessContainer);
+                        }
+                    }
+
+                }
+            }
+        });
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,6 +90,11 @@ public class ViewEmergencyRequestPanel extends javax.swing.JPanel {
         setLayout(null);
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1);
         jButton1.setBounds(30, 20, 145, 49);
 
@@ -81,13 +140,20 @@ public class ViewEmergencyRequestPanel extends javax.swing.JPanel {
         jLabel2.setBounds(160, 270, 791, 506);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         HospitalAdminArea adminWorkAreaJPanel = new HospitalAdminArea(userProcessContainer,account, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblRestaurantWorkRequest;
     // End of variables declaration//GEN-END:variables
 }

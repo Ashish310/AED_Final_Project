@@ -4,19 +4,51 @@
  */
 package UI.HospitalAdmin;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shriyadikshith
  */
 public class HospitalAdminArea extends javax.swing.JPanel {
-
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
     /**
      * Creates new form HospitalAdmin
      */
-    public HospitalAdminArea() {
+    public HospitalAdminArea(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.userAccount = userAccount;   
+    }
+    
+     private void manageInfo() {
+        UpdateHospitalInfoPanel updateRestaurantInfoJPanel = new UpdateHospitalInfoPanel(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("UpdateRestaurantInfoJPanel",updateRestaurantInfoJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }
 
+    
+    private void manageEmergencyRequest() {
+        ViewEmergencyRequestPanel viewOrderDetails = new ViewEmergencyRequestPanel(userProcessContainer,ecosystem,userAccount);
+        userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void manageHospitalStaff() {
+        ManageHospitalStaff createMenuItemJPanel = new ManageHospitalStaff(userProcessContainer,ecosystem,userAccount);
+        userProcessContainer.add("CreateMenuItemJPanel",createMenuItemJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -91,7 +123,12 @@ public class HospitalAdminArea extends javax.swing.JPanel {
     private void userJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userJButtonActionPerformed
         manageLabAssistant();
     }//GEN-LAST:event_userJButtonActionPerformed
-
+    private void manageLabAssistant() {
+        LabAssistantSchedule labAssistantScheduleJPanel = new LabAssistantSchedule(userProcessContainer,userAccount,ecosystem);
+        userProcessContainer.add("LabAssistantScheduleJPanel",labAssistantScheduleJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

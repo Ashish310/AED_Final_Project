@@ -4,17 +4,72 @@
  */
 package UI.AmbulanceRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ashishkumar
  */
 public class AmbulanceWorkArea extends javax.swing.JPanel {
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    private List<WorkRequest> workRequestList;
 
     /**
      * Creates new form AmbulanceWorkArea
      */
     public AmbulanceWorkArea() {
         initComponents();
+        creatingListenerForDelInfo();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.ecosystem = ecosystem;
+        fillDelRqTable();
+    }
+    
+    private void fillDelRqTable(){
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryManWorkRequest.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListAmbulanceDriver(userAccount);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblDeliveryManWorkRequest.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getHospitalAdmin();
+            row[2] = request.getPatient();
+            row[3] = request.getStatus();
+            model.addRow(row);
+        }
+        }
+
+        private void creatingListenerForDelInfo() {
+        tblDeliveryManWorkRequest.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblDeliveryManWorkRequest.getSelectedRow();
+                if (selectedRow >= 0) {
+                    WorkRequest request = (WorkRequest) tblDeliveryManWorkRequest.getValueAt(selectedRow, 0);
+                    if (request instanceof LabWorkRequest) {
+                        LabWorkRequest orderWorkRequest = (LabWorkRequest) tblDeliveryManWorkRequest.getValueAt(selectedRow, 0);
+                        if (orderWorkRequest != null) {
+                           ProcessAmbulanceRequests processOrderJPanel = new ProcessAmbulanceRequests(userProcessContainer,ecosystem,userAccount,orderWorkRequest);
+                           userProcessContainer.add("ProcessOrderJPanel", processOrderJPanel);
+                           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+                           layout.next(userProcessContainer);
+                        }
+                    }
+
+                }
+            }
+        });
     }
 
     /**

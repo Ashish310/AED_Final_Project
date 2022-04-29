@@ -4,17 +4,74 @@
  */
 package UI.AccountantRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import EcoSystem.WorkList.WorkRequest;
+import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JPanel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ashishkumar
  */
 public class AccountantWorkArea extends javax.swing.JPanel {
+    
+    private JPanel userProcessContainer;
+    private EcoSystem ecosystem;
+    private UserAccount userAccount;
+    private List<WorkRequest> workRequestList;
 
     /**
      * Creates new form AccountantWorkArea
      */
-    public AccountantWorkArea() {
+    public AccountantWorkArea(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        creatingListenerForDelInfo();
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = userAccount;
+        this.ecosystem = ecosystem;
+        fillDelRqTable();
+        
+    }
+    private void fillDelRqTable(){
+        DefaultTableModel model = (DefaultTableModel) tblDeliveryManWorkRequest.getModel();
+        model.setRowCount(0);
+        workRequestList = ecosystem.getWorkQueue().getWorkRequestListAccount(userAccount);
+        for (WorkRequest request : workRequestList) {
+            Object[] row = new Object[tblDeliveryManWorkRequest.getColumnCount()];
+            row[0] = request;
+            row[1] = request.getReception();
+            row[2] = request.getPatient();
+            row[3] = request.getStatus();
+            row[4] = request.getBill();
+            model.addRow(row);
+        }
+        }
+
+        private void creatingListenerForDelInfo() {
+        tblDeliveryManWorkRequest.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            public void valueChanged(ListSelectionEvent event) {
+                int selectedRow = tblDeliveryManWorkRequest.getSelectedRow();
+                if (selectedRow >= 0) {
+                    WorkRequest request = (WorkRequest) tblDeliveryManWorkRequest.getValueAt(selectedRow, 0);
+                    if (request instanceof LabWorkRequest) {
+                        LabWorkRequest orderWorkRequest = (LabWorkRequest) tblDeliveryManWorkRequest.getValueAt(selectedRow, 0);
+                        if (orderWorkRequest != null) {
+                           ProcessAccountingRequests processOrderJPanel = new ProcessAccountingRequests(userProcessContainer,ecosystem,userAccount,orderWorkRequest);
+                           userProcessContainer.add("ProcessOrderJPanel", processOrderJPanel);
+                           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+                           layout.next(userProcessContainer);
+                        }
+                    }
+
+                }
+            }
+        });
     }
 
     /**
@@ -25,28 +82,21 @@ public class AccountantWorkArea extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDeliveryManWorkRequest = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(166, 203, 230));
-        setLayout(new java.awt.GridBagLayout());
+        setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Billing Details");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 429;
-        gridBagConstraints.ipady = 21;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(24, 140, 0, 0);
-        add(jLabel1, gridBagConstraints);
+        add(jLabel1);
+        jLabel1.setBounds(140, 24, 690, 64);
 
         tblDeliveryManWorkRequest.setFont(new java.awt.Font("Garamond", 0, 14)); // NOI18N
         tblDeliveryManWorkRequest.setModel(new javax.swing.table.DefaultTableModel(
@@ -77,35 +127,18 @@ public class AccountantWorkArea extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblDeliveryManWorkRequest);
 
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 778;
-        gridBagConstraints.ipady = 151;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(18, 29, 0, 0);
-        add(jScrollPane2, gridBagConstraints);
+        add(jScrollPane2);
+        jScrollPane2.setBounds(-5, 106, 1050, 300);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/AccountantRole/bill.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = -129;
-        gridBagConstraints.ipady = -70;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(126, 20, 20, 205);
-        add(jLabel2, gridBagConstraints);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/AccountantRole/bill.png"))); // NOI18N
+        add(jLabel3);
+        jLabel3.setBounds(310, 410, 330, 350);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblDeliveryManWorkRequest;
     // End of variables declaration//GEN-END:variables
