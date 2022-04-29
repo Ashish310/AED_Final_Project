@@ -4,6 +4,11 @@
  */
 package UI.PatientRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,9 +18,50 @@ public class PatientAreaPanel extends javax.swing.JPanel {
     /**
      * Creates new form PatientAreaPanel
      */
-    public PatientAreaPanel() {
+    
+    private JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    private UserAccount userAccount;
+    
+    public PatientAreaPanel(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = account;
     }
+    private void OrderIssue() {
+        AppointmentSchedule placeOrderJPanel = new AppointmentSchedule(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("PlaceOrderJPanel", placeOrderJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void OrderInfoAndFeedback() {
+        AppointmentInfo orderStatusJPanel = new AppointmentInfo(userProcessContainer, ecosystem, userAccount);
+        userProcessContainer.add("OrderStatusJPanel", orderStatusJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    private void MedicineOrderIssue(){
+        MedicineOrder medicineOrderJPanel = new MedicineOrder(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("MedicineOrderJPanel", medicineOrderJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    private void emergencyRequest() {
+        EmergencyRequest emergencyRequestJPanel = new EmergencyRequest(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("EmergencyRequestJPanel", emergencyRequestJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    private void doctorInfo() {
+        DoctorInfo doctorInfo = new DoctorInfo(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("DoctorInfoJPanel", doctorInfo);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

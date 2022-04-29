@@ -4,6 +4,19 @@
  */
 package UI.PharmaAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.WorkList.PharmacyInventory;
+import EcoSystem.Porter.PorterDirectory;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import UI.PharmaAdminRole.ViewOrderInformation;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author hs_sa
@@ -13,9 +26,71 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
     /**
      * Creates new form NewJPanel
      */
-    public AcceptOrRejectOrder() {
+    
+    JPanel userProcessContainer;
+    UserAccount userAccount;
+    EcoSystem ecosystem;
+    LabWorkRequest labTestWorkRequest;
+    double total = 0.0;
+    private DefaultTableModel defaultTableModel;
+    private PorterDirectory deliveryManDirectory;
+    private List<PharmacyInventory> itemQuantityList = new ArrayList<>();
+    private int index = -1;
+    public AcceptOrRejectOrder(JPanel userProcessContainer, EcoSystem ecosystem, UserAccount userAccount, LabWorkRequest labTestWorkRequest) {
         initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
+        this.userAccount = userAccount;
+        this.labTestWorkRequest = labTestWorkRequest;
+        defaultTableModel = (DefaultTableModel) tblOrderDetails.getModel();
+        deliveryManDirectory = ecosystem.getDeliveryManDirectory();   
+        change();
+        display();
     }
+    
+    private void display() {
+                
+        pharmaName.setText(labTestWorkRequest.getPharmacy().getPharmacyName());
+        status.setText(labTestWorkRequest.getStatus());
+        message.setText(labTestWorkRequest.getMessage());
+
+        defaultTableModel.setRowCount(0);
+        for (PharmacyInventory itemWithQuantity : labTestWorkRequest.getPharmaItemQuantitys()) {
+            Object[] row = new Object[defaultTableModel.getColumnCount()];
+            row[0] = itemWithQuantity;
+            row[1] = itemWithQuantity.getQuantity();
+            row[2] = itemWithQuantity.getMedicines().getPrice() * itemWithQuantity.getQuantity();
+            total += itemWithQuantity.getMedicines().getPrice() * itemWithQuantity.getQuantity();
+            defaultTableModel.addRow(row);
+        }
+        totalPrice.setText(total + "");
+
+    }
+    
+    private void declineOrder(){
+        labTestWorkRequest.setStatus("Declined");
+        JOptionPane.showMessageDialog(null, "Order has been declined");
+        change();
+        status.setText(labTestWorkRequest.getStatus());
+    }
+    
+    private void change() {
+        switch(labTestWorkRequest.getStatus()){
+            case "Request to Pharmaceutical" -> {
+                acceptOrder.setText("Accept order");
+                declineOrder.setVisible(true);
+            }
+            case "Preparing" -> {
+                acceptOrder.setText("Ready for delivery");
+                declineOrder.setVisible(false);
+            }
+            default -> {
+                declineOrder.setVisible(false);
+                acceptOrder.setVisible(false);
+            }
+        }
+        
+    }    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -154,25 +229,25 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
 
     private void acceptOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptOrderActionPerformed
 
-//        if (labTestWorkRequest.getStatus().equals("Request to Pharmaceutical")) {
-//            labTestWorkRequest.setStatus("Preparing");
-//            JOptionPane.showMessageDialog(null, " Order Accepted");
-//        }
-//        else if(labTestWorkRequest.getStatus().equals("Preparing")) {
-//            labTestWorkRequest.setStatus("Prepared for Pharmacy");
-//            labTestWorkRequest.setMessage("Order List :"+labTestWorkRequest.getPharmaItemQuantitys().toString());
-//            JOptionPane.showMessageDialog(null, " Order sent to Pharmacy");
-//        }
-//        else {
-//            acceptOrder.setVisible(false);
-//        }
-//        change();
-//        status.setText(labTestWorkRequest.getStatus());
+        if (labTestWorkRequest.getStatus().equals("Request to Pharmaceutical")) {
+            labTestWorkRequest.setStatus("Preparing");
+            JOptionPane.showMessageDialog(null, " Order Accepted");
+        }
+        else if(labTestWorkRequest.getStatus().equals("Preparing")) {
+            labTestWorkRequest.setStatus("Prepared for Pharmacy");
+            labTestWorkRequest.setMessage("Order List :"+labTestWorkRequest.getPharmaItemQuantitys().toString());
+            JOptionPane.showMessageDialog(null, " Order sent to Pharmacy");
+        }
+        else {
+            acceptOrder.setVisible(false);
+        }
+        change();
+        status.setText(labTestWorkRequest.getStatus());
 
     }//GEN-LAST:event_acceptOrderActionPerformed
 
     private void declineOrderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_declineOrderMousePressed
-        //declineOrder();
+        declineOrder();
     }//GEN-LAST:event_declineOrderMousePressed
 
     private void declineOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_declineOrderActionPerformed
@@ -180,10 +255,10 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
     }//GEN-LAST:event_declineOrderActionPerformed
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-//        ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem, userAccount);
-//        userProcessContainer.add("ViewOrderDetails", viewOrderDetails);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        ViewOrderInformation viewOrderDetails = new ViewOrderInformation(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("ViewOrderDetails", viewOrderDetails);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
 
