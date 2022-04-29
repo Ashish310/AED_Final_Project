@@ -8,7 +8,7 @@ package DisasterMgmtSystem.Employement;
  *
  * @author hs_sa
  */
-public class AmbulanceDriver {
+public class AmbulanceDriver extends Employee{
     private String id;
     private String status;
 

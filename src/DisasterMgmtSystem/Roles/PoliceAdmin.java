@@ -9,6 +9,7 @@ import DisasterMgmtSystem.DisasterMgmtSystem;
 import DisasterMgmtSystem.Enterprise.Enterprise;
 import DisasterMgmtSystem.Network.Network;
 import DisasterMgmtSystem.Organizations.Organization;
+import UserInterface.Police.PoliceWorkArea;
 import javax.swing.JPanel;
 
 /**
