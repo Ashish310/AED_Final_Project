@@ -4,6 +4,19 @@
  */
 package UI.PatientRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.Hospital.HospitalAdmin;
+import EcoSystem.Hospital.HospitalAdminDirectory;
+import EcoSystem.Patient.Patient;
+import EcoSystem.UserAccount.UserAccount;
+import EcoSystem.WorkList.LabWorkRequest;
+import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +26,54 @@ public class EmergencyRequest extends javax.swing.JPanel {
     /**
      * Creates new form EmergencyRequest
      */
-    public EmergencyRequest() {
+    
+    private JPanel userProcessContainer;
+    private UserAccount userAccount;
+    private Patient patient;
+    private DefaultTableModel defaultTableModel;
+    private DefaultTableModel defaultCartTable;
+    private int index = -1;
+    private int row = 0;
+    private int column = 0;
+    private int quantity = 0;
+    private EcoSystem ecosystem;
+    private HospitalAdminDirectory hospitalAdminDirectory;
+    
+    public EmergencyRequest(JPanel userProcessContainer, UserAccount account, EcoSystem ecosystem) {
         initComponents();
+        
+        this.userProcessContainer = userProcessContainer;
+        this.userAccount = account;
+        this.ecosystem = ecosystem;
+        patient = (Patient) account;
+        hospitalAdminDirectory = ecosystem.getHospitalDirectory();
+        fillRstList(hospitalAdminDirectory.getHospitalList());
+    }
+    
+    public void fillRstList(ArrayList<HospitalAdmin> hospitalAdminList) {
+        for (HospitalAdmin hospitalAdmin : hospitalAdminList) {
+            rstCombo.addItem(hospitalAdmin.getName());
+        }
+    }
+    
+    private boolean creatingOrder() {
+            LabWorkRequest orderWorkRequest = new LabWorkRequest();
+            orderWorkRequest.setMessage(txtMessage.getText());
+            if (patient != null) {
+                orderWorkRequest.setPatient(patient);
+            } else {
+                return false;
+            }
+            HospitalAdmin hospitalAdmin = hospitalAdminDirectory.getHospitalList().get(rstCombo.getSelectedIndex()); 
+            if (hospitalAdmin != null) {
+                orderWorkRequest.setHospitalAdmin(hospitalAdmin);
+            } else {
+                return false;
+            }
+            orderWorkRequest.setRequestDate(new Date());
+            orderWorkRequest.setStatus("Request to HospitalAdmin");
+            ecosystem.getWorkQueue().addWorkRequest(orderWorkRequest);
+            return true;
     }
 
     /**
@@ -142,7 +201,7 @@ public class EmergencyRequest extends javax.swing.JPanel {
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
         if (creatingOrder()) {
             JOptionPane.showMessageDialog(null, "Emergency Request Sent !");
-            EmergencyInfoJPanel emergencyInfoJPanel = new EmergencyInfoJPanel(userProcessContainer, ecosystem, patient);
+            EmergencyInfo emergencyInfoJPanel = new EmergencyInfo(userProcessContainer, ecosystem, patient);
             userProcessContainer.add("EmergencyInfoJPanel", emergencyInfoJPanel);
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
@@ -152,7 +211,7 @@ public class EmergencyRequest extends javax.swing.JPanel {
 
     private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
 
-        PatientAreaJPanel patientAreaJPanel = new PatientAreaJPanel(userProcessContainer, userAccount, ecosystem);
+        PatientAreaPanel patientAreaJPanel = new PatientAreaPanel(userProcessContainer, userAccount, ecosystem);
         userProcessContainer.add("PatientAreaJPanel", patientAreaJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
