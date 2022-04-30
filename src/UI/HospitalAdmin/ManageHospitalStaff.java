@@ -186,11 +186,9 @@ public class ManageHospitalStaff extends javax.swing.JPanel {
         add(staff, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 259, 126, -1));
         add(txtpswrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 347, 126, -1));
 
-        comboStaff.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(comboStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 305, -1, -1));
+        add(comboStaff, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 305, 130, -1));
 
-        comboDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(comboDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 439, -1, -1));
+        add(comboDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 439, 130, -1));
         add(availdoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 493, 126, -1));
 
         btnaddstaff.setText("ADD STAFF");

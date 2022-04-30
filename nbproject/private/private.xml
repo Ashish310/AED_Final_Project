@@ -3,27 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/Users/shriyadikshith/AED/AED_Final_Project-2/src/UI/MainJFrame.java</file>
-            <file>file:/Users/shriyadikshith/AED/AED_Final_Project-2/src/UI/PharmacyAdminRole/ManagePorter.java</file>
-            <file>file:/Users/shriyadikshith/AED/AED_Final_Project-2/src/UI/PharmacyAdminRole/OrderMeds.java</file>
-            <file>file:/Users/shriyadikshith/AED/AED_Final_Project-2/src/UI/PorterRole/PorterWorkArea.java</file>
-=======
+
             <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/PatientRole/EmergencyRequest.java</file>
             <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/HospitalAdmin/ManageHospitalStaff.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/ReceptionRole/ManagePatients.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/DoctorRole/DoctorAreaPanel.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/HospitalAdmin/ViewEmergencyRequestPanel.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/HospitalAdmin/HospitalAdminArea.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/HospitalAdmin/UpdateHospitalInfoPanel.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/HospitalAdmin/LabAssistantSchedule.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/DoctorRole/WorkRequestDocPanel.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/ReceptionRole/ReceptionWorkArea.java</file>
             <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/HospitalAdmin/AcceptEmergencyRequest.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/SystemAdmin/SystemAdminWorkArea.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/MainJFrame.java</file>
-            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/SystemAdmin/ManageHosptial.java</file>
->>>>>>> 7840bbd1276a48defe876d2a03f1cc5da296da14
+            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/UI/PatientRole/AppointmentSchedule.java</file>
+            <file>file:/Users/ashishkumar/Desktop/Healthify/AED_Final_Project/src/EcoSystem/Organization.java</file>
+
         </group>
     </open-files>
 </project-private>
