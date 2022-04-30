@@ -20,10 +20,10 @@ public class DisasterEmergency extends Emergency {
         super(Emergency.EmergencyType.DISASTEREMERGENCY.getValue());
         disasterList = new ArrayList<>();
         disasterList=new ArrayList<>();
-        disasterList.add("Storm");
-        disasterList.add("Flood");
-        disasterList.add("Earthquake");
-        disasterList.add("Forest Fires");
+        disasterList.add("Head Trauma");
+        disasterList.add("Fire burn");
+        disasterList.add("Unconsciousness");
+        disasterList.add("Orthopedic injuries");
     }
 
     public ArrayList<String> getDisasterList() {
