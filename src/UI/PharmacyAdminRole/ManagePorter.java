@@ -7,8 +7,11 @@ package UI.PharmacyAdminRole;
 import EcoSystem.EcoSystem;
 import EcoSystem.Porter.Porter;
 import EcoSystem.Porter.PorterDirectory;
+import EcoSystem.Role.PorterRole;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.UserAccount.UserAccountDirectory;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -74,7 +77,7 @@ public class ManagePorter extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MANAGE DELIVERY MAN");
+        jLabel1.setText("MANAGE PORTER");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 83, 819, 48));
 
         tblMenu.setFont(new java.awt.Font("Garamond", 0, 11)); // NOI18N
@@ -107,8 +110,8 @@ public class ManagePorter extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("DeliveryMan Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(237, 380, -1, -1));
+        jLabel2.setText("Porter Name");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 380, -1, -1));
 
         staffName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 374, 225, -1));
@@ -136,8 +139,8 @@ public class ManagePorter extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("DeliveryMan Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 420, -1, -1));
+        jLabel4.setText("Porter Password");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 420, -1, -1));
 
         passwordTextfield.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         passwordTextfield.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -145,35 +148,35 @@ public class ManagePorter extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddItemActionPerformed
-//        if (staffName.getText().isEmpty() || passwordTextfield.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(null, "Enter all fields");
-//            return;
-//        }
-//        if(ecosystem.getUserAccountDirectory().checkIfUsernameIsUnique(staffName.getText())){
-//
-//            DeliveryMan deliveryMan = new DeliveryMan();
-//            deliveryMan.setDeliveryManName(staffName.getText());
-//            deliveryMan.setUsername(staffName.getText());
-//            deliveryMan.setPassword(passwordTextfield.getText());
-//            deliveryMan.setRole(new DeliverManRole());
-//            ecosystem.getUserAccountDirectory().addUserAccount(deliveryMan);
-//            ecosystem.getDeliveryManDirectory().addDeliveryMan(deliveryMan);
-//
-//            populateTable();
-//            staffName.setText("");
-//            passwordTextfield.setText("");
-//
-//        }
-//        else{
-//            JOptionPane.showMessageDialog(null, "Username " + staffName.getText() + " exists");
-//        }
+        if (staffName.getText().isEmpty() || passwordTextfield.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter all fields");
+            return;
+        }
+        if(ecosystem.getUserAccountDirectory().checkUsernameUnique(staffName.getText())){
+
+            Porter deliveryMan = new Porter();
+            deliveryMan.setDeliveryManName(staffName.getText());
+            deliveryMan.setUsername(staffName.getText());
+            deliveryMan.setPassword(passwordTextfield.getText());
+            deliveryMan.setRole(new PorterRole());
+            ecosystem.getUserAccountDirectory().addUserAccount(deliveryMan);
+            ecosystem.getDeliveryManDirectory().addDeliveryMan(deliveryMan);
+
+            populateTable();
+            staffName.setText("");
+            passwordTextfield.setText("");
+
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Username " + staffName.getText() + " exists");
+        }
     }//GEN-LAST:event_btnAddItemActionPerformed
 
     private void btnBack2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack2ActionPerformed
-//        PharmacyAdminWorkAreaJPanel pharmacyAdminWorkAreaJPanel = new PharmacyAdminWorkAreaJPanel(userProcessContainer,userAccount, ecosystem);
-//        userProcessContainer.add("AdminWorkAreaJPanel", pharmacyAdminWorkAreaJPanel);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        PharmacyAdminWorkArea pharmacyAdminWorkAreaJPanel = new PharmacyAdminWorkArea(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", pharmacyAdminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack2ActionPerformed
 
 

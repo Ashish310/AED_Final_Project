@@ -10,6 +10,7 @@ import EcoSystem.Pharmaceutical.PharmaceuticalDirectory;
 import EcoSystem.Pharmacy.Pharmacy;
 import EcoSystem.Pharmacy.PharmacyDirectory;
 import EcoSystem.Role.PharmaAdminRole;
+import EcoSystem.Role.PharmaceuticalAdminRole;
 import EcoSystem.UserAccount.UserAccountDirectory;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -325,73 +326,77 @@ public class ManagePharmaceutical extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        if (userNameTextfield.getText().isEmpty() || passwordTextfield.getText().isEmpty() || txtPharName.getText().isEmpty() || contact.getText().isEmpty() || address.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Enter all fields");
+        if( userNameTextfield.getText().isEmpty()||passwordTextfield.getText().isEmpty()|| txtPharName.getText().isEmpty() || contact.getText().isEmpty() || address.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Enter the field details");
             return;
         }
         if(contact.getText().length() != 10){
             JOptionPane.showMessageDialog(null, "Enter a valid phone number");
             return;
         }
-        if (ecosystem.getUserAccountDirectory().checkUsernameUnique(userNameTextfield.getText())) {
-            Pharmacy pharmacy = new Pharmacy();
-            pharmacy.setPharmacyName(txtPharName.getText());
-            pharmacy.setUsername(userNameTextfield.getText());
-            pharmacy.setPassword(passwordTextfield.getText());
-            pharmacy.setAddress(address.getText());
-            pharmacy.setContact(contact.getText());
-            pharmacy.setRole(new PharmaAdminRole());
-            ecosystem.getUserAccountDirectory().addUserAccount(pharmacy);
-            ecosystem.getPharmacyDirectory().addPharmacy(pharmacy);
+        if(ecosystem.getUserAccountDirectory().checkUsernameUnique(userNameTextfield.getText())) {
+            Pharmaceutical pharmaceutical = new Pharmaceutical();
+            pharmaceutical.setPharmaceuticalName(txtPharName.getText());
+            pharmaceutical.setUsername(userNameTextfield.getText());
+            pharmaceutical.setAddress(address.getText());
+            pharmaceutical.setContact(contact.getText());
+            pharmaceutical.setPassword(passwordTextfield.getText());
+            pharmaceutical.setRole(new PharmaceuticalAdminRole());
+            ecosystem.getUserAccountDirectory().addUserAccount(pharmaceutical);
+            ecosystem.getPharmaceuticalDirectory().addPharmaceutical(pharmaceutical);
             fillTable();
             userNameTextfield.setText("");
             passwordTextfield.setText("");
             txtPharName.setText("");
             address.setText("");
             contact.setText("");
-        } else {
-            JOptionPane.showMessageDialog(null, "Username " + userNameTextfield.getText() + " exists");
-        }
+         }
+        else {
+            JOptionPane.showMessageDialog(null, "Username " + userNameTextfield.getText() + "exists");
+         }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyActionPerformed
         int selectedRow = tblCustomers.getSelectedRow();
         if (selectedRow >= 0) {
-            Pharmacy pharmacy = (Pharmacy) tblCustomers.getValueAt(selectedRow, 0);
-            pharmacy.setUsername(userNameTextfield.getText());
-            pharmacy.setPassword(passwordTextfield.getText());
-            pharmacy.setAddress(address.getText());
-            pharmacy.setContact(contact.getText());
-            pharmacy.setPharmacyName(txtPharName.getText());
+            System.out.println("selected row" + selectedRow);
+            Pharmaceutical pharmaceutical = (Pharmaceutical) tblCustomers.getValueAt(selectedRow, 0);
+            System.out.println("item : " + pharmaceutical);
+            pharmaceutical.setUsername(userNameTextfield.getText());
+            pharmaceutical.setPassword(passwordTextfield.getText());
+            pharmaceutical.setPharmaceuticalName(txtPharName.getText()); 
+            pharmaceutical.setAddress(address.getText()); 
+            pharmaceutical.setContact(contact.getText()); 
+            pharmaceutical.setRole(new PharmaceuticalAdminRole());
             fillTable();
             userNameTextfield.setText("");
             passwordTextfield.setText("");
             txtPharName.setText("");
             address.setText("");
             contact.setText("");
+
         } else {
             JOptionPane.showMessageDialog(null, "Select a row");
         }
     }//GEN-LAST:event_btnModifyActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        int selectedRow = tblCustomers.getSelectedRow();
-
+            int selectedRow = tblCustomers.getSelectedRow();
         if (selectedRow >= 0) {
-            Pharmacy pharmacy = (Pharmacy) tblCustomers.getValueAt(selectedRow, 0);
-            PharmacyDirectory pharmacyDirectory = ecosystem.getPharmacyDirectory();
-            pharmacyDirectory.deletePharmacy(pharmacy);
-            JOptionPane.showMessageDialog(null, "Pharmacy admin "  + userNameTextfield.getText() + " deleted");
+            Pharmaceutical pharmaceutical = (Pharmaceutical) tblCustomers.getValueAt(selectedRow, 0);
+            PharmaceuticalDirectory pharmaceuticalDirectory = ecosystem.getPharmaceuticalDirectory();
+            pharmaceuticalDirectory.deletePharmaceutical(pharmaceutical);
+            JOptionPane.showMessageDialog(null, "Pharmaceutical admin"  + userNameTextfield.getText() + " deleted");
             fillTable();
+            txtPharName.setText("");            
             userNameTextfield.setText("");
             passwordTextfield.setText("");
-            txtPharName.setText("");
             address.setText("");
             contact.setText("");
-        } else {
+        } 
+        else {
             JOptionPane.showMessageDialog(null, "Select a row.");
         }
-
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void passwordTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextfieldActionPerformed

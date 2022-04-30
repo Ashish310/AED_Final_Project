@@ -166,10 +166,10 @@ public class ManageOrders extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBack1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBack1ActionPerformed
-//        PharmacyAdminWorkAreaJPanel pharmacyAdminWorkAreaJPanel = new PharmacyAdminWorkAreaJPanel(userProcessContainer,account, ecosystem);
-//        userProcessContainer.add("PharmacyAdminWorkAreaJPanel", pharmacyAdminWorkAreaJPanel);
-//        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//        layout.next(userProcessContainer);
+        PharmacyAdminWorkArea pharmacyAdminWorkArea = new PharmacyAdminWorkArea(userProcessContainer,account, ecosystem);
+        userProcessContainer.add("PharmacyAdminWorkArea", pharmacyAdminWorkArea);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnBack1ActionPerformed
 
 

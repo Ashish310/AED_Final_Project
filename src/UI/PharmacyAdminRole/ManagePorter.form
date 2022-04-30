@@ -32,7 +32,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="MANAGE DELIVERY MAN"/>
+        <Property name="text" type="java.lang.String" value="MANAGE PORTER"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -78,11 +78,11 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="DeliveryMan Name"/>
+        <Property name="text" type="java.lang.String" value="Porter Name"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="237" y="380" width="-1" height="-1"/>
+          <AbsoluteConstraints x="300" y="380" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -145,11 +145,11 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="DeliveryMan Password"/>
+        <Property name="text" type="java.lang.String" value="Porter Password"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="207" y="420" width="-1" height="-1"/>
+          <AbsoluteConstraints x="260" y="420" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>

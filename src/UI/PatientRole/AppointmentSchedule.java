@@ -242,6 +242,10 @@ public class AppointmentSchedule extends javax.swing.JPanel {
 
     private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
         // TODO add your handling code here:
+        PatientAreaPanel customerAreaJPanel = new PatientAreaPanel(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("DeliveryManWorkAreaJPanel", customerAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnbackActionPerformed
 
     private void requestTestJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestTestJButtonActionPerformed
