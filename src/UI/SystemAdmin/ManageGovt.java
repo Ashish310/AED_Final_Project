@@ -147,7 +147,7 @@ public class ManageGovt extends javax.swing.JPanel {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Name");
 
-        btnDeliveryMan.setBackground(new java.awt.Color(166, 206, 55));
+        btnDeliveryMan.setBackground(new java.awt.Color(97, 147, 160));
         btnDeliveryMan.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnDeliveryMan.setText("Create");
         btnDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
@@ -156,7 +156,7 @@ public class ManageGovt extends javax.swing.JPanel {
             }
         });
 
-        btnModify.setBackground(new java.awt.Color(166, 206, 55));
+        btnModify.setBackground(new java.awt.Color(97, 147, 160));
         btnModify.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnModify.setText("Modify");
         btnModify.addActionListener(new java.awt.event.ActionListener() {
@@ -165,7 +165,7 @@ public class ManageGovt extends javax.swing.JPanel {
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(166, 206, 55));
+        btnDelete.setBackground(new java.awt.Color(97, 147, 160));
         btnDelete.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class ManageGovt extends javax.swing.JPanel {
             }
         });
 
-        backjButton1.setBackground(new java.awt.Color(166, 206, 55));
+        backjButton1.setBackground(new java.awt.Color(97, 147, 160));
         backjButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         backjButton1.setText("Back");
         backjButton1.addActionListener(new java.awt.event.ActionListener() {

@@ -33,6 +33,8 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        
+        this.setSize(1680, 1050);
     }
 
     /**
@@ -59,7 +61,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(166, 206, 55));
+        jPanel1.setBackground(new java.awt.Color(133, 184, 218));
 
         loginJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         loginJButton.setText("Login");

@@ -46,7 +46,7 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new java.awt.GridBagLayout());
 
-        btnManageHospital.setBackground(new java.awt.Color(166, 206, 55));
+        btnManageHospital.setBackground(new java.awt.Color(97, 147, 160));
         btnManageHospital.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnManageHospital.setText("Manage Hospital");
         btnManageHospital.setBorderPainted(false);
@@ -64,7 +64,7 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(29, 207, 0, 0);
         add(btnManageHospital, gridBagConstraints);
 
-        btnManagePharmaceutical.setBackground(new java.awt.Color(166, 206, 55));
+        btnManagePharmaceutical.setBackground(new java.awt.Color(97, 147, 160));
         btnManagePharmaceutical.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnManagePharmaceutical.setText("Manage Pharmaceutical");
         btnManagePharmaceutical.setBorderPainted(false);
@@ -82,7 +82,7 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(26, 207, 0, 0);
         add(btnManagePharmaceutical, gridBagConstraints);
 
-        btnManagePharmacy.setBackground(new java.awt.Color(166, 206, 55));
+        btnManagePharmacy.setBackground(new java.awt.Color(97, 147, 160));
         btnManagePharmacy.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnManagePharmacy.setText("Manage Pharmacy");
         btnManagePharmacy.setBorderPainted(false);
@@ -100,7 +100,7 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 207, 0, 0);
         add(btnManagePharmacy, gridBagConstraints);
 
-        btnManageGovernment.setBackground(new java.awt.Color(166, 206, 55));
+        btnManageGovernment.setBackground(new java.awt.Color(97, 147, 160));
         btnManageGovernment.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnManageGovernment.setText("Manage Government");
         btnManageGovernment.setBorderPainted(false);
