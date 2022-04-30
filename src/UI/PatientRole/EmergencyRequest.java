@@ -96,7 +96,7 @@ public class EmergencyRequest extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
-        requestTestJButton.setBackground(new java.awt.Color(166, 206, 55));
+        requestTestJButton.setBackground(new java.awt.Color(97, 147, 160));
         requestTestJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         requestTestJButton.setText("Book Emergency");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class EmergencyRequest extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("SCHEDULE EMERGENCY REQUEST");
 
-        backJButton.setBackground(new java.awt.Color(166, 206, 55));
+        backJButton.setBackground(new java.awt.Color(97, 147, 160));
         backJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {

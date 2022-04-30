@@ -110,6 +110,7 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new java.awt.GridBagLayout());
 
+        jButton1.setBackground(new java.awt.Color(97, 147, 160));
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,15 +214,24 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(8, 89, 0, 0);
         add(message, gridBagConstraints);
 
+        btnaccept.setBackground(new java.awt.Color(97, 147, 160));
         btnaccept.setText("ACCEPT");
         btnaccept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnacceptActionPerformed(evt);
             }
         });
-        add(btnaccept);
-        btnaccept.setBounds(760, 200, 97, 29);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridheight = 2;
+        gridBagConstraints.ipadx = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(8, 40, 0, 0);
+        add(btnaccept, gridBagConstraints);
 
+        btndecline.setBackground(new java.awt.Color(97, 147, 160));
         btndecline.setText("DECLINE");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 11;
@@ -231,6 +241,7 @@ public class AcceptEmergencyRequest extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(8, 33, 0, 0);
         add(btndecline, gridBagConstraints);
 
+        btnassign.setBackground(new java.awt.Color(97, 147, 160));
         btnassign.setText("ASSIGN");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;

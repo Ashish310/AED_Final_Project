@@ -120,6 +120,7 @@ public class AppointmentSchedule extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
+        btnback.setBackground(new java.awt.Color(97, 147, 160));
         btnback.setText("BACK");
         btnback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,7 +128,7 @@ public class AppointmentSchedule extends javax.swing.JPanel {
             }
         });
 
-        requestTestJButton.setBackground(new java.awt.Color(166, 206, 55));
+        requestTestJButton.setBackground(new java.awt.Color(97, 147, 160));
         requestTestJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         requestTestJButton.setText("Book Appointment");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {

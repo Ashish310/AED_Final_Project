@@ -153,7 +153,7 @@ public class ProcessPorterRequest extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(12, 71, 0, 193);
         add(jLabel9, gridBagConstraints);
 
-        btnStatus.setBackground(new java.awt.Color(166, 206, 55));
+        btnStatus.setBackground(new java.awt.Color(97, 147, 160));
         btnStatus.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnStatus.setText("Pick Order");
         btnStatus.addActionListener(new java.awt.event.ActionListener() {

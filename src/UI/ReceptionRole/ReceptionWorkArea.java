@@ -82,7 +82,7 @@ public class ReceptionWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(30, 0, 0, 0);
         add(jLabel1, gridBagConstraints);
 
-        manageOrganizationJButton.setBackground(new java.awt.Color(166, 206, 55));
+        manageOrganizationJButton.setBackground(new java.awt.Color(97, 147, 160));
         manageOrganizationJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageOrganizationJButton.setText("Manage Appointments");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class ReceptionWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
         add(jLabel2, gridBagConstraints);
 
-        userJButton1.setBackground(new java.awt.Color(166, 206, 55));
+        userJButton1.setBackground(new java.awt.Color(97, 147, 160));
         userJButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         userJButton1.setText("Manage Patients");
         userJButton1.addActionListener(new java.awt.event.ActionListener() {

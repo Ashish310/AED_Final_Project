@@ -292,6 +292,7 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(55, 105, 0, 0);
         add(jLabel1, gridBagConstraints);
 
+        btnback.setBackground(new java.awt.Color(97, 147, 160));
         btnback.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnback.setText("BACK");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -307,6 +308,7 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(59, 23, 0, 0);
         add(btnback, gridBagConstraints);
 
+        btndecline.setBackground(new java.awt.Color(97, 147, 160));
         btndecline.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btndecline.setText("DECLINE");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -319,6 +321,7 @@ public class AcceptOrderPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 84, 71, 0);
         add(btndecline, gridBagConstraints);
 
+        btnaccept.setBackground(new java.awt.Color(97, 147, 160));
         btnaccept.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnaccept.setText("ACCEPT");
         btnaccept.addActionListener(new java.awt.event.ActionListener() {

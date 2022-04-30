@@ -75,6 +75,7 @@ public class Govtadmin extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         add(jLabel1, gridBagConstraints);
 
+        btnManageApprovals.setBackground(new java.awt.Color(97, 147, 160));
         btnManageApprovals.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnManageApprovals.setText("Manage approvals");
         btnManageApprovals.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +92,7 @@ public class Govtadmin extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(448, 40, 0, 0);
         add(btnManageApprovals, gridBagConstraints);
 
+        btnViewPatientRecords.setBackground(new java.awt.Color(97, 147, 160));
         btnViewPatientRecords.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnViewPatientRecords.setText("View Patient Records");
         btnViewPatientRecords.addActionListener(new java.awt.event.ActionListener() {

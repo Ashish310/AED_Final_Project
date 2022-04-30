@@ -23,6 +23,7 @@ import EcoSystem.Role.LabExaminerRole;
 import EcoSystem.Role.ReceptionistRole;
 import EcoSystem.UserAccount.UserAccount;
 import EcoSystem.UserAccount.UserAccountDirectory;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
@@ -110,7 +111,13 @@ public class ManageHospitalStaff extends javax.swing.JPanel {
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        btnback.setBackground(new java.awt.Color(97, 147, 160));
         btnback.setText("BACK");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
         add(btnback, new org.netbeans.lib.awtextra.AbsoluteConstraints(44, 21, 111, 48));
 
         jLabel1.setBackground(new java.awt.Color(166, 206, 55));
@@ -191,6 +198,7 @@ public class ManageHospitalStaff extends javax.swing.JPanel {
         add(comboDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 439, 130, -1));
         add(availdoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 493, 126, -1));
 
+        btnaddstaff.setBackground(new java.awt.Color(97, 147, 160));
         btnaddstaff.setText("ADD STAFF");
         btnaddstaff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,6 +309,14 @@ public class ManageHospitalStaff extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username " + staff.getText() + " exists");
          }
     }//GEN-LAST:event_btnaddstaffActionPerformed
+
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        HospitalAdminArea adminWorkAreaJPanel = new HospitalAdminArea(userProcessContainer,userAccount, ecosystem);
+        userProcessContainer.add("AdminWorkAreaJPanel", adminWorkAreaJPanel);
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnbackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

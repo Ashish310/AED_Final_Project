@@ -82,7 +82,7 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new java.awt.GridBagLayout());
 
-        manageOrganizationJButton.setBackground(new java.awt.Color(166, 206, 55));
+        manageOrganizationJButton.setBackground(new java.awt.Color(97, 147, 160));
         manageOrganizationJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageOrganizationJButton.setText("Manage Orders");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +100,7 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(28, 260, 0, 0);
         add(manageOrganizationJButton, gridBagConstraints);
 
-        manageOrganizationJButton1.setBackground(new java.awt.Color(166, 206, 55));
+        manageOrganizationJButton1.setBackground(new java.awt.Color(97, 147, 160));
         manageOrganizationJButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageOrganizationJButton1.setText("Manage Inventory");
         manageOrganizationJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -117,7 +117,7 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 260, 0, 0);
         add(manageOrganizationJButton1, gridBagConstraints);
 
-        userJButton.setBackground(new java.awt.Color(166, 206, 55));
+        userJButton.setBackground(new java.awt.Color(97, 147, 160));
         userJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         userJButton.setText("Manage Pharmaceutical Info");
         userJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +133,7 @@ public class PharmaceuticalAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 260, 0, 0);
         add(userJButton, gridBagConstraints);
 
-        userJButton1.setBackground(new java.awt.Color(166, 206, 55));
+        userJButton1.setBackground(new java.awt.Color(97, 147, 160));
         userJButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         userJButton1.setText("CDC Medicine Approval");
         userJButton1.setMaximumSize(new java.awt.Dimension(221, 59));

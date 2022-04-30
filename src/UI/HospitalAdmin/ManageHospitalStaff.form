@@ -25,8 +25,14 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="btnback">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a0" green="93" red="61" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="BACK"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnbackActionPerformed"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="44" y="21" width="111" height="48"/>
@@ -245,6 +251,9 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnaddstaff">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="a0" green="93" red="61" type="rgb"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="ADD STAFF"/>
       </Properties>
       <Events>

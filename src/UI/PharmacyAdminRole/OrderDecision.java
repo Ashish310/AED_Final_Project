@@ -244,7 +244,7 @@ public class OrderDecision extends javax.swing.JPanel {
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Message");
 
-        jButtonAddDeliveryMan.setBackground(new java.awt.Color(166, 206, 55));
+        jButtonAddDeliveryMan.setBackground(new java.awt.Color(97, 147, 160));
         jButtonAddDeliveryMan.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jButtonAddDeliveryMan.setText("Assign");
         jButtonAddDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +267,7 @@ public class OrderDecision extends javax.swing.JPanel {
         address.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         address.setText("<value>");
 
-        acceptOrder.setBackground(new java.awt.Color(166, 206, 55));
+        acceptOrder.setBackground(new java.awt.Color(97, 147, 160));
         acceptOrder.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         acceptOrder.setText("Accept Order");
         acceptOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +276,7 @@ public class OrderDecision extends javax.swing.JPanel {
             }
         });
 
-        declineOrder.setBackground(new java.awt.Color(166, 206, 55));
+        declineOrder.setBackground(new java.awt.Color(97, 147, 160));
         declineOrder.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         declineOrder.setText("Decline Order");
         declineOrder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -290,7 +290,7 @@ public class OrderDecision extends javax.swing.JPanel {
             }
         });
 
-        btnBack1.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack1.setBackground(new java.awt.Color(97, 147, 160));
         btnBack1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnBack1.setText("Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {

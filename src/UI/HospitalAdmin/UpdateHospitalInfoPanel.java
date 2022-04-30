@@ -101,6 +101,7 @@ public class UpdateHospitalInfoPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(25, 6, 0, 74);
         add(jLabel3, gridBagConstraints);
 
+        btnupdate.setBackground(new java.awt.Color(97, 147, 160));
         btnupdate.setText("UPDATE");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +119,7 @@ public class UpdateHospitalInfoPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(0, 73, 0, 0);
         add(btnupdate, gridBagConstraints);
 
+        btnback.setBackground(new java.awt.Color(97, 147, 160));
         btnback.setText("BACK");
         btnback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,6 +135,7 @@ public class UpdateHospitalInfoPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 23, 0, 0);
         add(btnback, gridBagConstraints);
 
+        btnsave.setBackground(new java.awt.Color(97, 147, 160));
         btnsave.setText("SAVE");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

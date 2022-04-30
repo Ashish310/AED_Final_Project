@@ -193,7 +193,7 @@ public class OrderMeds extends javax.swing.JPanel {
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        requestTestJButton.setBackground(new java.awt.Color(166, 206, 55));
+        requestTestJButton.setBackground(new java.awt.Color(97, 147, 160));
         requestTestJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         requestTestJButton.setText("Order");
         requestTestJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +230,7 @@ public class OrderMeds extends javax.swing.JPanel {
         jLabel5.setText("Order Medicines");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 79, 868, 48));
 
-        backJButton.setBackground(new java.awt.Color(166, 206, 55));
+        backJButton.setBackground(new java.awt.Color(97, 147, 160));
         backJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         backJButton.setText("Back");
         backJButton.addActionListener(new java.awt.event.ActionListener() {

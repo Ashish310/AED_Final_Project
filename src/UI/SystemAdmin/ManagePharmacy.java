@@ -161,7 +161,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
         restaurantNameTextfield.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         restaurantNameTextfield.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        btnCreate.setBackground(new java.awt.Color(166, 206, 55));
+        btnCreate.setBackground(new java.awt.Color(97, 147, 160));
         btnCreate.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnCreate.setText("Create");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +170,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
             }
         });
 
-        btnModify.setBackground(new java.awt.Color(166, 206, 55));
+        btnModify.setBackground(new java.awt.Color(97, 147, 160));
         btnModify.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnModify.setText("Modify");
         btnModify.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +179,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
             }
         });
 
-        btnDelete.setBackground(new java.awt.Color(166, 206, 55));
+        btnDelete.setBackground(new java.awt.Color(97, 147, 160));
         btnDelete.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnDelete.setText("Delete");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +207,7 @@ public class ManagePharmacy extends javax.swing.JPanel {
             }
         });
 
-        backjButton1.setBackground(new java.awt.Color(166, 206, 55));
+        backjButton1.setBackground(new java.awt.Color(97, 147, 160));
         backjButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         backjButton1.setText("Back");
         backjButton1.addActionListener(new java.awt.event.ActionListener() {

@@ -113,6 +113,7 @@ public class ManagePorter extends javax.swing.JPanel {
         staffName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         add(staffName, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 374, 225, -1));
 
+        btnAddItem.setBackground(new java.awt.Color(97, 147, 160));
         btnAddItem.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnAddItem.setText("Add Staff");
         btnAddItem.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +123,7 @@ public class ManagePorter extends javax.swing.JPanel {
         });
         add(btnAddItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(356, 462, 163, 60));
 
-        btnBack2.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack2.setBackground(new java.awt.Color(97, 147, 160));
         btnBack2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnBack2.setText("Back");
         btnBack2.addActionListener(new java.awt.event.ActionListener() {

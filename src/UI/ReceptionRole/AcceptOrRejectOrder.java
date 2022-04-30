@@ -131,7 +131,7 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(11, 93, 0, 0);
         add(status, gridBagConstraints);
 
-        btnBack1.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack1.setBackground(new java.awt.Color(97, 147, 160));
         btnBack1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnBack1.setText("Back");
         btnBack1.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +147,7 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(12, 10, 0, 0);
         add(btnBack1, gridBagConstraints);
 
-        acceptOrder.setBackground(new java.awt.Color(166, 206, 55));
+        acceptOrder.setBackground(new java.awt.Color(97, 147, 160));
         acceptOrder.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         acceptOrder.setText("Accept Appointment");
         acceptOrder.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +180,7 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(41, 92, 0, 0);
         add(assignDeliveryPerson, gridBagConstraints);
 
-        jButtonAddDeliveryMan.setBackground(new java.awt.Color(166, 206, 55));
+        jButtonAddDeliveryMan.setBackground(new java.awt.Color(97, 147, 160));
         jButtonAddDeliveryMan.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jButtonAddDeliveryMan.setText("Assign");
         jButtonAddDeliveryMan.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +208,7 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(45, 16, 0, 0);
         add(assignDeliveryPersonLabel, gridBagConstraints);
 
-        declineOrder.setBackground(new java.awt.Color(166, 206, 55));
+        declineOrder.setBackground(new java.awt.Color(97, 147, 160));
         declineOrder.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         declineOrder.setText("Decline Appointment");
         declineOrder.addMouseListener(new java.awt.event.MouseAdapter() {

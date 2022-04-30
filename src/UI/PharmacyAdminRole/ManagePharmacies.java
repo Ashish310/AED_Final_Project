@@ -117,7 +117,7 @@ public class ManagePharmacies extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(33, 18, 0, 0);
         add(restaurantName, gridBagConstraints);
 
-        updateButton.setBackground(new java.awt.Color(166, 206, 55));
+        updateButton.setBackground(new java.awt.Color(97, 147, 160));
         updateButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -134,6 +134,7 @@ public class ManagePharmacies extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(40, 149, 0, 0);
         add(updateButton, gridBagConstraints);
 
+        confirmButton.setBackground(new java.awt.Color(97, 147, 160));
         confirmButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         confirmButton.setText("Save");
         confirmButton.addActionListener(new java.awt.event.ActionListener() {

@@ -126,6 +126,7 @@ public class AppointmentFeedback extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
+        jButton1.setBackground(new java.awt.Color(97, 147, 160));
         jButton1.setText("BACK");
 
         jLabel11.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
@@ -154,7 +155,7 @@ public class AppointmentFeedback extends javax.swing.JPanel {
         status.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         status.setText("<value>");
 
-        payBillBtn.setBackground(new java.awt.Color(166, 206, 55));
+        payBillBtn.setBackground(new java.awt.Color(97, 147, 160));
         payBillBtn.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         payBillBtn.setText("Pay Bill");
         payBillBtn.addActionListener(new java.awt.event.ActionListener() {

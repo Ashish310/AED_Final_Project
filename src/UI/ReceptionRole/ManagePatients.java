@@ -116,7 +116,7 @@ public class ManagePatients extends javax.swing.JPanel {
 
         txtPatientName.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
 
-        btnAddItem.setBackground(new java.awt.Color(166, 206, 55));
+        btnAddItem.setBackground(new java.awt.Color(97, 147, 160));
         btnAddItem.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnAddItem.setText("Add Patient");
         btnAddItem.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +125,7 @@ public class ManagePatients extends javax.swing.JPanel {
             }
         });
 
-        btnBack2.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack2.setBackground(new java.awt.Color(97, 147, 160));
         btnBack2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnBack2.setText("Back");
         btnBack2.addActionListener(new java.awt.event.ActionListener() {

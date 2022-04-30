@@ -112,6 +112,7 @@ public class PatientsRecords extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
+        btnback.setBackground(new java.awt.Color(97, 147, 160));
         btnback.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnback.setText("BACK");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +121,7 @@ public class PatientsRecords extends javax.swing.JPanel {
             }
         });
 
+        btngeneratereports.setBackground(new java.awt.Color(97, 147, 160));
         btngeneratereports.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btngeneratereports.setText("GENERATE REPORTS");
         btngeneratereports.addActionListener(new java.awt.event.ActionListener() {

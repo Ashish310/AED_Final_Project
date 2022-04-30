@@ -52,6 +52,7 @@ public class ManageReceptionInformation extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(166, 203, 230));
         setLayout(new java.awt.GridBagLayout());
 
         lblPageHeader.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
@@ -77,7 +78,7 @@ public class ManageReceptionInformation extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(44, 163, 0, 0);
         add(lblReceptionistName, gridBagConstraints);
 
-        btnUpdate.setBackground(new java.awt.Color(166, 206, 55));
+        btnUpdate.setBackground(new java.awt.Color(97, 147, 160));
         btnUpdate.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnUpdate.setText("Update");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +111,7 @@ public class ManageReceptionInformation extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(41, 4, 0, 0);
         add(txtReceptionistName, gridBagConstraints);
 
-        btnSave.setBackground(new java.awt.Color(166, 206, 55));
+        btnSave.setBackground(new java.awt.Color(97, 147, 160));
         btnSave.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -125,7 +126,7 @@ public class ManageReceptionInformation extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(37, 32, 0, 0);
         add(btnSave, gridBagConstraints);
 
-        btnBack.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack.setBackground(new java.awt.Color(97, 147, 160));
         btnBack.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {

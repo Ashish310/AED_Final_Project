@@ -67,6 +67,7 @@ public class ViewOrderDetails extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
+        btnback.setBackground(new java.awt.Color(97, 147, 160));
         btnback.setText("BACK");
         btnback.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

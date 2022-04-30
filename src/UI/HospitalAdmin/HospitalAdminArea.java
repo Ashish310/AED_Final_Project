@@ -93,7 +93,7 @@ public class HospitalAdminArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(60, 120, 50, 0);
         add(jLabel2, gridBagConstraints);
 
-        manageOrganizationJButton.setBackground(new java.awt.Color(166, 206, 55));
+        manageOrganizationJButton.setBackground(new java.awt.Color(97, 147, 160));
         manageOrganizationJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageOrganizationJButton.setText("Manage Hospital Staff");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class HospitalAdminArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(25, 120, 0, 0);
         add(manageOrganizationJButton, gridBagConstraints);
 
-        manageEmployeeJButton.setBackground(new java.awt.Color(166, 206, 55));
+        manageEmployeeJButton.setBackground(new java.awt.Color(97, 147, 160));
         manageEmployeeJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageEmployeeJButton.setText("Manage Emergency Request");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class HospitalAdminArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(25, 70, 0, 0);
         add(manageEmployeeJButton, gridBagConstraints);
 
-        userJButton.setBackground(new java.awt.Color(166, 206, 55));
+        userJButton.setBackground(new java.awt.Color(97, 147, 160));
         userJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         userJButton.setText("Manage Lab Assistant");
         userJButton.addActionListener(new java.awt.event.ActionListener() {

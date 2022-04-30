@@ -11,6 +11,7 @@ import EcoSystem.LabAssistant.LabAssistantDirectory;
 import EcoSystem.Patient.Patient;
 import EcoSystem.Patient.PatientDirectory;
 import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -88,7 +89,13 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Schedule");
 
+        jButton1.setBackground(new java.awt.Color(97, 147, 160));
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         enterpriseLabel1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         enterpriseLabel1.setText("Choose Lab Assistant");
@@ -99,10 +106,13 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel2.setText("Enter Patient email");
 
-        comboLab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboPatient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboPatientActionPerformed(evt);
+            }
+        });
 
-        comboPatient.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
+        jButton2.setBackground(new java.awt.Color(97, 147, 160));
         jButton2.setText("BOOK AN APPOINTMENT");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/HospitalAdmin/labimg.png"))); // NOI18N
@@ -168,6 +178,18 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboPatientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboPatientActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          HospitalAdminArea hospitalAdminWorkAreaJPanel = new HospitalAdminArea(userProcessContainer, userAccount, ecosystem);
+        userProcessContainer.add("HospitalAdminWorkAreaJPanel", hospitalAdminWorkAreaJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

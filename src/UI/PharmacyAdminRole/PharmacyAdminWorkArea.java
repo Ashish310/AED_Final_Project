@@ -98,7 +98,7 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(29, 62, 0, 62);
         add(jLabel1, gridBagConstraints);
 
-        userJButton.setBackground(new java.awt.Color(166, 206, 55));
+        userJButton.setBackground(new java.awt.Color(97, 147, 160));
         userJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         userJButton.setText("Manage Pharmacy Information");
         userJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +116,7 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
         add(userJButton, gridBagConstraints);
 
-        manageEmployeeJButton.setBackground(new java.awt.Color(166, 206, 55));
+        manageEmployeeJButton.setBackground(new java.awt.Color(97, 147, 160));
         manageEmployeeJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageEmployeeJButton.setText("Manage Inventory");
         manageEmployeeJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +134,7 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
         add(manageEmployeeJButton, gridBagConstraints);
 
-        manageOrganizationJButton.setBackground(new java.awt.Color(166, 206, 55));
+        manageOrganizationJButton.setBackground(new java.awt.Color(97, 147, 160));
         manageOrganizationJButton.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageOrganizationJButton.setText("Manage Orders");
         manageOrganizationJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
         add(manageOrganizationJButton, gridBagConstraints);
 
-        manageOrganizationJButton1.setBackground(new java.awt.Color(166, 206, 55));
+        manageOrganizationJButton1.setBackground(new java.awt.Color(97, 147, 160));
         manageOrganizationJButton1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageOrganizationJButton1.setText("Manage DeliveryMan");
         manageOrganizationJButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -169,7 +169,7 @@ public class PharmacyAdminWorkArea extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 346, 0, 0);
         add(manageOrganizationJButton1, gridBagConstraints);
 
-        manageOrganizationJButton2.setBackground(new java.awt.Color(166, 206, 55));
+        manageOrganizationJButton2.setBackground(new java.awt.Color(97, 147, 160));
         manageOrganizationJButton2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         manageOrganizationJButton2.setText("Manage Pharmaceutical Order");
         manageOrganizationJButton2.addActionListener(new java.awt.event.ActionListener() {

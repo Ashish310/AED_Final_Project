@@ -335,7 +335,7 @@ public class MedicineApprovalForm extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(18, 39, 0, 39);
         add(jLabel1, gridBagConstraints);
 
-        sendToCDCbtn.setBackground(new java.awt.Color(166, 206, 55));
+        sendToCDCbtn.setBackground(new java.awt.Color(97, 147, 160));
         sendToCDCbtn.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         sendToCDCbtn.setText("Send to CDC");
         sendToCDCbtn.addActionListener(new java.awt.event.ActionListener() {

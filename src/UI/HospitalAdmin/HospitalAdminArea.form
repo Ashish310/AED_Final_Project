@@ -51,7 +51,7 @@
     <Component class="javax.swing.JButton" name="manageOrganizationJButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="37" green="ce" red="a6" type="rgb"/>
+          <Color blue="a0" green="93" red="61" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -70,7 +70,7 @@
     <Component class="javax.swing.JButton" name="manageEmployeeJButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="37" green="ce" red="a6" type="rgb"/>
+          <Color blue="a0" green="93" red="61" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>
@@ -89,7 +89,7 @@
     <Component class="javax.swing.JButton" name="userJButton">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="37" green="ce" red="a6" type="rgb"/>
+          <Color blue="a0" green="93" red="61" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Garamond" size="18" style="1"/>

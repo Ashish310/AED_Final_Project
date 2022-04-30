@@ -172,7 +172,7 @@ public class UpdatePharmaceuticalInformation extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(21, 115, 0, 0);
         add(jLabel5, gridBagConstraints);
 
-        updateButton.setBackground(new java.awt.Color(166, 206, 55));
+        updateButton.setBackground(new java.awt.Color(97, 147, 160));
         updateButton.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         updateButton.setText("Update");
         updateButton.addActionListener(new java.awt.event.ActionListener() {
@@ -188,7 +188,7 @@ public class UpdatePharmaceuticalInformation extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(9, 141, 0, 0);
         add(updateButton, gridBagConstraints);
 
-        confirmButton.setBackground(new java.awt.Color(166, 206, 55));
+        confirmButton.setBackground(new java.awt.Color(97, 147, 160));
         confirmButton.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         confirmButton.setText("Save");
         confirmButton.addActionListener(new java.awt.event.ActionListener() {
@@ -204,7 +204,7 @@ public class UpdatePharmaceuticalInformation extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(9, 17, 0, 0);
         add(confirmButton, gridBagConstraints);
 
-        btnBack2.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack2.setBackground(new java.awt.Color(97, 147, 160));
         btnBack2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnBack2.setText("Back");
         btnBack2.addActionListener(new java.awt.event.ActionListener() {

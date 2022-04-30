@@ -82,7 +82,7 @@ public class PatientAreaPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
-        btnOrderIssue.setBackground(new java.awt.Color(166, 206, 55));
+        btnOrderIssue.setBackground(new java.awt.Color(97, 147, 160));
         btnOrderIssue.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnOrderIssue.setText("Manage Medicine Order");
         btnOrderIssue.addActionListener(new java.awt.event.ActionListener() {
@@ -91,7 +91,7 @@ public class PatientAreaPanel extends javax.swing.JPanel {
             }
         });
 
-        btnorderInfoAndFeedback.setBackground(new java.awt.Color(166, 206, 55));
+        btnorderInfoAndFeedback.setBackground(new java.awt.Color(97, 147, 160));
         btnorderInfoAndFeedback.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnorderInfoAndFeedback.setText("View Hospital Information");
         btnorderInfoAndFeedback.addActionListener(new java.awt.event.ActionListener() {
@@ -106,7 +106,7 @@ public class PatientAreaPanel extends javax.swing.JPanel {
         jLabel2.setText("WELCOME !!!");
         jLabel2.setToolTipText("");
 
-        btnOrderIssue1.setBackground(new java.awt.Color(166, 206, 55));
+        btnOrderIssue1.setBackground(new java.awt.Color(97, 147, 160));
         btnOrderIssue1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnOrderIssue1.setText("Manage Appointment");
         btnOrderIssue1.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +115,7 @@ public class PatientAreaPanel extends javax.swing.JPanel {
             }
         });
 
-        btnOrderIssue2.setBackground(new java.awt.Color(166, 206, 55));
+        btnOrderIssue2.setBackground(new java.awt.Color(97, 147, 160));
         btnOrderIssue2.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnOrderIssue2.setText("Schedule Emergency Request");
         btnOrderIssue2.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class PatientAreaPanel extends javax.swing.JPanel {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/PatientRole/welcome.png"))); // NOI18N
 
-        btnorderInfoAndFeedback1.setBackground(new java.awt.Color(166, 206, 55));
+        btnorderInfoAndFeedback1.setBackground(new java.awt.Color(97, 147, 160));
         btnorderInfoAndFeedback1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         btnorderInfoAndFeedback1.setText("View Doctor Information");
         btnorderInfoAndFeedback1.addActionListener(new java.awt.event.ActionListener() {

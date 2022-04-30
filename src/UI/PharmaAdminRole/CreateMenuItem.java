@@ -144,7 +144,7 @@ public class CreateMenuItem extends javax.swing.JPanel {
         jLabel2.setText("Item Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
-        btnAddItem.setBackground(new java.awt.Color(166, 206, 55));
+        btnAddItem.setBackground(new java.awt.Color(97, 147, 160));
         btnAddItem.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnAddItem.setText("Add Item");
         btnAddItem.addActionListener(new java.awt.event.ActionListener() {
@@ -154,7 +154,7 @@ public class CreateMenuItem extends javax.swing.JPanel {
         });
         add(btnAddItem, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, 195, 40));
 
-        btnUpdateItem.setBackground(new java.awt.Color(166, 206, 55));
+        btnUpdateItem.setBackground(new java.awt.Color(97, 147, 160));
         btnUpdateItem.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnUpdateItem.setText("Update");
         btnUpdateItem.addActionListener(new java.awt.event.ActionListener() {
@@ -170,7 +170,7 @@ public class CreateMenuItem extends javax.swing.JPanel {
         jLabel1.setText("MANAGE INVENTORY");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 74, 753, -1));
 
-        btnBack2.setBackground(new java.awt.Color(166, 206, 55));
+        btnBack2.setBackground(new java.awt.Color(97, 147, 160));
         btnBack2.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
         btnBack2.setText("Back");
         btnBack2.addActionListener(new java.awt.event.ActionListener() {

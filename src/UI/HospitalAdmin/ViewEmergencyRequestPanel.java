@@ -88,6 +88,7 @@ public class ViewEmergencyRequestPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(166, 203, 230));
 
+        jButton1.setBackground(new java.awt.Color(97, 147, 160));
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

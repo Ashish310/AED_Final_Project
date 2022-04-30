@@ -153,6 +153,7 @@ public class ProcessWorkRequestPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(166, 203, 230));
         setLayout(null);
 
+        jButton1.setBackground(new java.awt.Color(97, 147, 160));
         jButton1.setText("BACK");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,48 +161,48 @@ public class ProcessWorkRequestPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1);
-        jButton1.setBounds(47, 49, 63, 25);
+        jButton1.setBounds(47, 49, 77, 29);
 
         jLabel9.setFont(new java.awt.Font("Garamond", 1, 36)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("LAB DETAILS");
         add(jLabel9);
-        jLabel9.setBounds(136, 35, 567, 41);
+        jLabel9.setBounds(136, 35, 567, 43);
 
         jLabel5.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Status");
         add(jLabel5);
-        jLabel5.setBounds(199, 194, 47, 21);
+        jLabel5.setBounds(199, 194, 57, 22);
 
         jLabel3.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Admin Name");
         add(jLabel3);
-        jLabel3.setBounds(136, 154, 105, 21);
+        jLabel3.setBounds(136, 154, 119, 22);
 
         enterpriseLabel1.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         enterpriseLabel1.setText("Select Test");
         add(enterpriseLabel1);
-        enterpriseLabel1.setBounds(160, 240, 82, 21);
+        enterpriseLabel1.setBounds(160, 240, 101, 21);
 
         customerNameValue.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         customerNameValue.setText("<Value>");
         add(customerNameValue);
-        customerNameValue.setBounds(297, 154, 255, 21);
+        customerNameValue.setBounds(297, 154, 255, 22);
 
         status.setFont(new java.awt.Font("Garamond", 1, 18)); // NOI18N
         status.setText("<Value>");
         add(status);
-        status.setBounds(297, 194, 255, 21);
+        status.setBounds(297, 194, 255, 22);
 
-        comboRstTest.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         add(comboRstTest);
-        comboRstTest.setBounds(300, 240, 136, 22);
+        comboRstTest.setBounds(300, 240, 136, 27);
 
+        btnStatus.setBackground(new java.awt.Color(97, 147, 160));
         btnStatus.setText("START LAB");
         add(btnStatus);
-        btnStatus.setBounds(230, 290, 89, 25);
+        btnStatus.setBounds(230, 290, 111, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/LabAssisstant/lab2.png"))); // NOI18N
         add(jLabel1);
