@@ -4,6 +4,11 @@
  */
 package UI.GovtAdminRole;
 
+import EcoSystem.EcoSystem;
+import EcoSystem.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author shriyadikshith
@@ -13,8 +18,31 @@ public class Govtadmin extends javax.swing.JPanel {
     /**
      * Creates new form Govtadmin
      */
-    public Govtadmin() {
+    
+    JPanel userProcessContainer;
+    EcoSystem ecosystem;
+    UserAccount userAccount;
+    
+    
+    public Govtadmin(JPanel userProcessContainer, UserAccount userAccount, EcoSystem ecosystem) {
         initComponents();
+        this.userProcessContainer=userProcessContainer;
+        this.ecosystem=ecosystem;
+        this.userAccount = userAccount;     
+    }
+    
+    private void manageOrders() {
+        ViewOrderDetails viewOrderDetails = new ViewOrderDetails(userProcessContainer,ecosystem,userAccount);
+        userProcessContainer.add("ViewOrderDetails",viewOrderDetails);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+    }
+    
+    private void manageInfo() {
+        PatientRecordsJPanel updateRestaurantInfoJPanel = new PatientRecordsJPanel(userProcessContainer,ecosystem, userAccount);
+        userProcessContainer.add("UpdateRestaurantInfoJPanel",updateRestaurantInfoJPanel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }
 
     /**
@@ -27,8 +55,8 @@ public class Govtadmin extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnManageApprovals = new javax.swing.JButton();
+        btnViewPatientRecords = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(130, 163, 165));
@@ -41,13 +69,25 @@ public class Govtadmin extends javax.swing.JPanel {
         add(jLabel1);
         jLabel1.setBounds(250, 20, 360, 32);
 
-        jButton1.setText("Manage approvals");
-        add(jButton1);
-        jButton1.setBounds(40, 500, 210, 60);
+        btnManageApprovals.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnManageApprovals.setText("Manage approvals");
+        btnManageApprovals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageApprovalsActionPerformed(evt);
+            }
+        });
+        add(btnManageApprovals);
+        btnManageApprovals.setBounds(40, 500, 210, 60);
 
-        jButton2.setText("VIeiw Patient Records");
-        add(jButton2);
-        jButton2.setBounds(630, 510, 200, 60);
+        btnViewPatientRecords.setFont(new java.awt.Font("Verdana", 1, 12)); // NOI18N
+        btnViewPatientRecords.setText("View Patient Records");
+        btnViewPatientRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewPatientRecordsActionPerformed(evt);
+            }
+        });
+        add(btnViewPatientRecords);
+        btnViewPatientRecords.setBounds(630, 510, 200, 60);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/GovtAdminRole/govtadmin.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -55,10 +95,22 @@ public class Govtadmin extends javax.swing.JPanel {
         jLabel2.setBounds(-10, 0, 860, 820);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnManageApprovalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageApprovalsActionPerformed
+        // TODO add your handling code here:
+        manageOrders();
+        
+    }//GEN-LAST:event_btnManageApprovalsActionPerformed
+
+    private void btnViewPatientRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewPatientRecordsActionPerformed
+        // TODO add your handling code here:
+        manageInfo();
+        
+    }//GEN-LAST:event_btnViewPatientRecordsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnManageApprovals;
+    private javax.swing.JButton btnViewPatientRecords;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
