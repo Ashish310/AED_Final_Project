@@ -50,6 +50,8 @@ public class LabAssistantSchedule extends javax.swing.JPanel {
         labAssistantDirectory = ecosystem.getLabAssistantDirectory();
         patientDirectory = ecosystem.getPatientDirectory();
         
+        
+        // filling the details
         fillRstList(labAssistantDirectory.getLabAssistantNameList());
         fillRstPatient(patientDirectory.getPatientList());
     }
