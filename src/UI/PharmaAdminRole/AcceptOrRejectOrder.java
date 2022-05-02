@@ -47,6 +47,8 @@ public class AcceptOrRejectOrder extends javax.swing.JPanel {
         display();
     }
     
+    
+    // to display
     private void display() {
                 
         pharmaName.setText(labTestWorkRequest.getPharmacy().getPharmacyName());
